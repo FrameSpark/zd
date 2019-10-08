@@ -15,6 +15,25 @@ namespace Railway
         public New_train()
         {
             InitializeComponent();
+            ControlBox = false;
+        }
+
+        public New_train(string numberTrain, string type_train)
+        {
+            InitializeComponent();
+            tNumberTrain.Text = numberTrain;
+            tTypeTrain.Text = type_train;
+            ControlBox = false;
+        }
+
+        private void New_train_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

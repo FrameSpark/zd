@@ -6,6 +6,7 @@ namespace Railway
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("TRAIN_TYPE")]
     public partial class TRAIN_TYPE
     {
         [Key]

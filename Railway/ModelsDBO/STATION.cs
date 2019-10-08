@@ -12,7 +12,7 @@ namespace Railway
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public STATION()
         {
-            ROUTEs = new HashSet<ROUTE>();
+           // ROUTEs = new HashSet<ROUTE>();
         }
 
         [Key]
@@ -22,7 +22,7 @@ namespace Railway
         [StringLength(255)]
         public string name_station { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ROUTE> ROUTEs { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<ROUTE> ROUTEs { get; set; }
     }
 }

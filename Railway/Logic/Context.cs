@@ -55,22 +55,23 @@ namespace Railway
                 .HasMany(e => e.TICKETs)
                 .WithRequired(e => e.PASSANGER)
                 .WillCascadeOnDelete(false);
-
+            /*
             modelBuilder.Entity<ROUTE>()
                 .HasMany(e => e.TRIPs)
                 .WithRequired(e => e.ROUTE)
                 .WillCascadeOnDelete(false);
-
+                */
             modelBuilder.Entity<STATION>()
                 .Property(e => e.name_station)
                 .IsUnicode(false);
 
+            /*
             modelBuilder.Entity<STATION>()
                 .HasMany(e => e.ROUTEs)
                 .WithRequired(e => e.STATION)
                 .HasForeignKey(e => e.id_start_station)
                 .WillCascadeOnDelete(false);
-
+*/
             modelBuilder.Entity<TICKET>()
                 .Property(e => e.place)
                 .IsUnicode(false);

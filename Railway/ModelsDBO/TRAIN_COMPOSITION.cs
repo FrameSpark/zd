@@ -15,7 +15,6 @@ namespace Railway
 
         public int id_carriage { get; set; }
 
-        public int number_carriage { get; set; }
 
         public virtual CARRIAGE CARRIAGE { get; set; }
 

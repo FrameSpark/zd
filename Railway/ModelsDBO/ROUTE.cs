@@ -12,7 +12,7 @@ namespace Railway
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ROUTE()
         {
-            TRIPs = new HashSet<TRIP>();
+           // TRIPs = new HashSet<TRIP>();
         }
 
         [Key]
@@ -22,11 +22,11 @@ namespace Railway
 
         public int id_finish_station { get; set; }
 
-        public DateTime route_time { get; set; }
+        public int route_time { get; set; }
 
-        public virtual STATION STATION { get; set; }
+        //public virtual STATION STATION { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TRIP> TRIPs { get; set; }
+//        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+       // public virtual ICollection<TRIP> TRIPs { get; set; }
     }
 }
