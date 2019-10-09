@@ -32,6 +32,12 @@ namespace Railway
             return carriages;
         }
 
+        public List<PASSANGER> GetPASSANGERs()
+        {
+            return db.PASSANGERs.ToList();
+        }
+
+
         public List<Composition> GetComposition()
         {
             List<Composition> compositions = new List<Composition>();
@@ -155,6 +161,21 @@ namespace Railway
             return null;
         }
 
+        public List<TRAIN_COMPOSITION> getCompositionByTrain(int id)
+        {
+
+            List<TRAIN_COMPOSITION> db_type = db.TRAIN_COMPOSITION.ToList();
+            List<TRAIN_COMPOSITION> list = new List<TRAIN_COMPOSITION>();
+            foreach (TRAIN_COMPOSITION temp in db_type)
+            {
+                if (temp.id_train == id)
+                {
+                    list.Add(temp);
+                }
+            }
+            return list;
+        }
+
         public TRAIN_COMPOSITION getComposition(int id)
         {
 
@@ -180,6 +201,38 @@ namespace Railway
                 }
             }
             return null;
+        }
+
+        public int getFreeTicket(int train)
+        {
+            int seat = 0;
+            List<TRAIN_COMPOSITION> tc = getCompositionByTrain(train);
+            List<TICKET> pas = db.TICKETs.ToList();
+            foreach(TRAIN_COMPOSITION temp in tc)
+            {
+                seat += getCarriageById(temp.id_carriage).number_of_seats;
+            }
+            foreach(TICKET temp in pas)
+            {
+                if (temp.id_train == train)
+                    seat -= 1;
+            }
+            return seat;
+        }
+
+        public List<TRIP> getTripByTrain(int id)
+        {
+
+            List<TRIP> db_type = db.TRIPs.ToList();
+            List<TRIP> t = new List<TRIP>();
+            foreach (TRIP temp in db_type)
+            {
+                if (temp.id_train == id)
+                {
+                    t.Add(temp);
+                }
+            }
+            return t;
         }
 
         public ROUTE getRouteById(int id)
@@ -301,6 +354,67 @@ namespace Railway
             return composition;
         }
 
+        public PASSANGER newPassanger(string name, string passport)
+        {
+            PASSANGER pas = new PASSANGER();
+            pas.name = name;
+            pas.passport = passport;
+            pas.is_admin = 0;
+            db.PASSANGERs.Add(pas);
+            db.SaveChanges();
+            return pas;
+        }
+
+        public List<TICKET> getTicketByPassanger(int id)
+        {
+            List<TICKET> list = db.TICKETs.ToList();
+            List<TICKET> ret = new List<TICKET>();
+            foreach(TICKET temp in list)
+            {
+                if (temp.id_passanger == id)
+                    ret.Add(temp);
+            }
+            return ret;
+        }
+
+        public TICKET newTicket(int passanger, int train, int carriage, int price, int trip)
+        {
+            TICKET ticket = new TICKET();
+            ticket.id_passanger = passanger;
+            ticket.id_train = train;
+            ticket.id_carriage = carriage;
+            ticket.price = price;
+            ticket.id_trip = trip;
+
+            db.TICKETs.Add(ticket);
+            db.SaveChanges();
+            return ticket;
+        }
+
+        public List<TICKET> getTickets()
+        {
+            return db.TICKETs.ToList();
+        }
+        public Boolean updatePassanger(int id, string name, string passport)
+        {
+            PASSANGER pas = getPassangerByid(id);
+            pas.name = name;
+            pas.passport = passport;
+            db.SaveChanges();
+            return true;
+        }
+
+        public PASSANGER getPassangerByid(int id)
+        {
+            List<PASSANGER> list = db.PASSANGERs.ToList();
+            foreach(PASSANGER temp in list)
+            {
+                if (temp.id_passanger == id)
+                    return temp;
+            }
+            return null;
+        }
+
         public TRIP newTrip(String numberTrain, DateTime time1, DateTime time2, int route)
         {
             TRIP trip = new TRIP();
@@ -308,7 +422,7 @@ namespace Railway
             trip.time_start = time1;
             trip.time_finish = time2;
 
-            if (time1 > time2)
+            if (time1 < time2)
             {
                 trip.time_start = time1;
                 trip.time_finish = time2;
@@ -356,7 +470,7 @@ namespace Railway
             TRIP trip = getTripById(id);
             if (trip != null) { 
             trip.id_train = getIdTrainByNumber(numberTrain);
-            if(time1 > time2)
+            if(time1 < time2)
                 {
                     trip.time_start = time1;
                     trip.time_finish = time2;
@@ -631,6 +745,41 @@ namespace Railway
                 }
             }
             return carriages;
+        }
+
+        public Boolean deletePassanger(int id)
+        {
+            PASSANGER pas = getPassangerByid(id);
+            List<TICKET> tic = getTicketByPassanger(id);
+            foreach(TICKET temp in tic)
+            {
+                db.TICKETs.Remove(temp);
+            }
+            db.PASSANGERs.Remove(pas);
+            db.SaveChanges();
+            return true;
+
+        }
+
+        public TICKET getTicketById(int id)
+        {
+            List<TICKET> list = db.TICKETs.ToList();
+            foreach(TICKET temp in list)
+            {
+                if (temp.id_ticket == id)
+                    return temp;
+            }
+            return null;
+        }
+
+        public Boolean deleteTicket(int id)
+        {
+            TICKET pas = getTicketById(id);
+            db.TICKETs.Remove(pas);
+           
+            db.SaveChanges();
+            return true;
+
         }
     }
 }

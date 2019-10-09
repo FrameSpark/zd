@@ -81,6 +81,12 @@
     <Compile Include="New_composition.Designer.cs">
       <DependentUpon>New_composition.cs</DependentUpon>
     </Compile>
+    <Compile Include="New_passanger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_passanger.Designer.cs">
+      <DependentUpon>New_passanger.cs</DependentUpon>
+    </Compile>
     <Compile Include="New_route.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,12 @@
     </Compile>
     <Compile Include="New_station.Designer.cs">
       <DependentUpon>New_station.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New_ticket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_ticket.Designer.cs">
+      <DependentUpon>New_ticket.cs</DependentUpon>
     </Compile>
     <Compile Include="New_trip.cs">
       <SubType>Form</SubType>
@@ -123,11 +135,17 @@
     <EmbeddedResource Include="New_composition.resx">
       <DependentUpon>New_composition.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="New_passanger.resx">
+      <DependentUpon>New_passanger.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="New_route.resx">
       <DependentUpon>New_route.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New_station.resx">
       <DependentUpon>New_station.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New_ticket.resx">
+      <DependentUpon>New_ticket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New_train.resx">
       <DependentUpon>New_train.cs</DependentUpon>
@@ -145,11 +163,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\PASSANGER.datasource" />
     <None Include="Properties\DataSources\Railway.Models.Carriage.datasource" />
     <None Include="Properties\DataSources\Railway.Models.Composition.datasource" />
     <None Include="Properties\DataSources\Railway.Models.Train.datasource" />
     <None Include="Properties\DataSources\ROUTE.datasource" />
     <None Include="Properties\DataSources\STATION.datasource" />
+    <None Include="Properties\DataSources\TICKET.datasource" />
     <None Include="Properties\DataSources\TRIP.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

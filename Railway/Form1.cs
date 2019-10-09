@@ -18,7 +18,7 @@ namespace Railway
             InitializeComponent();
         }
         DataBase db = new DataBase();
-        
+
         private void Update_Click(object sender, EventArgs e)
         {
             dgTrain.DataSource = db.GetTrains();
@@ -27,12 +27,12 @@ namespace Railway
         private void CbTypeTrain_SelectedIndexChanged(object sender, EventArgs e)
         {
             String need_type = (String)cbTypeTrain.SelectedItem;
-           dgTrain.DataSource = db.GetTrainsByType(need_type);
+            dgTrain.DataSource = db.GetTrainsByType(need_type);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             cbTypeTrain.DisplayMember = "type_train";
             cbTypeTrain.ValueMember = "type_train";
             cbTypeTrain.DataSource = db.getTypesTrain();
@@ -42,70 +42,86 @@ namespace Railway
             dgStations.DataSource = db.GetStations();
             dgRoutes.DataSource = db.getRoute();
             dgTrip.DataSource = db.getTrip();
+            dgPassanger.DataSource = db.GetPASSANGERs();
+            dgTickets.DataSource = db.getTickets();
 
         }
 
         private void BSelect_Click(object sender, EventArgs e)
         {
-          //  dgTrain.DataSource = db.
+            //  dgTrain.DataSource = db.
         }
-
+        
         private void DgTrain_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = Convert.ToInt32(dgTrain.CurrentRow.Cells["id"].Value);
-            string numberTrain = dgTrain.CurrentRow.Cells["numberTrain"].Value.ToString();
-            string typeTrain = dgTrain.CurrentRow.Cells["typeTrain"].Value.ToString();
-
-            if(e.ColumnIndex == 4)
+            try
             {
-                string message = "Вы действительно хотите удалить поезд " +
-                    numberTrain;
-                string caption = "Подтверждение выбора";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-                if(result == DialogResult.Yes)
+                int id = Convert.ToInt32(dgTrain.CurrentRow.Cells["id"].Value);
+                string numberTrain = dgTrain.CurrentRow.Cells["numberTrain"].Value.ToString();
+                string typeTrain = dgTrain.CurrentRow.Cells["typeTrain"].Value.ToString();
+
+                if (e.ColumnIndex == 4)
                 {
-                    if(db.deleteTrain(id))
+                    string message = "Вы действительно хотите удалить поезд " +
+                        numberTrain;
+                    string caption = "Подтверждение выбора";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        MessageBox.Show(numberTrain + " удален");
+                        if (db.deleteTrain(id))
+                        {
+                            MessageBox.Show(numberTrain + " удален");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить");
+                        }
                     }
-                    else
+                    dgTrain.DataSource = db.GetTrains();
+                }
+
+                if (e.ColumnIndex == 3)
+                {
+                    using (New_train frm = new New_train(numberTrain, typeTrain))
                     {
-                        MessageBox.Show("Не удалось удалить");
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            if (!db.UpdateTrain(id, frm.tNumberTrain.Text, frm.tTypeTrain.Text))
+                            {
+                                MessageBox.Show("Ошибка изменения");
+                            };
+                            dgTrain.DataSource = db.GetTrains();
+                        }
                     }
                 }
-                dgTrain.DataSource = db.GetTrains();
+            }
+           catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
             }
 
-            if(e.ColumnIndex == 3)
+        }
+
+        private void bCreate_Click(object sender, EventArgs e)
+        {
+            try
             {
-                using(New_train frm = new New_train(numberTrain, typeTrain))
+                using (New_train frm = new New_train())
                 {
-                    if(frm.ShowDialog() == DialogResult.OK)
+                    if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if(!db.UpdateTrain(id,frm.tNumberTrain.Text, frm.tTypeTrain.Text))
+                        if (db.newTrain(frm.tNumberTrain.Text, frm.tTypeTrain.Text) == null)
                         {
-                            MessageBox.Show("Ошибка изменения");
+                            MessageBox.Show("Ошибка вставки");
                         };
                         dgTrain.DataSource = db.GetTrains();
                     }
                 }
             }
-                
-        }
-
-        private void bCreate_Click(object sender, EventArgs e)
-        {
-            using (New_train frm = new New_train())
+            catch (FormatException)
             {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    if (db.newTrain(frm.tNumberTrain.Text, frm.tTypeTrain.Text) == null)
-                    {
-                        MessageBox.Show("Ошибка вставки");
-                    };
-                    dgTrain.DataSource = db.GetTrains();
-                }
+                MessageBox.Show("Ошибка ввода");
             }
         }
 
@@ -116,25 +132,32 @@ namespace Railway
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = Convert.ToInt32(dgCarriage.CurrentRow.Cells["idcomposition"].Value);
-            if (e.ColumnIndex == 3)
+            try
             {
-                string message = "Вы действительно хотите удалить связку ";
-                string caption = "Подтверждение выбора";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                int id = Convert.ToInt32(dgCarriage.CurrentRow.Cells["idcomposition"].Value);
+                if (e.ColumnIndex == 3)
                 {
-                    if (db.deleteComposition(id))
+                    string message = "Вы действительно хотите удалить связку ";
+                    string caption = "Подтверждение выбора";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        MessageBox.Show("Связка удалена");
+                        if (db.deleteComposition(id))
+                        {
+                            MessageBox.Show("Связка удалена");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Не удалось удалить");
-                    }
+                    dgComposition.DataSource = db.GetComposition();
                 }
-                dgComposition.DataSource = db.GetComposition();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
             }
         }
 
@@ -145,77 +168,97 @@ namespace Railway
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            using (New_carriage frm = new New_carriage())
+            try
             {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    if (db.newCarriage(Convert.ToInt32(frm.tbNumberSeats.Text), frm.tbTypeCarriage.Text) == null)
-                    {
-                        MessageBox.Show("Ошибка вставки");
-                    };
-                    dgCarriage.DataSource = db.GetCarriages();
-                }
-            }
-        }
-
-        private void DgCarriage_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int id = Convert.ToInt32(dgCarriage.CurrentRow.Cells["idCarriage"].Value);
-            int numberSeats = Convert.ToInt32(dgCarriage.CurrentRow.Cells["numberofseat"].Value);
-            string typeCarriage = dgCarriage.CurrentRow.Cells["typecarriage"].Value.ToString();
-
-            if (e.ColumnIndex == 4)
-            {
-                string message = "Вы действительно хотите удалить вагон ";
-                string caption = "Подтверждение выбора";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    if (db.deleteCarriage(id))
-                    {
-                        MessageBox.Show("Вагон удален");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Не удалось удалить");
-                    }
-                }
-                dgCarriage.DataSource = db.GetCarriages();
-            }
-
-            if (e.ColumnIndex == 3)
-            {
-               
-
-                using (New_carriage frm = new New_carriage(numberSeats,typeCarriage))
+                using (New_carriage frm = new New_carriage())
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if (!db.UpdateCarriage(id, Convert.ToInt32(frm.tbNumberSeats.Text), frm.tbTypeCarriage.Text))
+                        if (db.newCarriage(Convert.ToInt32(frm.tbNumberSeats.Text), frm.tbTypeCarriage.Text) == null)
                         {
-                            MessageBox.Show("Ошибка изменения");
+                            MessageBox.Show("Ошибка вставки");
                         };
                         dgCarriage.DataSource = db.GetCarriages();
                     }
                 }
             }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
+            }
+        }
 
+        private void DgCarriage_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(dgCarriage.CurrentRow.Cells["idCarriage"].Value);
+                int numberSeats = Convert.ToInt32(dgCarriage.CurrentRow.Cells["numberofseat"].Value);
+                string typeCarriage = dgCarriage.CurrentRow.Cells["typecarriage"].Value.ToString();
+
+                if (e.ColumnIndex == 4)
+                {
+                    string message = "Вы действительно хотите удалить вагон ";
+                    string caption = "Подтверждение выбора";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (db.deleteCarriage(id))
+                        {
+                            MessageBox.Show("Вагон удален");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить");
+                        }
+                    }
+                    dgCarriage.DataSource = db.GetCarriages();
+                }
+
+                if (e.ColumnIndex == 3)
+                {
+
+
+                    using (New_carriage frm = new New_carriage(numberSeats, typeCarriage))
+                    {
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            if (!db.UpdateCarriage(id, Convert.ToInt32(frm.tbNumberSeats.Text), frm.tbTypeCarriage.Text))
+                            {
+                                MessageBox.Show("Ошибка изменения");
+                            };
+                            dgCarriage.DataSource = db.GetCarriages();
+                        }
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
+            }
         }
 
         private void BCreateComposition_Click(object sender, EventArgs e)
         {
-            using (New_composition frm = new New_composition())
+            try
             {
-                if (frm.ShowDialog() == DialogResult.OK)
+                using (New_composition frm = new New_composition())
                 {
-                    if (db.newComposition(Convert.ToString(frm.cbTrain.SelectedValue), Convert.ToInt32(frm.cbCarriage.SelectedValue)) == null)
+                    if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        MessageBox.Show("Ошибка вставки");
-                    };
-                    dgComposition.DataSource = db.GetComposition();
+                        if (db.newComposition(Convert.ToString(frm.cbTrain.SelectedValue), Convert.ToInt32(frm.cbCarriage.SelectedValue)) == null)
+                        {
+                            MessageBox.Show("Ошибка вставки");
+                        };
+                        dgComposition.DataSource = db.GetComposition();
 
+                    }
                 }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
             }
         }
 
@@ -237,61 +280,75 @@ namespace Railway
 
         private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            int id = Convert.ToInt32(dgStations.CurrentRow.Cells["stationId"].Value);
-            string name = dgStations.CurrentRow.Cells["stationName"].Value.ToString();
-
-            if (e.ColumnIndex == 3)
+            try
             {
-                string message = "Вы действительно хотите удалить станцию " + name ;
-                string caption = "Подтверждение выбора";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                int id = Convert.ToInt32(dgStations.CurrentRow.Cells["stationId"].Value);
+                string name = dgStations.CurrentRow.Cells["stationName"].Value.ToString();
+
+                if (e.ColumnIndex == 3)
                 {
-                    if (db.deleteStation(id))
+                    string message = "Вы действительно хотите удалить станцию " + name;
+                    string caption = "Подтверждение выбора";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        MessageBox.Show("Станция удалена");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Не удалось удалить");
-                    }
-                }
-                dgStations.DataSource = db.GetStations();
-            }
-
-            if (e.ColumnIndex == 2)
-            {
-
-
-                using (New_station frm = new New_station(name))
-                {
-                    if (frm.ShowDialog() == DialogResult.OK)
-                    {
-                        if (!db.UpdateStation(id, frm.tbNameStation.Text))
+                        if (db.deleteStation(id))
                         {
-                            MessageBox.Show("Ошибка изменения");
-                        };
-                        
-                        dgStations.DataSource = db.GetStations();
+                            MessageBox.Show("Станция удалена");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить");
+                        }
+                    }
+                    dgStations.DataSource = db.GetStations();
+                }
+
+                if (e.ColumnIndex == 2)
+                {
+
+
+                    using (New_station frm = new New_station(name))
+                    {
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            if (!db.UpdateStation(id, frm.tbNameStation.Text))
+                            {
+                                MessageBox.Show("Ошибка изменения");
+                            };
+
+                            dgStations.DataSource = db.GetStations();
+                        }
                     }
                 }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
             }
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            using (New_station frm = new New_station())
+            try
             {
-                if (frm.ShowDialog() == DialogResult.OK)
+                using (New_station frm = new New_station())
                 {
-                    if (db.newStation(frm.tbNameStation.Text) == null)
+                    if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        MessageBox.Show("Ошибка вставки");
-                    };
-                    dgStations.DataSource = db.GetStations();
+                        if (db.newStation(frm.tbNameStation.Text) == null)
+                        {
+                            MessageBox.Show("Ошибка вставки");
+                        };
+                        dgStations.DataSource = db.GetStations();
 
+                    }
                 }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
             }
         }
 
@@ -307,54 +364,13 @@ namespace Railway
 
         private void DCreate_Click(object sender, EventArgs e)
         {
-            using (New_route frm = new New_route())
+            try
             {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    if (db.newRoute(Convert.ToString(frm.cbStation1.SelectedValue), Convert.ToString(frm.cbStation2.SelectedValue), Convert.ToInt32(frm.tbTime.Text)) == null)
-                    {
-                        MessageBox.Show("Ошибка вставки");
-                    };
-                    dgRoutes.DataSource = db.getRoute();
-
-                }
-            }
-        }
-
-        private void DgRoutes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string station1 = Convert.ToString(dgRoutes.CurrentRow.Cells["idstartstation"].Value);
-            string station2 = Convert.ToString(dgRoutes.CurrentRow.Cells["idfinishstation"].Value);
-            int min = Convert.ToInt32(dgRoutes.CurrentRow.Cells["routetime"].Value);
-            int id = Convert.ToInt32(dgRoutes.CurrentRow.Cells["idroute"].Value);
-            if (e.ColumnIndex == 5)
-            {
-                string message = "Вы действительно хотите удалить маршрут ";
-                string caption = "Подтверждение выбора";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    if (db.deleteRoute(id))
-                    {
-                        MessageBox.Show("Станция удалена");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Не удалось удалить");
-                    }
-                }
-                dgRoutes.DataSource = db.getRoute();
-            }
-
-            if (e.ColumnIndex == 4)
-            {
-
                 using (New_route frm = new New_route())
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if (!db.UpdateRoute(id,Convert.ToString(frm.cbStation1.SelectedValue), Convert.ToString(frm.cbStation2.SelectedValue), Convert.ToInt32(frm.tbTime.Text)))
+                        if (db.newRoute(Convert.ToString(frm.cbStation1.SelectedValue), Convert.ToString(frm.cbStation2.SelectedValue), Convert.ToInt32(frm.tbTime.Text)) == null)
                         {
                             MessageBox.Show("Ошибка вставки");
                         };
@@ -362,6 +378,61 @@ namespace Railway
 
                     }
                 }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
+            }
+        }
+
+        private void DgRoutes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string station1 = Convert.ToString(dgRoutes.CurrentRow.Cells["idstartstation"].Value);
+                string station2 = Convert.ToString(dgRoutes.CurrentRow.Cells["idfinishstation"].Value);
+                int min = Convert.ToInt32(dgRoutes.CurrentRow.Cells["routetime"].Value);
+                int id = Convert.ToInt32(dgRoutes.CurrentRow.Cells["idroute"].Value);
+                if (e.ColumnIndex == 5)
+                {
+                    string message = "Вы действительно хотите удалить маршрут ";
+                    string caption = "Подтверждение выбора";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (db.deleteRoute(id))
+                        {
+                            MessageBox.Show("Станция удалена");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить");
+                        }
+                    }
+                    dgRoutes.DataSource = db.getRoute();
+                }
+
+                if (e.ColumnIndex == 4)
+                {
+
+                    using (New_route frm = new New_route())
+                    {
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            if (!db.UpdateRoute(id, Convert.ToString(frm.cbStation1.SelectedValue), Convert.ToString(frm.cbStation2.SelectedValue), Convert.ToInt32(frm.tbTime.Text)))
+                            {
+                                MessageBox.Show("Ошибка вставки");
+                            };
+                            dgRoutes.DataSource = db.getRoute();
+
+                        }
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
             }
         }
 
@@ -372,62 +443,228 @@ namespace Railway
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            using (New_trip frm = new New_trip())
+            try
             {
-                if (frm.ShowDialog() == DialogResult.OK)
+                using (New_trip frm = new New_trip())
                 {
-                    if (db.newTrip(Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value,Convert.ToInt32(frm.cbRoute.SelectedValue)) == null)
+                    if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        MessageBox.Show("Ошибка вставки");
-                    };
-                    dgTrip.DataSource = db.getTrip();
+                        if (db.newTrip(Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value, Convert.ToInt32(frm.cbRoute.SelectedValue)) == null)
+                        {
+                            MessageBox.Show("Ошибка вставки");
+                        };
+                        dgTrip.DataSource = db.getTrip();
 
+                    }
                 }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
             }
         }
 
         private void DgTrip_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int idTrip = Convert.ToInt32(dgTrip.CurrentRow.Cells["idtrip"].Value);
-
-            if (e.ColumnIndex == 7)
+            try
             {
-                string message = "Вы действительно хотите удалить рейс ";
-                string caption = "Подтверждение выбора";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                int idTrip = Convert.ToInt32(dgTrip.CurrentRow.Cells["idtrip"].Value);
+
+                if (e.ColumnIndex == 7)
                 {
-                    if (db.deleteTrip(idTrip))
+                    string message = "Вы действительно хотите удалить рейс ";
+                    string caption = "Подтверждение выбора";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        MessageBox.Show("Рейс удален");
+                        if (db.deleteTrip(idTrip))
+                        {
+                            MessageBox.Show("Рейс удален");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить");
+                        }
                     }
-                    else
+                    dgTrip.DataSource = db.getTrip();
+                }
+
+                if (e.ColumnIndex == 6)
+                {
+
+
+                    using (New_trip frm = new New_trip())
                     {
-                        MessageBox.Show("Не удалось удалить");
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            if (!db.updateTrip(idTrip, Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value, Convert.ToInt32(frm.cbRoute.SelectedValue)))
+                            {
+                                MessageBox.Show("Ошибка изменения");
+                            };
+
+                            dgTrip.DataSource = db.getTrip();
+                        }
                     }
                 }
-                dgTrip.DataSource = db.getTrip();
             }
-
-            if (e.ColumnIndex == 6)
+            catch (FormatException)
             {
+                MessageBox.Show("Ошибка ввода");
+            }
+        }
 
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            dgPassanger.DataSource = db.GetPASSANGERs();
+        }
 
-                using (New_trip frm = new New_trip())
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (New_passanger frm = new New_passanger())
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if (!db.updateTrip(idTrip, Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value, Convert.ToInt32(frm.cbRoute.SelectedValue)))
+                        if (db.newPassanger(frm.tbFIO.Text, frm.textBox2.Text) == null)
                         {
-                            MessageBox.Show("Ошибка изменения");
+                            MessageBox.Show("Ошибка вставки");
                         };
+                        dgPassanger.DataSource = db.GetPASSANGERs();
 
-                        dgTrip.DataSource = db.getTrip();
                     }
                 }
             }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
+            }
+        }
+
+        private void DgPassanger_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(dgPassanger.CurrentRow.Cells["idpassanger"].Value);
+                string name1 = Convert.ToString(dgPassanger.CurrentRow.Cells["namepassanger"].Value);
+                string passport = Convert.ToString(dgPassanger.CurrentRow.Cells["passportpassanger"].Value);
+
+                if (e.ColumnIndex == 4)
+                {
+                    string message = "Вы действительно хотите удалить пассажира ";
+                    string caption = "Подтверждение выбора";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (db.deletePassanger(id))
+                        {
+                            MessageBox.Show("Пассажир удален");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить");
+                        }
+                    }
+                    dgPassanger.DataSource = db.GetPASSANGERs();
+                }
+
+                if (e.ColumnIndex == 3)
+                {
+
+
+                    using (New_passanger frm = new New_passanger(name1, passport))
+                    {
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            if (!db.updatePassanger(id, frm.tbFIO.Text, frm.textBox2.Text))
+                            {
+                                MessageBox.Show("Ошибка изменения");
+                            };
+
+                            dgPassanger.DataSource = db.GetPASSANGERs();
+                        }
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
+            }
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            dgTickets.DataSource = db.getTickets();
+        }
+
+        private void Button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (New_ticket frm = new New_ticket())
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        if (db.newTicket(Convert.ToInt32(frm.cbPassanger.SelectedValue),
+                                         Convert.ToInt32(frm.cbNumber.SelectedValue),
+                                         Convert.ToInt32(frm.cbCarriage.SelectedValue),
+                                         Convert.ToInt32(frm.tbPrice.Text),
+                                         Convert.ToInt32(frm.cbTrip.SelectedValue)
+                                            ) == null)
+                        {
+                            MessageBox.Show("Ошибка вставки");
+                        };
+                        dgTickets.DataSource = db.getTickets();
+
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
+            }
+        }
+
+        private void DgTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(dgTickets.CurrentRow.Cells["idticket"].Value);
+
+
+                if (e.ColumnIndex == 6)
+                {
+                    string message = "Вы действительно хотите удалить билет ";
+                    string caption = "Подтверждение выбора";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (db.deleteTicket(id))
+                        {
+                            MessageBox.Show("Билет удален");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить");
+                        }
+                    }
+                    dgTickets.DataSource = db.getTickets();
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка ввода");
+            }
+        }
+
+        private void TabPage5_Click(object sender, EventArgs e)
+        {
+
         }
     }
     }
+
 

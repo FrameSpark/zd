@@ -24,9 +24,7 @@ namespace Railway
 
         public int id_carriage { get; set; }
 
-        [Required]
-        [StringLength(1)]
-        public string place { get; set; }
+        
 
         public int price { get; set; }
 
