@@ -14,8 +14,6 @@ namespace Railway
 
         public int id_train { get; set; }
 
-        public int id_ticket { get; set; }
-
         [Required]
         [StringLength(255)]
         public string status { get; set; }
@@ -26,10 +24,5 @@ namespace Railway
 
         public int id_route { get; set; }
 
-        public virtual ROUTE ROUTE { get; set; }
-
-        public virtual TICKET TICKET { get; set; }
-
-        public virtual TRAIN TRAIN { get; set; }
     }
 }

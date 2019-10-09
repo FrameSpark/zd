@@ -41,6 +41,7 @@ namespace Railway
             dgTrain.DataSource = db.GetTrains();
             dgStations.DataSource = db.GetStations();
             dgRoutes.DataSource = db.getRoute();
+            dgTrip.DataSource = db.getTrip();
 
         }
 
@@ -359,6 +360,70 @@ namespace Railway
                         };
                         dgRoutes.DataSource = db.getRoute();
 
+                    }
+                }
+            }
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            dgTrip.DataSource = db.getTrip();
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            using (New_trip frm = new New_trip())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    if (db.newTrip(Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value,Convert.ToInt32(frm.cbRoute.SelectedValue)) == null)
+                    {
+                        MessageBox.Show("Ошибка вставки");
+                    };
+                    dgTrip.DataSource = db.getTrip();
+
+                }
+            }
+        }
+
+        private void DgTrip_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idTrip = Convert.ToInt32(dgTrip.CurrentRow.Cells["idtrip"].Value);
+
+            if (e.ColumnIndex == 7)
+            {
+                string message = "Вы действительно хотите удалить рейс ";
+                string caption = "Подтверждение выбора";
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    if (db.deleteTrip(idTrip))
+                    {
+                        MessageBox.Show("Рейс удален");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не удалось удалить");
+                    }
+                }
+                dgTrip.DataSource = db.getTrip();
+            }
+
+            if (e.ColumnIndex == 6)
+            {
+
+
+                using (New_trip frm = new New_trip())
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        if (!db.updateTrip(idTrip, Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value, Convert.ToInt32(frm.cbRoute.SelectedValue)))
+                        {
+                            MessageBox.Show("Ошибка изменения");
+                        };
+
+                        dgTrip.DataSource = db.getTrip();
                     }
                 }
             }

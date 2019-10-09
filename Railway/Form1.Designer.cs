@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgTrain = new System.Windows.Forms.DataGridView();
             this.bChange = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -59,15 +59,20 @@
             this.dgComposition = new System.Windows.Forms.DataGridView();
             this.deleteComposition = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dCreate = new System.Windows.Forms.Button();
+            this.bUpdateRoute = new System.Windows.Forms.Button();
+            this.dgRoutes = new System.Windows.Forms.DataGridView();
+            this.editRoute = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deleteRoute = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgStations = new System.Windows.Forms.DataGridView();
             this.editStation = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DeleteStation = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.dgRoutes = new System.Windows.Forms.DataGridView();
-            this.bUpdateRoute = new System.Windows.Forms.Button();
-            this.dCreate = new System.Windows.Forms.Button();
+            this.dgTrip = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,16 +85,24 @@
             this.idtrainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idcarriageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.compositionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.rOUTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sTATIONBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idroute = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idstartstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idfinishstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.routetime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editRoute = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.deleteRoute = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.rOUTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sTATIONBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tRIPBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tRIPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idtrip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idrouteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idtrainDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timestartDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timefinishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditTrip = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteTrip = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgTrain)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -97,13 +110,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCarriage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgComposition)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgStations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRoutes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgStations)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carriageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.compositionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rOUTEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTATIONBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRIPBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRIPBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgTrain
@@ -128,9 +145,9 @@
             // 
             // bChange
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bChange.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bChange.DefaultCellStyle = dataGridViewCellStyle11;
             this.bChange.HeaderText = "Изменить";
             this.bChange.Name = "bChange";
             this.bChange.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -141,9 +158,9 @@
             // 
             // bDelete
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bDelete.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bDelete.DefaultCellStyle = dataGridViewCellStyle12;
             this.bDelete.HeaderText = "Удалить";
             this.bDelete.Name = "bDelete";
             this.bDelete.Text = "Delete";
@@ -300,9 +317,9 @@
             // 
             // edit
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.edit.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.edit.DefaultCellStyle = dataGridViewCellStyle13;
             this.edit.HeaderText = "Изменить";
             this.edit.Name = "edit";
             this.edit.Text = "edit";
@@ -311,9 +328,9 @@
             // 
             // Delete
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle14;
             this.Delete.HeaderText = "Удалить";
             this.Delete.Name = "Delete";
             this.Delete.Text = "delete";
@@ -338,9 +355,9 @@
             // 
             // deleteComposition
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteComposition.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteComposition.DefaultCellStyle = dataGridViewCellStyle15;
             this.deleteComposition.HeaderText = "delete";
             this.deleteComposition.Name = "deleteComposition";
             this.deleteComposition.Text = "delete";
@@ -362,6 +379,64 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Маршруты и станции";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dCreate
+            // 
+            this.dCreate.Location = new System.Drawing.Point(9, 49);
+            this.dCreate.Name = "dCreate";
+            this.dCreate.Size = new System.Drawing.Size(75, 23);
+            this.dCreate.TabIndex = 5;
+            this.dCreate.Text = "Create";
+            this.dCreate.UseVisualStyleBackColor = true;
+            this.dCreate.Click += new System.EventHandler(this.DCreate_Click);
+            // 
+            // bUpdateRoute
+            // 
+            this.bUpdateRoute.Location = new System.Drawing.Point(9, 78);
+            this.bUpdateRoute.Name = "bUpdateRoute";
+            this.bUpdateRoute.Size = new System.Drawing.Size(75, 23);
+            this.bUpdateRoute.TabIndex = 4;
+            this.bUpdateRoute.Text = "Update";
+            this.bUpdateRoute.UseVisualStyleBackColor = true;
+            this.bUpdateRoute.Click += new System.EventHandler(this.BUpdateRoute_Click);
+            // 
+            // dgRoutes
+            // 
+            this.dgRoutes.AutoGenerateColumns = false;
+            this.dgRoutes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRoutes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idroute,
+            this.idstartstation,
+            this.idfinishstation,
+            this.routetime,
+            this.editRoute,
+            this.deleteRoute});
+            this.dgRoutes.DataSource = this.rOUTEBindingSource;
+            this.dgRoutes.Location = new System.Drawing.Point(10, 107);
+            this.dgRoutes.Name = "dgRoutes";
+            this.dgRoutes.Size = new System.Drawing.Size(443, 198);
+            this.dgRoutes.TabIndex = 3;
+            this.dgRoutes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgRoutes_CellContentClick);
+            // 
+            // editRoute
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editRoute.DefaultCellStyle = dataGridViewCellStyle16;
+            this.editRoute.HeaderText = "Edit";
+            this.editRoute.Name = "editRoute";
+            this.editRoute.Text = "Edit";
+            this.editRoute.UseColumnTextForButtonValue = true;
+            // 
+            // deleteRoute
+            // 
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteRoute.DefaultCellStyle = dataGridViewCellStyle17;
+            this.deleteRoute.HeaderText = "Delete";
+            this.deleteRoute.Name = "deleteRoute";
+            this.deleteRoute.Text = "Delete";
+            this.deleteRoute.UseColumnTextForButtonValue = true;
             // 
             // button2
             // 
@@ -401,9 +476,9 @@
             // 
             // editStation
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editStation.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editStation.DefaultCellStyle = dataGridViewCellStyle18;
             this.editStation.HeaderText = "Edit";
             this.editStation.Name = "editStation";
             this.editStation.Text = "Edit";
@@ -412,9 +487,9 @@
             // 
             // DeleteStation
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteStation.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteStation.DefaultCellStyle = dataGridViewCellStyle19;
             this.DeleteStation.HeaderText = "Delete";
             this.DeleteStation.Name = "DeleteStation";
             this.DeleteStation.Text = "Delete";
@@ -423,51 +498,56 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button4);
+            this.tabPage4.Controls.Add(this.button3);
+            this.tabPage4.Controls.Add(this.dgTrip);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(763, 312);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Рейсы и пассажиры";
+            this.tabPage4.Text = "Рейсы";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // dgRoutes
+            // dgTrip
             // 
-            this.dgRoutes.AutoGenerateColumns = false;
-            this.dgRoutes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRoutes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idroute,
-            this.idstartstation,
-            this.idfinishstation,
-            this.routetime,
-            this.editRoute,
-            this.deleteRoute});
-            this.dgRoutes.DataSource = this.rOUTEBindingSource;
-            this.dgRoutes.Location = new System.Drawing.Point(10, 107);
-            this.dgRoutes.Name = "dgRoutes";
-            this.dgRoutes.Size = new System.Drawing.Size(443, 198);
-            this.dgRoutes.TabIndex = 3;
-            this.dgRoutes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgRoutes_CellContentClick);
+            this.dgTrip.AutoGenerateColumns = false;
+            this.dgTrip.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTrip.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idtrip,
+            this.idrouteDataGridViewTextBoxColumn,
+            this.idtrainDataGridViewTextBoxColumn1,
+            this.statusDataGridViewTextBoxColumn,
+            this.timestartDataGridViewTextBoxColumn,
+            this.timefinishDataGridViewTextBoxColumn,
+            this.EditTrip,
+            this.DeleteTrip});
+            this.dgTrip.DataSource = this.tRIPBindingSource1;
+            this.dgTrip.Location = new System.Drawing.Point(8, 94);
+            this.dgTrip.Name = "dgTrip";
+            this.dgTrip.Size = new System.Drawing.Size(726, 211);
+            this.dgTrip.TabIndex = 0;
+            this.dgTrip.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgTrip_CellContentClick);
             // 
-            // bUpdateRoute
+            // button3
             // 
-            this.bUpdateRoute.Location = new System.Drawing.Point(9, 78);
-            this.bUpdateRoute.Name = "bUpdateRoute";
-            this.bUpdateRoute.Size = new System.Drawing.Size(75, 23);
-            this.bUpdateRoute.TabIndex = 4;
-            this.bUpdateRoute.Text = "Update";
-            this.bUpdateRoute.UseVisualStyleBackColor = true;
-            this.bUpdateRoute.Click += new System.EventHandler(this.BUpdateRoute_Click);
+            this.button3.Location = new System.Drawing.Point(8, 65);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Update";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // dCreate
+            // button4
             // 
-            this.dCreate.Location = new System.Drawing.Point(9, 49);
-            this.dCreate.Name = "dCreate";
-            this.dCreate.Size = new System.Drawing.Size(75, 23);
-            this.dCreate.TabIndex = 5;
-            this.dCreate.Text = "Create";
-            this.dCreate.UseVisualStyleBackColor = true;
-            this.dCreate.Click += new System.EventHandler(this.DCreate_Click);
+            this.button4.Location = new System.Drawing.Point(8, 36);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Create";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // id
             // 
@@ -535,28 +615,6 @@
             // 
             this.compositionBindingSource.DataSource = typeof(Railway.Models.Composition);
             // 
-            // rOUTEBindingSource
-            // 
-            this.rOUTEBindingSource.DataSource = typeof(Railway.ROUTE);
-            // 
-            // stationId
-            // 
-            this.stationId.DataPropertyName = "id_station";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.stationId.DefaultCellStyle = dataGridViewCellStyle8;
-            this.stationId.HeaderText = "ID станции";
-            this.stationId.Name = "stationId";
-            // 
-            // stationName
-            // 
-            this.stationName.DataPropertyName = "name_station";
-            this.stationName.HeaderText = "Название станции";
-            this.stationName.Name = "stationName";
-            // 
-            // sTATIONBindingSource
-            // 
-            this.sTATIONBindingSource.DataSource = typeof(Railway.STATION);
-            // 
             // idroute
             // 
             this.idroute.DataPropertyName = "id_route";
@@ -581,25 +639,86 @@
             this.routetime.HeaderText = "Время маршрута";
             this.routetime.Name = "routetime";
             // 
-            // editRoute
+            // rOUTEBindingSource
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editRoute.DefaultCellStyle = dataGridViewCellStyle6;
-            this.editRoute.HeaderText = "Edit";
-            this.editRoute.Name = "editRoute";
-            this.editRoute.Text = "Edit";
-            this.editRoute.UseColumnTextForButtonValue = true;
+            this.rOUTEBindingSource.DataSource = typeof(Railway.ROUTE);
             // 
-            // deleteRoute
+            // stationId
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteRoute.DefaultCellStyle = dataGridViewCellStyle7;
-            this.deleteRoute.HeaderText = "Delete";
-            this.deleteRoute.Name = "deleteRoute";
-            this.deleteRoute.Text = "Delete";
-            this.deleteRoute.UseColumnTextForButtonValue = true;
+            this.stationId.DataPropertyName = "id_station";
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.stationId.DefaultCellStyle = dataGridViewCellStyle20;
+            this.stationId.HeaderText = "ID станции";
+            this.stationId.Name = "stationId";
+            // 
+            // stationName
+            // 
+            this.stationName.DataPropertyName = "name_station";
+            this.stationName.HeaderText = "Название станции";
+            this.stationName.Name = "stationName";
+            // 
+            // sTATIONBindingSource
+            // 
+            this.sTATIONBindingSource.DataSource = typeof(Railway.STATION);
+            // 
+            // tRIPBindingSource1
+            // 
+            this.tRIPBindingSource1.DataSource = typeof(Railway.TRIP);
+            // 
+            // tRIPBindingSource
+            // 
+            this.tRIPBindingSource.DataSource = typeof(Railway.TRIP);
+            // 
+            // idtrip
+            // 
+            this.idtrip.DataPropertyName = "id_trip";
+            this.idtrip.HeaderText = "Id рейса";
+            this.idtrip.Name = "idtrip";
+            // 
+            // idrouteDataGridViewTextBoxColumn
+            // 
+            this.idrouteDataGridViewTextBoxColumn.DataPropertyName = "id_route";
+            this.idrouteDataGridViewTextBoxColumn.HeaderText = "Id маршрута";
+            this.idrouteDataGridViewTextBoxColumn.Name = "idrouteDataGridViewTextBoxColumn";
+            // 
+            // idtrainDataGridViewTextBoxColumn1
+            // 
+            this.idtrainDataGridViewTextBoxColumn1.DataPropertyName = "id_train";
+            this.idtrainDataGridViewTextBoxColumn1.HeaderText = "Id поезда";
+            this.idtrainDataGridViewTextBoxColumn1.Name = "idtrainDataGridViewTextBoxColumn1";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Статус рейса";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // timestartDataGridViewTextBoxColumn
+            // 
+            this.timestartDataGridViewTextBoxColumn.DataPropertyName = "time_start";
+            this.timestartDataGridViewTextBoxColumn.HeaderText = "Время начала поездки";
+            this.timestartDataGridViewTextBoxColumn.Name = "timestartDataGridViewTextBoxColumn";
+            // 
+            // timefinishDataGridViewTextBoxColumn
+            // 
+            this.timefinishDataGridViewTextBoxColumn.DataPropertyName = "time_finish";
+            this.timefinishDataGridViewTextBoxColumn.HeaderText = "Время окончания поездки";
+            this.timefinishDataGridViewTextBoxColumn.Name = "timefinishDataGridViewTextBoxColumn";
+            // 
+            // EditTrip
+            // 
+            this.EditTrip.HeaderText = "Edit";
+            this.EditTrip.Name = "EditTrip";
+            this.EditTrip.Text = "Edit";
+            this.EditTrip.ToolTipText = "Edit";
+            this.EditTrip.UseColumnTextForButtonValue = true;
+            // 
+            // DeleteTrip
+            // 
+            this.DeleteTrip.HeaderText = "Delete";
+            this.DeleteTrip.Name = "DeleteTrip";
+            this.DeleteTrip.Text = "Delete";
+            this.DeleteTrip.UseColumnTextForButtonValue = true;
             // 
             // Form1
             // 
@@ -607,6 +726,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 339);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -618,13 +738,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCarriage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgComposition)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgStations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRoutes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgStations)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgTrip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.carriageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.compositionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rOUTEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTATIONBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRIPBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRIPBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -684,6 +808,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn routetime;
         private System.Windows.Forms.DataGridViewButtonColumn editRoute;
         private System.Windows.Forms.DataGridViewButtonColumn deleteRoute;
+        private System.Windows.Forms.DataGridView dgTrip;
+        private System.Windows.Forms.BindingSource tRIPBindingSource;
+        private System.Windows.Forms.BindingSource tRIPBindingSource1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idtrip;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idrouteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idtrainDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timestartDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timefinishDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn EditTrip;
+        private System.Windows.Forms.DataGridViewButtonColumn DeleteTrip;
     }
 }
 

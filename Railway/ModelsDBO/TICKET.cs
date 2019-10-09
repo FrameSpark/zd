@@ -12,7 +12,7 @@ namespace Railway
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TICKET()
         {
-            TRIPs = new HashSet<TRIP>();
+           // TRIPs = new HashSet<TRIP>();
         }
 
         [Key]
@@ -30,11 +30,12 @@ namespace Railway
 
         public int price { get; set; }
 
-        public virtual CARRIAGE CARRIAGE { get; set; }
+        public int id_trip { get; set; }
+        //  public virtual CARRIAGE CARRIAGE { get; set; }
 
-        public virtual PASSANGER PASSANGER { get; set; }
+        // public virtual PASSANGER PASSANGER { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TRIP> TRIPs { get; set; }
+        // [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //  public virtual ICollection<TRIP> TRIPs { get; set; }
     }
 }

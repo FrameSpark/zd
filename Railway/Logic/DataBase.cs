@@ -168,6 +168,19 @@ namespace Railway
             }
             return null;
         }
+        public TRIP getTripById(int id)
+        {
+
+            List<TRIP> db_type = db.TRIPs.ToList();
+            foreach (TRIP temp in db_type)
+            {
+                if (temp.id_trip == id)
+                {
+                    return temp;
+                }
+            }
+            return null;
+        }
 
         public ROUTE getRouteById(int id)
         {
@@ -186,7 +199,30 @@ namespace Railway
         public List<ROUTE> getRoute()
         {
             List<ROUTE> db_type = db.ROUTEs.ToList();
+            
             return db_type;
+        }
+
+
+        public List<TRIP> getTrip()
+        {
+            List<TRIP> list = db.TRIPs.ToList();
+            foreach (TRIP temp in list)
+            {
+                if (temp.time_start < DateTime.Now && DateTime.Now < temp.time_finish)
+                {
+                    temp.status = "В пути";
+                }
+                if (temp.time_start < DateTime.Now)
+                {
+                    temp.status = "Не начат";
+                }
+                if ( DateTime.Now > temp.time_finish)
+                {
+                    temp.status = "Окончен";
+                }
+            }
+            return list;
         }
 
         public List<Train> GetTrainsByType(String need_type)
@@ -263,6 +299,100 @@ namespace Railway
             db.SaveChanges();
             
             return composition;
+        }
+
+        public TRIP newTrip(String numberTrain, DateTime time1, DateTime time2, int route)
+        {
+            TRIP trip = new TRIP();
+            trip.id_train = getIdTrainByNumber(numberTrain);
+            trip.time_start = time1;
+            trip.time_finish = time2;
+
+            if (time1 > time2)
+            {
+                trip.time_start = time1;
+                trip.time_finish = time2;
+            }
+            else
+            {
+                trip.time_start = time2;
+                trip.time_finish = time1;
+            }
+            int min = getDayRoute(route);
+            if (min > time2.Day - time1.Day)
+            {
+                return null;
+            }
+
+            if (trip.time_start < DateTime.Now && DateTime.Now < trip.time_finish)
+            {
+                trip.status = "В пути";
+            }
+            if (trip.time_start < DateTime.Now)
+            {
+                trip.status = "Не начат";
+            }
+            if (DateTime.Now > trip.time_finish)
+            {
+                trip.status = "Окончен";
+            }
+
+            trip.id_route = route;
+
+            db.TRIPs.Add(trip);
+            db.SaveChanges();
+
+            return trip;
+        }
+
+        public int getDayRoute(int id)
+        {
+            ROUTE route = getRouteById(id);
+            return route.route_time / 1440;
+        }
+
+        public Boolean updateTrip(int id, String numberTrain, DateTime time1, DateTime time2, int route)
+        {
+            TRIP trip = getTripById(id);
+            if (trip != null) { 
+            trip.id_train = getIdTrainByNumber(numberTrain);
+            if(time1 > time2)
+                {
+                    trip.time_start = time1;
+                    trip.time_finish = time2;
+                }
+                else
+                {
+                    trip.time_start = time2;
+                    trip.time_finish = time1;
+                }
+                int min = getDayRoute(route);
+                if(min > time2.Day - time1.Day)
+                {
+                    return false;
+                }
+
+            if (trip.time_start < DateTime.Now && DateTime.Now < trip.time_finish)
+            {
+                trip.status = "В пути";
+            }
+            if (trip.time_start < DateTime.Now)
+            {
+                trip.status = "Не начат";
+            }
+            if (DateTime.Now > trip.time_finish)
+            {
+                trip.status = "Окончен";
+            }
+
+            trip.id_route = route;
+
+
+            db.SaveChanges();
+
+            return true;
+            }
+            return false;
         }
 
         public ROUTE newRoute(String station1, string station2, int min)
@@ -425,6 +555,19 @@ namespace Railway
                     db.ROUTEs.Remove(temp);
                 }
                 
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public Boolean deleteTrip(int id)
+        {
+            TRIP trip = getTripById(id);
+            
+            if (trip != null)
+            {
+                db.TRIPs.Remove(trip);
                 db.SaveChanges();
                 return true;
             }

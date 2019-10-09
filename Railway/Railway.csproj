@@ -93,6 +93,12 @@
     <Compile Include="New_station.Designer.cs">
       <DependentUpon>New_station.cs</DependentUpon>
     </Compile>
+    <Compile Include="New_trip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_trip.Designer.cs">
+      <DependentUpon>New_trip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModelsDBO\ROUTE.cs" />
@@ -126,6 +132,9 @@
     <EmbeddedResource Include="New_train.resx">
       <DependentUpon>New_train.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="New_trip.resx">
+      <DependentUpon>New_trip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -141,6 +150,7 @@
     <None Include="Properties\DataSources\Railway.Models.Train.datasource" />
     <None Include="Properties\DataSources\ROUTE.datasource" />
     <None Include="Properties\DataSources\STATION.datasource" />
+    <None Include="Properties\DataSources\TRIP.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
