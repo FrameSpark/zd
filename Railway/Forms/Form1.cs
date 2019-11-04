@@ -618,7 +618,7 @@ namespace Railway
                         {
                             MessageBox.Show("Ошибка вставки");
                         };
-                        dgTickets.DataSource = db.getTickets();
+                        dgTickets.DataSource = vc.View_tickets.ToList();
 
                     }
                 }
@@ -669,6 +669,12 @@ namespace Railway
 
         private void TabPage4_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void Form1_Deactivate(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
 
         }
     }

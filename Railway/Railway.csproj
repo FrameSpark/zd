@@ -55,6 +55,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Guest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Guest.Designer.cs">
+      <DependentUpon>Guest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sign.Designer.cs">
+      <DependentUpon>Sign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\ContextForGuest.cs" />
     <Compile Include="Logic\DataBase.cs" />
     <Compile Include="Logic\ViewContext.cs" />
     <Compile Include="Logic\View_route.cs" />
@@ -136,6 +149,9 @@
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Guest.resx">
+      <DependentUpon>Guest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\New_carriage.resx">
       <DependentUpon>New_carriage.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\New_trip.resx">
       <DependentUpon>New_trip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sign.resx">
+      <DependentUpon>Sign.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

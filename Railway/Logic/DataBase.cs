@@ -457,6 +457,18 @@ namespace Railway
             return null;
         }
 
+        public List<PASSANGER> getPassangerByNamePass(string name, string pass)
+        {
+            List<PASSANGER> list = db.PASSANGERs.ToList();
+            List<PASSANGER> tempList = new List<PASSANGER>();
+            foreach (PASSANGER temp in list)
+            {
+                if (temp.name == name && temp.passport == pass)
+                    tempList.Add(temp);
+            }
+            return tempList;
+        }
+
         public TRIP newTrip(String numberTrain, DateTime time1, DateTime time2, int route)
         {
             TRIP trip = new TRIP();
