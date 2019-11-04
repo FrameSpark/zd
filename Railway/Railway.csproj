@@ -56,59 +56,66 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logic\DataBase.cs" />
+    <Compile Include="Logic\ViewContext.cs" />
+    <Compile Include="Logic\View_route.cs" />
+    <Compile Include="Logic\View_tickets.cs" />
+    <Compile Include="Logic\View_trip.cs" />
     <Compile Include="ModelsDBO\CARRIAGE.cs" />
     <Compile Include="ModelsDBO\CARRIAGE_TYPE.cs" />
     <Compile Include="Logic\Context.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelsDBO\PASSANGER.cs" />
     <Compile Include="Models\Carriage.cs" />
     <Compile Include="Models\Composition.cs" />
+    <Compile Include="Models\Route.cs" />
+    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\Train.cs" />
-    <Compile Include="New_carriage.cs">
+    <Compile Include="Models\Trip.cs" />
+    <Compile Include="Forms\New_carriage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_carriage.Designer.cs">
+    <Compile Include="Forms\New_carriage.Designer.cs">
       <DependentUpon>New_carriage.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_composition.cs">
+    <Compile Include="Forms\New_composition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_composition.Designer.cs">
+    <Compile Include="Forms\New_composition.Designer.cs">
       <DependentUpon>New_composition.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_passanger.cs">
+    <Compile Include="Forms\New_passanger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_passanger.Designer.cs">
+    <Compile Include="Forms\New_passanger.Designer.cs">
       <DependentUpon>New_passanger.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_route.cs">
+    <Compile Include="Forms\New_route.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_route.Designer.cs">
+    <Compile Include="Forms\New_route.Designer.cs">
       <DependentUpon>New_route.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_station.cs">
+    <Compile Include="Forms\New_station.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_station.Designer.cs">
+    <Compile Include="Forms\New_station.Designer.cs">
       <DependentUpon>New_station.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_ticket.cs">
+    <Compile Include="Forms\New_ticket.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_ticket.Designer.cs">
+    <Compile Include="Forms\New_ticket.Designer.cs">
       <DependentUpon>New_ticket.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_trip.cs">
+    <Compile Include="Forms\New_trip.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_trip.Designer.cs">
+    <Compile Include="Forms\New_trip.Designer.cs">
       <DependentUpon>New_trip.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -120,37 +127,37 @@
     <Compile Include="ModelsDBO\TRAIN_COMPOSITION.cs" />
     <Compile Include="ModelsDBO\TRAIN_TYPE.cs" />
     <Compile Include="ModelsDBO\TRIP.cs" />
-    <Compile Include="New_train.cs">
+    <Compile Include="Forms\New_train.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_train.Designer.cs">
+    <Compile Include="Forms\New_train.Designer.cs">
       <DependentUpon>New_train.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_carriage.resx">
+    <EmbeddedResource Include="Forms\New_carriage.resx">
       <DependentUpon>New_carriage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_composition.resx">
+    <EmbeddedResource Include="Forms\New_composition.resx">
       <DependentUpon>New_composition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_passanger.resx">
+    <EmbeddedResource Include="Forms\New_passanger.resx">
       <DependentUpon>New_passanger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_route.resx">
+    <EmbeddedResource Include="Forms\New_route.resx">
       <DependentUpon>New_route.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_station.resx">
+    <EmbeddedResource Include="Forms\New_station.resx">
       <DependentUpon>New_station.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_ticket.resx">
+    <EmbeddedResource Include="Forms\New_ticket.resx">
       <DependentUpon>New_ticket.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_train.resx">
+    <EmbeddedResource Include="Forms\New_train.resx">
       <DependentUpon>New_train.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_trip.resx">
+    <EmbeddedResource Include="Forms\New_trip.resx">
       <DependentUpon>New_trip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -164,9 +171,15 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PASSANGER.datasource" />
+    <None Include="Properties\DataSources\Railway.Logic.View_route.datasource" />
+    <None Include="Properties\DataSources\Railway.Logic.View_tickets.datasource" />
+    <None Include="Properties\DataSources\Railway.Logic.View_trip.datasource" />
     <None Include="Properties\DataSources\Railway.Models.Carriage.datasource" />
     <None Include="Properties\DataSources\Railway.Models.Composition.datasource" />
+    <None Include="Properties\DataSources\Railway.Models.Route.datasource" />
+    <None Include="Properties\DataSources\Railway.Models.Ticket.datasource" />
     <None Include="Properties\DataSources\Railway.Models.Train.datasource" />
+    <None Include="Properties\DataSources\Railway.Models.Trip.datasource" />
     <None Include="Properties\DataSources\ROUTE.datasource" />
     <None Include="Properties\DataSources\STATION.datasource" />
     <None Include="Properties\DataSources\TICKET.datasource" />

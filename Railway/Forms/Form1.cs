@@ -1,4 +1,5 @@
-﻿using Railway.Models;
+﻿using Railway.Logic;
+using Railway.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,8 +17,9 @@ namespace Railway
         public Form1()
         {
             InitializeComponent();
-        }
+        } 
         DataBase db = new DataBase();
+        ViewContext vc = new ViewContext();
 
         private void Update_Click(object sender, EventArgs e)
         {
@@ -40,10 +42,10 @@ namespace Railway
             dgCarriage.DataSource = db.GetCarriages();
             dgTrain.DataSource = db.GetTrains();
             dgStations.DataSource = db.GetStations();
-            dgRoutes.DataSource = db.getRoute();
-            dgTrip.DataSource = db.getTrip();
+            dgRoutes.DataSource = vc.View_route.ToList();
+            dgTrip.DataSource = vc.View_trip.ToList();
             dgPassanger.DataSource = db.GetPASSANGERs();
-            dgTickets.DataSource = db.getTickets();
+            dgTickets.DataSource = vc.View_tickets.ToList();
 
         }
 
@@ -135,7 +137,7 @@ namespace Railway
             try
             {
                 int id = Convert.ToInt32(dgCarriage.CurrentRow.Cells["idcomposition"].Value);
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == 4)
                 {
                     string message = "Вы действительно хотите удалить связку ";
                     string caption = "Подтверждение выбора";
@@ -389,8 +391,8 @@ namespace Railway
         {
             try
             {
-                string station1 = Convert.ToString(dgRoutes.CurrentRow.Cells["idstartstation"].Value);
-                string station2 = Convert.ToString(dgRoutes.CurrentRow.Cells["idfinishstation"].Value);
+                string station1 = Convert.ToString(dgRoutes.CurrentRow.Cells["startnamestation"].Value);
+                string station2 = Convert.ToString(dgRoutes.CurrentRow.Cells["finishnamestation"].Value);
                 int min = Convert.ToInt32(dgRoutes.CurrentRow.Cells["routetime"].Value);
                 int id = Convert.ToInt32(dgRoutes.CurrentRow.Cells["idroute"].Value);
                 if (e.ColumnIndex == 5)
@@ -410,7 +412,7 @@ namespace Railway
                             MessageBox.Show("Не удалось удалить");
                         }
                     }
-                    dgRoutes.DataSource = db.getRoute();
+                    dgRoutes.DataSource = vc.View_route.ToList();
                 }
 
                 if (e.ColumnIndex == 4)
@@ -424,7 +426,7 @@ namespace Railway
                             {
                                 MessageBox.Show("Ошибка вставки");
                             };
-                            dgRoutes.DataSource = db.getRoute();
+                            dgRoutes.DataSource = vc.View_route.ToList();
 
                         }
                     }
@@ -470,7 +472,7 @@ namespace Railway
             {
                 int idTrip = Convert.ToInt32(dgTrip.CurrentRow.Cells["idtrip"].Value);
 
-                if (e.ColumnIndex == 7)
+                if (e.ColumnIndex == 8)
                 {
                     string message = "Вы действительно хотите удалить рейс ";
                     string caption = "Подтверждение выбора";
@@ -487,10 +489,10 @@ namespace Railway
                             MessageBox.Show("Не удалось удалить");
                         }
                     }
-                    dgTrip.DataSource = db.getTrip();
+                    dgTrip.DataSource = vc.View_trip.ToList();
                 }
 
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 7)
                 {
 
 
@@ -503,7 +505,7 @@ namespace Railway
                                 MessageBox.Show("Ошибка изменения");
                             };
 
-                            dgTrip.DataSource = db.getTrip();
+                            dgTrip.DataSource = vc.View_trip.ToList();
                         }
                     }
                 }
@@ -596,7 +598,7 @@ namespace Railway
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            dgTickets.DataSource = db.getTickets();
+            dgTickets.DataSource = vc.View_tickets.ToList();
         }
 
         private void Button8_Click(object sender, EventArgs e)
@@ -634,7 +636,7 @@ namespace Railway
                 int id = Convert.ToInt32(dgTickets.CurrentRow.Cells["idticket"].Value);
 
 
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 8)
                 {
                     string message = "Вы действительно хотите удалить билет ";
                     string caption = "Подтверждение выбора";
@@ -651,7 +653,7 @@ namespace Railway
                             MessageBox.Show("Не удалось удалить");
                         }
                     }
-                    dgTickets.DataSource = db.getTickets();
+                    dgTickets.DataSource = vc.View_tickets.ToList();
                 }
             }
             catch (FormatException)
@@ -661,6 +663,11 @@ namespace Railway
         }
 
         private void TabPage5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TabPage4_Click(object sender, EventArgs e)
         {
 
         }

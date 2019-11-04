@@ -49,7 +49,8 @@ namespace Railway
                 Composition composition = new Composition();
                 composition.id_carriage = temp.id_carriage;
                 composition.id_composition = temp.id_composition;
-                composition.id_train = temp.id_train;
+                composition.number_train = getTrainById(temp.id_train).number_train;
+                composition.type_carriage = getCarriageTypeById(temp.id_carriage).type_carriage;
                 compositions.Add(composition);
             }
             return compositions;
@@ -249,15 +250,24 @@ namespace Railway
             return null;
         }
 
-        public List<ROUTE> getRoute()
+        public List<Route> getRoute()
         {
             List<ROUTE> db_type = db.ROUTEs.ToList();
-            
-            return db_type;
+            List<Route> route = new List<Route>();
+            foreach(ROUTE temp in db_type)
+            {
+                Route r = new Route();
+                r.id_route = temp.id_route;
+                r.name_start_station =getStationById(temp.id_start_station).name_station;
+                r.name_finish_station = getStationById(temp.id_finish_station).name_station;
+                r.route_time = temp.route_time;
+                route.Add(r);
+            }
+            return route;
         }
 
 
-        public List<TRIP> getTrip()
+        public List<Trip> getTrip()
         {
             List<TRIP> list = db.TRIPs.ToList();
             foreach (TRIP temp in list)
@@ -275,7 +285,22 @@ namespace Railway
                     temp.status = "Окончен";
                 }
             }
-            return list;
+            List<Trip> trip = new List<Trip>();
+            foreach(TRIP temp in list)
+            {
+                Trip t = new Trip();
+                t.id_route = temp.id_route;
+                t.id_train = temp.id_train;
+                t.id_trip = temp.id_trip;
+                t.status = temp.status;
+                t.time_start = temp.time_start;
+                t.time_finish = temp.time_finish;
+                t.number_train = getTrainById(temp.id_train).number_train;
+                t.start_station = getStationById(getRouteById(temp.id_route).id_start_station).name_station;
+                t.finish_station = getStationById(getRouteById(temp.id_route).id_finish_station).name_station;
+                trip.Add(t);
+            }
+            return trip;
         }
 
         public List<Train> GetTrainsByType(String need_type)
@@ -343,7 +368,7 @@ namespace Railway
         {
             TRAIN_COMPOSITION tRAIN_COMPOSITION = new TRAIN_COMPOSITION();
             Composition composition = new Composition();
-            composition.id_train = getIdTrainByNumber(numberTrain);
+            composition.number_train = numberTrain;
             composition.id_carriage = car;
             tRAIN_COMPOSITION.id_carriage = car;
             tRAIN_COMPOSITION.id_train= getIdTrainByNumber(numberTrain);
@@ -391,9 +416,26 @@ namespace Railway
             return ticket;
         }
 
-        public List<TICKET> getTickets()
+        public List<Ticket> getTickets()
         {
-            return db.TICKETs.ToList();
+            List<TICKET> list = db.TICKETs.ToList();
+            List<Ticket> ticket = new List<Ticket>();
+            foreach(TICKET temp in list)
+            {
+                Ticket t = new Ticket();
+                t.finish =getStationById(getRouteById(getTripById(temp.id_trip).id_route).id_finish_station).name_station;
+                t.start = getStationById(getRouteById(getTripById(temp.id_trip).id_route).id_start_station).name_station;
+                t.id_carriage = temp.id_carriage;
+                t.id_passanger = temp.id_passanger;
+                t.id_ticket = temp.id_ticket;
+                t.id_train = temp.id_train;
+                t.id_trip = temp.id_trip;
+                t.name = getPassangerByid(temp.id_passanger).name;
+                t.number_train = getTrainById(temp.id_train).number_train;
+                t.price = temp.price;
+                ticket.Add(t);
+            }
+            return ticket;
         }
         public Boolean updatePassanger(int id, string name, string passport)
         {
