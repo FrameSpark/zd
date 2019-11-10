@@ -72,6 +72,26 @@ namespace Railway
             return train;
         }
 
+        public List<Train> GetTrainsNumber()
+        {
+            List<Train> train = new List<Train>();
+            List<TRAIN> db_trains = db.TRAINs.ToList();
+            List<TRAIN_TYPE> db_type = db.TRAIN_TYPE.ToList();
+            Train tr = new Train();
+            tr.numberTrain = "Все";
+            train.Add(tr);
+            foreach (TRAIN temp in db_trains)
+            {
+                List<TRAIN_TYPE> type = db_type.Where(t => t.id_train == temp.id_train).ToList();
+                Train tempTrain = new Train();
+                tempTrain.id = temp.id_train;
+                tempTrain.numberTrain = temp.number_train;
+                tempTrain.typeTrain = type.Last().type_train;
+                train.Add(tempTrain);
+            }
+            return train;
+        }
+
         public List<STATION> GetStations()
         {
             List<STATION> db_stations = db.STATIONs.ToList();
@@ -175,6 +195,44 @@ namespace Railway
                 }
             }
             return list;
+        }
+
+        public List<Composition> getCompositionByTrain(String id)
+        {
+            List<Composition> compositions = new List<Composition>();
+
+            List<TRAIN_COMPOSITION> tc = db.TRAIN_COMPOSITION.ToList();
+            if (id != "Все")
+            {
+                foreach (TRAIN_COMPOSITION temp in tc)
+                {
+                    if (temp.TRAIN.number_train == id)
+                    {
+                        Composition composition = new Composition();
+                        composition.id_carriage = temp.id_carriage;
+                        composition.id_composition = temp.id_composition;
+                        composition.number_train = getTrainById(temp.id_train).number_train;
+                        composition.type_carriage = getCarriageTypeById(temp.id_carriage).type_carriage;
+                        compositions.Add(composition);
+                    }
+                }
+            }
+            else
+            {
+                foreach (TRAIN_COMPOSITION temp in tc)
+                {
+                  
+                        Composition composition = new Composition();
+                        composition.id_carriage = temp.id_carriage;
+                        composition.id_composition = temp.id_composition;
+                        composition.number_train = getTrainById(temp.id_train).number_train;
+                        composition.type_carriage = getCarriageTypeById(temp.id_carriage).type_carriage;
+                        compositions.Add(composition);
+                    
+                }
+            }
+            return compositions;
+
         }
 
         public TRAIN_COMPOSITION getComposition(int id)
@@ -322,6 +380,18 @@ namespace Railway
         }
 
         public List<String> getTypesTrain()
+        {
+            List<String> type = new List<String>();
+            type.Add("Все");
+            foreach (CARRIAGE_TYPE types in db.CARRIAGE_TYPE.ToList())
+            {
+                type.Add(types.type_carriage);
+            }
+            type = type.Distinct().ToList();
+            return type;
+        }
+
+        public List<String> getTypesCarriage()
         {
             List<String> type = new List<String>();
             type.Add("Все");
@@ -797,6 +867,27 @@ namespace Railway
                 {
                     carriages.Add(temp);
                 }
+            }
+            return carriages;
+        }
+
+        public List<Carriage> getCarriageByType(String type)
+        {
+            List<Carriage> carriages = new List<Carriage>();
+            List<Carriage> dbCarriage = GetCarriages();
+            List<Composition> compositions = GetComposition();
+
+            if (type != "Все")
+            {
+                foreach (Carriage temp in dbCarriage)
+                {
+                    if (temp.type_carriage == type)
+                        carriages.Add(temp);
+                }
+            }
+            else
+            {
+                return dbCarriage;
             }
             return carriages;
         }

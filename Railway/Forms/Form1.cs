@@ -17,6 +17,14 @@ namespace Railway
         public Form1()
         {
             InitializeComponent();
+            dgComposition.DataSource = db.GetComposition();
+            dgCarriage.DataSource = db.GetCarriages();
+            dgTrain.DataSource = db.GetTrains();
+            dgStations.DataSource = db.GetStations();
+            dgRoutes.DataSource = vc.View_route.ToList();
+            dgTrip.DataSource = vc.View_trip.ToList();
+            dgPassanger.DataSource = db.GetPASSANGERs();
+            dgTickets.DataSource = vc.View_tickets.ToList();
         } 
         DataBase db = new DataBase();
         ViewContext vc = new ViewContext();
@@ -34,10 +42,18 @@ namespace Railway
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cbNumberTrain.DataSource = db.GetTrainsNumber();
+            cbNumberTrain.DisplayMember = "numberTrain";
+            cbNumberTrain.ValueMember = "numberTrain";
 
             cbTypeTrain.DisplayMember = "type_train";
             cbTypeTrain.ValueMember = "type_train";
             cbTypeTrain.DataSource = db.getTypesTrain();
+
+            cbTypeCarriage.DataSource = db.getTypesCarriage();
+            cbTypeCarriage.ValueMember = "type_carriage";
+            cbTypeCarriage.DisplayMember = "type_carriage";
+
             dgComposition.DataSource = db.GetComposition();
             dgCarriage.DataSource = db.GetCarriages();
             dgTrain.DataSource = db.GetTrains();
@@ -361,7 +377,8 @@ namespace Railway
 
         private void BUpdateRoute_Click(object sender, EventArgs e)
         {
-            dgRoutes.DataSource = db.getRoute();
+            dgRoutes.DataSource = vc.View_route.ToList();
+                
         }
 
         private void DCreate_Click(object sender, EventArgs e)
@@ -440,7 +457,7 @@ namespace Railway
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            dgTrip.DataSource = db.getTrip();
+            dgTrip.DataSource = vc.View_trip.ToList();
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -676,6 +693,24 @@ namespace Railway
         {
             Environment.Exit(0);
 
+        }
+
+        private void CbNumberTrain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Train train = (Train)cbNumberTrain.SelectedItem;
+            dgComposition.DataSource = db.getCompositionByTrain(train.numberTrain);
+            
+        }
+
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbTypeCarriage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String type = (String)cbTypeCarriage.SelectedItem;
+            dgCarriage.DataSource = db.getCarriageByType(type);
         }
     }
     }
