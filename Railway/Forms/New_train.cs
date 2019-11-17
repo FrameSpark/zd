@@ -15,7 +15,7 @@ namespace Railway
         public New_train()
         {
             InitializeComponent();
-            ControlBox = false;
+           
         }
 
         public New_train(string numberTrain, string type_train)
@@ -23,7 +23,7 @@ namespace Railway
             InitializeComponent();
             tNumberTrain.Text = numberTrain;
             tTypeTrain.Text = type_train;
-            ControlBox = false;
+            
         }
 
         private void New_train_Load(object sender, EventArgs e)

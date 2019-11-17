@@ -379,7 +379,7 @@ namespace Railway
             return train;
         }
 
-        public List<String> getTypesTrain()
+        public List<String> getTypesCarriage()
         {
             List<String> type = new List<String>();
             type.Add("Все");
@@ -391,7 +391,7 @@ namespace Railway
             return type;
         }
 
-        public List<String> getTypesCarriage()
+        public List<String> getTypesTrain()
         {
             List<String> type = new List<String>();
             type.Add("Все");

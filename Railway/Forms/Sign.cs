@@ -37,11 +37,10 @@ namespace Railway.Forms
             {
                 if (p.is_admin == 1)
                 {
-                    
-                   Form1 fr = new Form1();
-                    fr.Show();
-                    //this.Close();
-                    this.Visible = false;
+                    this.Hide();
+                    Form1 fr = new Form1();
+                    fr.ShowDialog();
+                    this.Close();
                 }
                 else
                 {

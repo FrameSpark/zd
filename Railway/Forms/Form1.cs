@@ -17,6 +17,7 @@ namespace Railway
         public Form1()
         {
             InitializeComponent();
+            /*
             dgComposition.DataSource = db.GetComposition();
             dgCarriage.DataSource = db.GetCarriages();
             dgTrain.DataSource = db.GetTrains();
@@ -25,6 +26,7 @@ namespace Railway
             dgTrip.DataSource = vc.View_trip.ToList();
             dgPassanger.DataSource = db.GetPASSANGERs();
             dgTickets.DataSource = vc.View_tickets.ToList();
+            */
         } 
         DataBase db = new DataBase();
         ViewContext vc = new ViewContext();
@@ -127,6 +129,7 @@ namespace Railway
             {
                 using (New_train frm = new New_train())
                 {
+                
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
                         if (db.newTrain(frm.tNumberTrain.Text, frm.tTypeTrain.Text) == null)
@@ -135,9 +138,10 @@ namespace Railway
                         };
                         dgTrain.DataSource = db.GetTrains();
                     }
+                   
                 }
             }
-            catch (FormatException)
+            catch (Exception)
             {
                 MessageBox.Show("Ошибка ввода");
             }
@@ -691,7 +695,7 @@ namespace Railway
 
         private void Form1_Deactivate(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            //Environment.Exit(0);
 
         }
 
@@ -712,6 +716,8 @@ namespace Railway
             String type = (String)cbTypeCarriage.SelectedItem;
             dgCarriage.DataSource = db.getCarriageByType(type);
         }
+
+        
     }
     }
 
