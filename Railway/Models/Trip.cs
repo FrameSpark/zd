@@ -8,6 +8,7 @@ namespace Railway.Models
 {
     class Trip
     {
+        public List<Route> routes { get; set; }
         public int id_trip { get; set; }
 
         public int id_train { get; set; }

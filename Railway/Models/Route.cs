@@ -15,5 +15,9 @@ namespace Railway.Models
         public string name_finish_station { get; set; }
 
         public int route_time { get; set; }
+
+        public string route {get;set; }
+
+
     }
 }

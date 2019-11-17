@@ -20,13 +20,19 @@ namespace Railway
        
         private void New_trip_Load(object sender, EventArgs e)
         {
+            dtStart.MinDate = DateTime.Now;
+            dtFinish.MinDate = DateTime.Now;
+            listBox1.DataSource = db.getRoute();
+            listBox1.DisplayMember = "route";
+            listBox1.ValueMember = "id_route";
+
             cbNumber.DisplayMember = "numberTrain";
             cbNumber.ValueMember = "numberTrain";
             cbNumber.DataSource = db.GetTrains();
 
-            cbRoute.DisplayMember = "id_route";
-            cbRoute.ValueMember = "id_route";
-            cbRoute.DataSource = db.getRoute();
+            //cbRoute.DisplayMember = "id_route";
+            //cbRoute.ValueMember = "id_route";
+            //cbRoute.DataSource = db.getRoute();
         }
 
         private void CbRoute_SelectedValueChanged(object sender, EventArgs e)
@@ -41,7 +47,32 @@ namespace Railway
 
         private void CbRoute_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            MessageBox.Show("Минимальное количество дней на рейс " + Convert.ToString(db.getDayRoute(Convert.ToInt32(cbRoute.SelectedValue))));
+           // MessageBox.Show("Минимальное количество дней на рейс " + Convert.ToString(db.getDayRoute(Convert.ToInt32(cbRoute.SelectedValue))));
+
+        }
+
+        private void DtStart_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
 
         }
     }

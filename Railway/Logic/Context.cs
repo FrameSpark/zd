@@ -4,6 +4,8 @@ namespace Railway
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Railway.Forms;
+    using Railway.Models;
 
     public partial class Context : DbContext
     {
@@ -22,6 +24,7 @@ namespace Railway
         public virtual DbSet<TRAIN_COMPOSITION> TRAIN_COMPOSITION { get; set; }
         public virtual DbSet<TRAIN_TYPE> TRAIN_TYPE { get; set; }
         public virtual DbSet<TRIP> TRIPs { get; set; }
+        public virtual DbSet<TripRoutes> TripRoutes { get; set; }
 
         /*
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

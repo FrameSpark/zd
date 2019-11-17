@@ -131,6 +131,7 @@
     <Compile Include="Forms\New_trip.Designer.cs">
       <DependentUpon>New_trip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\TripRoutes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModelsDBO\ROUTE.cs" />

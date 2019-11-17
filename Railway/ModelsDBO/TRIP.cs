@@ -1,5 +1,7 @@
 namespace Railway
 {
+    using Railway.Forms;
+    using Railway.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -22,7 +24,7 @@ namespace Railway
 
         public DateTime time_finish { get; set; }
 
-        public int id_route { get; set; }
+       public int id_route { get; set; }
 
     }
 }

@@ -17,16 +17,15 @@ namespace Railway
         public Form1()
         {
             InitializeComponent();
-            /*
             dgComposition.DataSource = db.GetComposition();
             dgCarriage.DataSource = db.GetCarriages();
             dgTrain.DataSource = db.GetTrains();
             dgStations.DataSource = db.GetStations();
             dgRoutes.DataSource = vc.View_route.ToList();
-            dgTrip.DataSource = vc.View_trip.ToList();
+            dgTrip.DataSource = db.getTrip();
             dgPassanger.DataSource = db.GetPASSANGERs();
             dgTickets.DataSource = vc.View_tickets.ToList();
-            */
+            
         } 
         DataBase db = new DataBase();
         ViewContext vc = new ViewContext();
@@ -395,9 +394,9 @@ namespace Railway
                     {
                         if (db.newRoute(Convert.ToString(frm.cbStation1.SelectedValue), Convert.ToString(frm.cbStation2.SelectedValue), Convert.ToInt32(frm.tbTime.Text)) == null)
                         {
-                            MessageBox.Show("Ошибка вставки");
+                            MessageBox.Show("Ошибка вставки. Возможно данный маршрут уже существует");
                         };
-                        dgRoutes.DataSource = db.getRoute();
+                        dgRoutes.DataSource =vc.View_route.ToList();
 
                     }
                 }
@@ -461,7 +460,7 @@ namespace Railway
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            dgTrip.DataSource = vc.View_trip.ToList();
+            dgTrip.DataSource = db.getTrip();
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -472,11 +471,11 @@ namespace Railway
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if (db.newTrip(Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value, Convert.ToInt32(frm.cbRoute.SelectedValue)) == null)
+                        if (db.newTrip(Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value, frm.listBox1.SelectedItems) == null)
                         {
                             MessageBox.Show("Ошибка вставки");
                         };
-                        dgTrip.DataSource = db.getTrip();
+                        dgTrip.DataSource = db.getTrip(); 
 
                     }
                 }
@@ -510,7 +509,7 @@ namespace Railway
                             MessageBox.Show("Не удалось удалить");
                         }
                     }
-                    dgTrip.DataSource = vc.View_trip.ToList();
+                    dgTrip.DataSource = db.getTrip();
                 }
 
                 if (e.ColumnIndex == 7)
@@ -521,12 +520,12 @@ namespace Railway
                     {
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            if (!db.updateTrip(idTrip, Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value, Convert.ToInt32(frm.cbRoute.SelectedValue)))
+                            if (!db.updateTrip(idTrip, Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value, frm.listBox1.SelectedItems))
                             {
                                 MessageBox.Show("Ошибка изменения");
                             };
 
-                            dgTrip.DataSource = vc.View_trip.ToList();
+                            dgTrip.DataSource = db.getTrip();
                         }
                     }
                 }
@@ -717,7 +716,10 @@ namespace Railway
             dgCarriage.DataSource = db.getCarriageByType(type);
         }
 
-        
+        private void TabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

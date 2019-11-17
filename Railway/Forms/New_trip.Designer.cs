@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -35,9 +36,11 @@
             this.cbNumber = new System.Windows.Forms.ComboBox();
             this.dtStart = new System.Windows.Forms.DateTimePicker();
             this.dtFinish = new System.Windows.Forms.DateTimePicker();
-            this.cbRoute = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.routeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.routeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,11 +73,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 95);
+            this.label4.Location = new System.Drawing.Point(12, 109);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Id маршрута";
+            this.label4.Text = "Маршрут";
+            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // cbNumber
             // 
@@ -87,9 +91,11 @@
             // dtStart
             // 
             this.dtStart.Location = new System.Drawing.Point(159, 36);
+            this.dtStart.MinDate = new System.DateTime(2019, 11, 17, 0, 0, 0, 0);
             this.dtStart.Name = "dtStart";
             this.dtStart.Size = new System.Drawing.Size(200, 20);
             this.dtStart.TabIndex = 5;
+            this.dtStart.ValueChanged += new System.EventHandler(this.DtStart_ValueChanged);
             // 
             // dtFinish
             // 
@@ -98,21 +104,10 @@
             this.dtFinish.Size = new System.Drawing.Size(200, 20);
             this.dtFinish.TabIndex = 6;
             // 
-            // cbRoute
-            // 
-            this.cbRoute.FormattingEnabled = true;
-            this.cbRoute.Location = new System.Drawing.Point(159, 88);
-            this.cbRoute.Name = "cbRoute";
-            this.cbRoute.Size = new System.Drawing.Size(198, 21);
-            this.cbRoute.TabIndex = 7;
-            this.cbRoute.SelectedIndexChanged += new System.EventHandler(this.CbRoute_SelectedIndexChanged);
-            this.cbRoute.SelectionChangeCommitted += new System.EventHandler(this.CbRoute_SelectionChangeCommitted);
-            this.cbRoute.SelectedValueChanged += new System.EventHandler(this.CbRoute_SelectedValueChanged);
-            // 
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(78, 144);
+            this.button1.Location = new System.Drawing.Point(159, 238);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -122,21 +117,39 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(212, 144);
+            this.button2.Location = new System.Drawing.Point(253, 238);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 9;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.DataSource = this.routeBindingSource;
+            this.listBox1.DisplayMember = "route";
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(159, 109);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBox1.Size = new System.Drawing.Size(200, 95);
+            this.listBox1.TabIndex = 10;
+            this.listBox1.ValueMember = "id_route";
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged_1);
+            // 
+            // routeBindingSource
+            // 
+            this.routeBindingSource.DataSource = typeof(Railway.Models.Route);
             // 
             // New_trip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 185);
+            this.ClientSize = new System.Drawing.Size(546, 273);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.cbRoute);
             this.Controls.Add(this.dtFinish);
             this.Controls.Add(this.dtStart);
             this.Controls.Add(this.cbNumber);
@@ -147,6 +160,7 @@
             this.Name = "New_trip";
             this.Text = "New_trip";
             this.Load += new System.EventHandler(this.New_trip_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.routeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,6 +177,7 @@
         public System.Windows.Forms.ComboBox cbNumber;
         public System.Windows.Forms.DateTimePicker dtStart;
         public System.Windows.Forms.DateTimePicker dtFinish;
-        public System.Windows.Forms.ComboBox cbRoute;
+        public System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.BindingSource routeBindingSource;
     }
 }
