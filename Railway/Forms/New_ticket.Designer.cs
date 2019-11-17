@@ -103,6 +103,7 @@
             this.cbNumber.Name = "cbNumber";
             this.cbNumber.Size = new System.Drawing.Size(121, 21);
             this.cbNumber.TabIndex = 6;
+            this.cbNumber.SelectedIndexChanged += new System.EventHandler(this.CbNumber_SelectedIndexChanged);
             this.cbNumber.SelectionChangeCommitted += new System.EventHandler(this.CbNumber_SelectionChangeCommitted);
             // 
             // cbCarriage

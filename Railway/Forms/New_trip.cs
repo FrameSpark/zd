@@ -28,7 +28,7 @@ namespace Railway
 
             cbNumber.DisplayMember = "numberTrain";
             cbNumber.ValueMember = "numberTrain";
-            cbNumber.DataSource = db.GetTrains();
+            cbNumber.DataSource = db.GetTrainsWithoutTrip();
 
             //cbRoute.DisplayMember = "id_route";
             //cbRoute.ValueMember = "id_route";

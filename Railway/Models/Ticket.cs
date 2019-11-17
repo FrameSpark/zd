@@ -18,6 +18,8 @@ namespace Railway.Models
 
         public string start { get; set; }
         public string finish { get; set; }
+
+        public string target { get; set; }
         public int id_train { get; set; }
 
         public int id_carriage { get; set; }

@@ -29,23 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgTrain = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bChange = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.trainBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.be = new System.Windows.Forms.Button();
             this.cbTypeTrain = new System.Windows.Forms.ComboBox();
             this.bSelect = new System.Windows.Forms.Button();
@@ -62,42 +58,57 @@
             this.bCreate = new System.Windows.Forms.Button();
             this.bUpdate = new System.Windows.Forms.Button();
             this.dgCarriage = new System.Windows.Forms.DataGridView();
-            this.idCarriage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberofseat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typecarriage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.carriageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgComposition = new System.Windows.Forms.DataGridView();
-            this.idcompositionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numbertrainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcarriageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typecarriageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deleteComposition = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.compositionBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dCreate = new System.Windows.Forms.Button();
             this.bUpdateRoute = new System.Windows.Forms.Button();
             this.dgRoutes = new System.Windows.Forms.DataGridView();
-            this.idroute = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startnamestation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finishnamestation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.routetime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editRoute = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteRoute = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.viewrouteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgStations = new System.Windows.Forms.DataGridView();
-            this.stationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editStation = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DeleteStation = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.sTATIONBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dgTrip = new System.Windows.Forms.DataGridView();
+            this.EditTrip = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteTrip = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.dgTickets = new System.Windows.Forms.DataGridView();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.dgPassanger = new System.Windows.Forms.DataGridView();
+            this.editPassanger = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deletePassanger = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trainBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idCarriage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberofseat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typecarriage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.carriageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idcompositionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numbertrainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcarriageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typecarriageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compositionBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.idroute = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startnamestation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finishnamestation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.routetime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.viewrouteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.stationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sTATIONBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idtrip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numbertrainDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,31 +116,11 @@
             this.timefinishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startstationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finishstationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditTrip = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DeleteTrip = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tripBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.dgTickets = new System.Windows.Forms.DataGridView();
-            this.idticket = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idpassangerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numbertrainDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcarriageDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namestationDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expr1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deleteTicket = new System.Windows.Forms.DataGridViewButtonColumn();
             this.viewticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.dgPassanger = new System.Windows.Forms.DataGridView();
             this.idpassanger = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namepassanger = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passportpassanger = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editPassanger = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.deletePassanger = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pASSANGERBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.viewtripBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ticketBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
@@ -146,27 +137,36 @@
             this.tICKETBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tICKETBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.viewrouteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ticketBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.idticketDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numbertrainDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcarriageDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteTicket = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgTrain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trainBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCarriage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carriageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgComposition)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.compositionBindingSource2)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRoutes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewrouteBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStations)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTATIONBindingSource)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTrip)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tripBindingSource3)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgPassanger)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carriageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compositionBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewrouteBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTATIONBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tripBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pASSANGERBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewtripBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource3)).BeginInit();
@@ -183,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tICKETBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tICKETBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewrouteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource4)).BeginInit();
             this.SuspendLayout();
             // 
             // dgTrain
@@ -205,29 +206,11 @@
             this.dgTrain.TabIndex = 0;
             this.dgTrain.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgTrain_CellContentClick);
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            // 
-            // numberTrain
-            // 
-            this.numberTrain.DataPropertyName = "numberTrain";
-            this.numberTrain.HeaderText = "Номер поезда";
-            this.numberTrain.Name = "numberTrain";
-            // 
-            // typeTrain
-            // 
-            this.typeTrain.DataPropertyName = "typeTrain";
-            this.typeTrain.HeaderText = "Тип поезда";
-            this.typeTrain.Name = "typeTrain";
-            // 
             // bChange
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bChange.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bChange.DefaultCellStyle = dataGridViewCellStyle1;
             this.bChange.HeaderText = "Изменить";
             this.bChange.Name = "bChange";
             this.bChange.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -238,18 +221,14 @@
             // 
             // bDelete
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bDelete.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bDelete.DefaultCellStyle = dataGridViewCellStyle2;
             this.bDelete.HeaderText = "Удалить";
             this.bDelete.Name = "bDelete";
             this.bDelete.Text = "Delete";
             this.bDelete.ToolTipText = "Delete";
             this.bDelete.UseColumnTextForButtonValue = true;
-            // 
-            // trainBindingSource
-            // 
-            this.trainBindingSource.DataSource = typeof(Railway.Models.Train);
             // 
             // be
             // 
@@ -441,29 +420,11 @@
             this.dgCarriage.TabIndex = 1;
             this.dgCarriage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgCarriage_CellContentClick);
             // 
-            // idCarriage
-            // 
-            this.idCarriage.DataPropertyName = "id_carriage";
-            this.idCarriage.HeaderText = "ID вагона";
-            this.idCarriage.Name = "idCarriage";
-            // 
-            // numberofseat
-            // 
-            this.numberofseat.DataPropertyName = "number_of_seats";
-            this.numberofseat.HeaderText = "Количество мест";
-            this.numberofseat.Name = "numberofseat";
-            // 
-            // typecarriage
-            // 
-            this.typecarriage.DataPropertyName = "type_carriage";
-            this.typecarriage.HeaderText = "Тип вагона";
-            this.typecarriage.Name = "typecarriage";
-            // 
             // edit
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.edit.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.edit.DefaultCellStyle = dataGridViewCellStyle3;
             this.edit.HeaderText = "Изменить";
             this.edit.Name = "edit";
             this.edit.Text = "edit";
@@ -472,18 +433,14 @@
             // 
             // Delete
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle4;
             this.Delete.HeaderText = "Удалить";
             this.Delete.Name = "Delete";
             this.Delete.Text = "delete";
             this.Delete.ToolTipText = "Удалить";
             this.Delete.UseColumnTextForButtonValue = true;
-            // 
-            // carriageBindingSource
-            // 
-            this.carriageBindingSource.DataSource = typeof(Railway.Models.Carriage);
             // 
             // dgComposition
             // 
@@ -502,44 +459,16 @@
             this.dgComposition.TabIndex = 0;
             this.dgComposition.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
-            // idcompositionDataGridViewTextBoxColumn
-            // 
-            this.idcompositionDataGridViewTextBoxColumn.DataPropertyName = "id_composition";
-            this.idcompositionDataGridViewTextBoxColumn.HeaderText = "Id состава";
-            this.idcompositionDataGridViewTextBoxColumn.Name = "idcompositionDataGridViewTextBoxColumn";
-            // 
-            // numbertrainDataGridViewTextBoxColumn
-            // 
-            this.numbertrainDataGridViewTextBoxColumn.DataPropertyName = "number_train";
-            this.numbertrainDataGridViewTextBoxColumn.HeaderText = "Номер поезда";
-            this.numbertrainDataGridViewTextBoxColumn.Name = "numbertrainDataGridViewTextBoxColumn";
-            // 
-            // idcarriageDataGridViewTextBoxColumn
-            // 
-            this.idcarriageDataGridViewTextBoxColumn.DataPropertyName = "id_carriage";
-            this.idcarriageDataGridViewTextBoxColumn.HeaderText = "Id вагона";
-            this.idcarriageDataGridViewTextBoxColumn.Name = "idcarriageDataGridViewTextBoxColumn";
-            // 
-            // typecarriageDataGridViewTextBoxColumn
-            // 
-            this.typecarriageDataGridViewTextBoxColumn.DataPropertyName = "type_carriage";
-            this.typecarriageDataGridViewTextBoxColumn.HeaderText = "Тип вагона";
-            this.typecarriageDataGridViewTextBoxColumn.Name = "typecarriageDataGridViewTextBoxColumn";
-            // 
             // deleteComposition
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteComposition.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteComposition.DefaultCellStyle = dataGridViewCellStyle5;
             this.deleteComposition.HeaderText = "delete";
             this.deleteComposition.Name = "deleteComposition";
             this.deleteComposition.Text = "delete";
             this.deleteComposition.ToolTipText = "delete";
             this.deleteComposition.UseColumnTextForButtonValue = true;
-            // 
-            // compositionBindingSource2
-            // 
-            this.compositionBindingSource2.DataSource = typeof(Railway.Models.Composition);
             // 
             // tabPage3
             // 
@@ -596,35 +525,11 @@
             this.dgRoutes.TabIndex = 3;
             this.dgRoutes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgRoutes_CellContentClick);
             // 
-            // idroute
-            // 
-            this.idroute.DataPropertyName = "id_route";
-            this.idroute.HeaderText = "Id маршрута";
-            this.idroute.Name = "idroute";
-            // 
-            // startnamestation
-            // 
-            this.startnamestation.DataPropertyName = "name_station";
-            this.startnamestation.HeaderText = "Стартовая станция";
-            this.startnamestation.Name = "startnamestation";
-            // 
-            // finishnamestation
-            // 
-            this.finishnamestation.DataPropertyName = "Expr1";
-            this.finishnamestation.HeaderText = "Конечная станция";
-            this.finishnamestation.Name = "finishnamestation";
-            // 
-            // routetime
-            // 
-            this.routetime.DataPropertyName = "route_time";
-            this.routetime.HeaderText = "Время в пути";
-            this.routetime.Name = "routetime";
-            // 
             // editRoute
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editRoute.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editRoute.DefaultCellStyle = dataGridViewCellStyle6;
             this.editRoute.HeaderText = "Edit";
             this.editRoute.Name = "editRoute";
             this.editRoute.Text = "Edit";
@@ -632,17 +537,13 @@
             // 
             // deleteRoute
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteRoute.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteRoute.DefaultCellStyle = dataGridViewCellStyle7;
             this.deleteRoute.HeaderText = "Delete";
             this.deleteRoute.Name = "deleteRoute";
             this.deleteRoute.Text = "Delete";
             this.deleteRoute.UseColumnTextForButtonValue = true;
-            // 
-            // viewrouteBindingSource1
-            // 
-            this.viewrouteBindingSource1.DataSource = typeof(Railway.Logic.View_route);
             // 
             // button2
             // 
@@ -680,25 +581,11 @@
             this.dgStations.TabIndex = 0;
             this.dgStations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
             // 
-            // stationId
-            // 
-            this.stationId.DataPropertyName = "id_station";
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.stationId.DefaultCellStyle = dataGridViewCellStyle18;
-            this.stationId.HeaderText = "ID станции";
-            this.stationId.Name = "stationId";
-            // 
-            // stationName
-            // 
-            this.stationName.DataPropertyName = "name_station";
-            this.stationName.HeaderText = "Название станции";
-            this.stationName.Name = "stationName";
-            // 
             // editStation
             // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editStation.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editStation.DefaultCellStyle = dataGridViewCellStyle9;
             this.editStation.HeaderText = "Edit";
             this.editStation.Name = "editStation";
             this.editStation.Text = "Edit";
@@ -707,18 +594,14 @@
             // 
             // DeleteStation
             // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteStation.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteStation.DefaultCellStyle = dataGridViewCellStyle10;
             this.DeleteStation.HeaderText = "Delete";
             this.DeleteStation.Name = "DeleteStation";
             this.DeleteStation.Text = "Delete";
             this.DeleteStation.ToolTipText = "Delete";
             this.DeleteStation.UseColumnTextForButtonValue = true;
-            // 
-            // sTATIONBindingSource
-            // 
-            this.sTATIONBindingSource.DataSource = typeof(Railway.STATION);
             // 
             // tabPage4
             // 
@@ -736,21 +619,21 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(8, 36);
+            this.button4.Location = new System.Drawing.Point(8, 6);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(123, 23);
             this.button4.TabIndex = 2;
-            this.button4.Text = "Create";
+            this.button4.Text = "Создать рейс";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(8, 65);
+            this.button3.Location = new System.Drawing.Point(137, 6);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(105, 23);
             this.button3.TabIndex = 1;
-            this.button3.Text = "Update";
+            this.button3.Text = "Обновить";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
@@ -769,53 +652,11 @@
             this.EditTrip,
             this.DeleteTrip});
             this.dgTrip.DataSource = this.tripBindingSource3;
-            this.dgTrip.Location = new System.Drawing.Point(8, 94);
+            this.dgTrip.Location = new System.Drawing.Point(8, 35);
             this.dgTrip.Name = "dgTrip";
-            this.dgTrip.Size = new System.Drawing.Size(749, 211);
+            this.dgTrip.Size = new System.Drawing.Size(749, 317);
             this.dgTrip.TabIndex = 0;
             this.dgTrip.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgTrip_CellContentClick);
-            // 
-            // idtrip
-            // 
-            this.idtrip.DataPropertyName = "id_trip";
-            this.idtrip.HeaderText = "Id рейса";
-            this.idtrip.Name = "idtrip";
-            // 
-            // numbertrainDataGridViewTextBoxColumn1
-            // 
-            this.numbertrainDataGridViewTextBoxColumn1.DataPropertyName = "number_train";
-            this.numbertrainDataGridViewTextBoxColumn1.HeaderText = "Номер поезда";
-            this.numbertrainDataGridViewTextBoxColumn1.Name = "numbertrainDataGridViewTextBoxColumn1";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Статус";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            // 
-            // timestartDataGridViewTextBoxColumn
-            // 
-            this.timestartDataGridViewTextBoxColumn.DataPropertyName = "time_start";
-            this.timestartDataGridViewTextBoxColumn.HeaderText = "Время начала";
-            this.timestartDataGridViewTextBoxColumn.Name = "timestartDataGridViewTextBoxColumn";
-            // 
-            // timefinishDataGridViewTextBoxColumn
-            // 
-            this.timefinishDataGridViewTextBoxColumn.DataPropertyName = "time_finish";
-            this.timefinishDataGridViewTextBoxColumn.HeaderText = "Время окончания";
-            this.timefinishDataGridViewTextBoxColumn.Name = "timefinishDataGridViewTextBoxColumn";
-            // 
-            // startstationDataGridViewTextBoxColumn
-            // 
-            this.startstationDataGridViewTextBoxColumn.DataPropertyName = "start_station";
-            this.startstationDataGridViewTextBoxColumn.HeaderText = "Начальная станция";
-            this.startstationDataGridViewTextBoxColumn.Name = "startstationDataGridViewTextBoxColumn";
-            // 
-            // finishstationDataGridViewTextBoxColumn
-            // 
-            this.finishstationDataGridViewTextBoxColumn.DataPropertyName = "finish_station";
-            this.finishstationDataGridViewTextBoxColumn.HeaderText = "Конечная станция";
-            this.finishstationDataGridViewTextBoxColumn.Name = "finishstationDataGridViewTextBoxColumn";
             // 
             // EditTrip
             // 
@@ -831,10 +672,6 @@
             this.DeleteTrip.Name = "DeleteTrip";
             this.DeleteTrip.Text = "Delete";
             this.DeleteTrip.UseColumnTextForButtonValue = true;
-            // 
-            // tripBindingSource3
-            // 
-            this.tripBindingSource3.DataSource = typeof(Railway.Models.Trip);
             // 
             // tabPage5
             // 
@@ -878,80 +715,20 @@
             this.dgTickets.AutoGenerateColumns = false;
             this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTickets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idticket,
-            this.idpassangerDataGridViewTextBoxColumn,
+            this.idticketDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.numbertrainDataGridViewTextBoxColumn2,
+            this.startDataGridViewTextBoxColumn,
+            this.finishDataGridViewTextBoxColumn,
             this.idcarriageDataGridViewTextBoxColumn1,
             this.priceDataGridViewTextBoxColumn,
-            this.namestationDataGridViewTextBoxColumn2,
-            this.expr1DataGridViewTextBoxColumn1,
             this.deleteTicket});
-            this.dgTickets.DataSource = this.viewticketsBindingSource;
+            this.dgTickets.DataSource = this.ticketBindingSource4;
             this.dgTickets.Location = new System.Drawing.Point(8, 226);
             this.dgTickets.Name = "dgTickets";
             this.dgTickets.Size = new System.Drawing.Size(749, 127);
             this.dgTickets.TabIndex = 4;
             this.dgTickets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgTickets_CellContentClick);
-            // 
-            // idticket
-            // 
-            this.idticket.DataPropertyName = "id_ticket";
-            this.idticket.HeaderText = "Id билета";
-            this.idticket.Name = "idticket";
-            // 
-            // idpassangerDataGridViewTextBoxColumn
-            // 
-            this.idpassangerDataGridViewTextBoxColumn.DataPropertyName = "id_passanger";
-            this.idpassangerDataGridViewTextBoxColumn.HeaderText = "Id пассажира";
-            this.idpassangerDataGridViewTextBoxColumn.Name = "idpassangerDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "ФИО";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // numbertrainDataGridViewTextBoxColumn2
-            // 
-            this.numbertrainDataGridViewTextBoxColumn2.DataPropertyName = "number_train";
-            this.numbertrainDataGridViewTextBoxColumn2.HeaderText = "Номер поезда";
-            this.numbertrainDataGridViewTextBoxColumn2.Name = "numbertrainDataGridViewTextBoxColumn2";
-            // 
-            // idcarriageDataGridViewTextBoxColumn1
-            // 
-            this.idcarriageDataGridViewTextBoxColumn1.DataPropertyName = "id_carriage";
-            this.idcarriageDataGridViewTextBoxColumn1.HeaderText = "Номер вагона";
-            this.idcarriageDataGridViewTextBoxColumn1.Name = "idcarriageDataGridViewTextBoxColumn1";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Цена";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // namestationDataGridViewTextBoxColumn2
-            // 
-            this.namestationDataGridViewTextBoxColumn2.DataPropertyName = "name_station";
-            this.namestationDataGridViewTextBoxColumn2.HeaderText = "Начальная станция";
-            this.namestationDataGridViewTextBoxColumn2.Name = "namestationDataGridViewTextBoxColumn2";
-            // 
-            // expr1DataGridViewTextBoxColumn1
-            // 
-            this.expr1DataGridViewTextBoxColumn1.DataPropertyName = "Expr1";
-            this.expr1DataGridViewTextBoxColumn1.HeaderText = "Конечная станция";
-            this.expr1DataGridViewTextBoxColumn1.Name = "expr1DataGridViewTextBoxColumn1";
-            // 
-            // deleteTicket
-            // 
-            this.deleteTicket.HeaderText = "delete";
-            this.deleteTicket.Name = "deleteTicket";
-            this.deleteTicket.Text = "Delete";
-            this.deleteTicket.UseColumnTextForButtonValue = true;
-            // 
-            // viewticketsBindingSource
-            // 
-            this.viewticketsBindingSource.DataSource = typeof(Railway.Logic.View_tickets);
             // 
             // button7
             // 
@@ -990,6 +767,188 @@
             this.dgPassanger.TabIndex = 0;
             this.dgPassanger.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgPassanger_CellContentClick);
             // 
+            // editPassanger
+            // 
+            this.editPassanger.HeaderText = "edit";
+            this.editPassanger.Name = "editPassanger";
+            this.editPassanger.Text = "edit";
+            this.editPassanger.UseColumnTextForButtonValue = true;
+            // 
+            // deletePassanger
+            // 
+            this.deletePassanger.HeaderText = "delete";
+            this.deletePassanger.Name = "deletePassanger";
+            this.deletePassanger.Text = "delete";
+            this.deletePassanger.UseColumnTextForButtonValue = true;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            // 
+            // numberTrain
+            // 
+            this.numberTrain.DataPropertyName = "numberTrain";
+            this.numberTrain.HeaderText = "Номер поезда";
+            this.numberTrain.Name = "numberTrain";
+            // 
+            // typeTrain
+            // 
+            this.typeTrain.DataPropertyName = "typeTrain";
+            this.typeTrain.HeaderText = "Тип поезда";
+            this.typeTrain.Name = "typeTrain";
+            // 
+            // trainBindingSource
+            // 
+            this.trainBindingSource.DataSource = typeof(Railway.Models.Train);
+            // 
+            // idCarriage
+            // 
+            this.idCarriage.DataPropertyName = "id_carriage";
+            this.idCarriage.HeaderText = "ID вагона";
+            this.idCarriage.Name = "idCarriage";
+            // 
+            // numberofseat
+            // 
+            this.numberofseat.DataPropertyName = "number_of_seats";
+            this.numberofseat.HeaderText = "Количество мест";
+            this.numberofseat.Name = "numberofseat";
+            // 
+            // typecarriage
+            // 
+            this.typecarriage.DataPropertyName = "type_carriage";
+            this.typecarriage.HeaderText = "Тип вагона";
+            this.typecarriage.Name = "typecarriage";
+            // 
+            // carriageBindingSource
+            // 
+            this.carriageBindingSource.DataSource = typeof(Railway.Models.Carriage);
+            // 
+            // idcompositionDataGridViewTextBoxColumn
+            // 
+            this.idcompositionDataGridViewTextBoxColumn.DataPropertyName = "id_composition";
+            this.idcompositionDataGridViewTextBoxColumn.HeaderText = "Id состава";
+            this.idcompositionDataGridViewTextBoxColumn.Name = "idcompositionDataGridViewTextBoxColumn";
+            // 
+            // numbertrainDataGridViewTextBoxColumn
+            // 
+            this.numbertrainDataGridViewTextBoxColumn.DataPropertyName = "number_train";
+            this.numbertrainDataGridViewTextBoxColumn.HeaderText = "Номер поезда";
+            this.numbertrainDataGridViewTextBoxColumn.Name = "numbertrainDataGridViewTextBoxColumn";
+            // 
+            // idcarriageDataGridViewTextBoxColumn
+            // 
+            this.idcarriageDataGridViewTextBoxColumn.DataPropertyName = "id_carriage";
+            this.idcarriageDataGridViewTextBoxColumn.HeaderText = "Id вагона";
+            this.idcarriageDataGridViewTextBoxColumn.Name = "idcarriageDataGridViewTextBoxColumn";
+            // 
+            // typecarriageDataGridViewTextBoxColumn
+            // 
+            this.typecarriageDataGridViewTextBoxColumn.DataPropertyName = "type_carriage";
+            this.typecarriageDataGridViewTextBoxColumn.HeaderText = "Тип вагона";
+            this.typecarriageDataGridViewTextBoxColumn.Name = "typecarriageDataGridViewTextBoxColumn";
+            // 
+            // compositionBindingSource2
+            // 
+            this.compositionBindingSource2.DataSource = typeof(Railway.Models.Composition);
+            // 
+            // idroute
+            // 
+            this.idroute.DataPropertyName = "id_route";
+            this.idroute.HeaderText = "Id маршрута";
+            this.idroute.Name = "idroute";
+            // 
+            // startnamestation
+            // 
+            this.startnamestation.DataPropertyName = "name_station";
+            this.startnamestation.HeaderText = "Стартовая станция";
+            this.startnamestation.Name = "startnamestation";
+            // 
+            // finishnamestation
+            // 
+            this.finishnamestation.DataPropertyName = "Expr1";
+            this.finishnamestation.HeaderText = "Конечная станция";
+            this.finishnamestation.Name = "finishnamestation";
+            // 
+            // routetime
+            // 
+            this.routetime.DataPropertyName = "route_time";
+            this.routetime.HeaderText = "Время в пути";
+            this.routetime.Name = "routetime";
+            // 
+            // viewrouteBindingSource1
+            // 
+            this.viewrouteBindingSource1.DataSource = typeof(Railway.Logic.View_route);
+            // 
+            // stationId
+            // 
+            this.stationId.DataPropertyName = "id_station";
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.stationId.DefaultCellStyle = dataGridViewCellStyle8;
+            this.stationId.HeaderText = "ID станции";
+            this.stationId.Name = "stationId";
+            // 
+            // stationName
+            // 
+            this.stationName.DataPropertyName = "name_station";
+            this.stationName.HeaderText = "Название станции";
+            this.stationName.Name = "stationName";
+            // 
+            // sTATIONBindingSource
+            // 
+            this.sTATIONBindingSource.DataSource = typeof(Railway.STATION);
+            // 
+            // idtrip
+            // 
+            this.idtrip.DataPropertyName = "id_trip";
+            this.idtrip.HeaderText = "Id рейса";
+            this.idtrip.Name = "idtrip";
+            // 
+            // numbertrainDataGridViewTextBoxColumn1
+            // 
+            this.numbertrainDataGridViewTextBoxColumn1.DataPropertyName = "number_train";
+            this.numbertrainDataGridViewTextBoxColumn1.HeaderText = "Номер поезда";
+            this.numbertrainDataGridViewTextBoxColumn1.Name = "numbertrainDataGridViewTextBoxColumn1";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Статус";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // timestartDataGridViewTextBoxColumn
+            // 
+            this.timestartDataGridViewTextBoxColumn.DataPropertyName = "time_start";
+            this.timestartDataGridViewTextBoxColumn.HeaderText = "Время начала";
+            this.timestartDataGridViewTextBoxColumn.Name = "timestartDataGridViewTextBoxColumn";
+            // 
+            // timefinishDataGridViewTextBoxColumn
+            // 
+            this.timefinishDataGridViewTextBoxColumn.DataPropertyName = "time_finish";
+            this.timefinishDataGridViewTextBoxColumn.HeaderText = "Время окончания";
+            this.timefinishDataGridViewTextBoxColumn.Name = "timefinishDataGridViewTextBoxColumn";
+            // 
+            // startstationDataGridViewTextBoxColumn
+            // 
+            this.startstationDataGridViewTextBoxColumn.DataPropertyName = "start_station";
+            this.startstationDataGridViewTextBoxColumn.HeaderText = "Начальная станция";
+            this.startstationDataGridViewTextBoxColumn.Name = "startstationDataGridViewTextBoxColumn";
+            // 
+            // finishstationDataGridViewTextBoxColumn
+            // 
+            this.finishstationDataGridViewTextBoxColumn.DataPropertyName = "finish_station";
+            this.finishstationDataGridViewTextBoxColumn.HeaderText = "Конечная станция";
+            this.finishstationDataGridViewTextBoxColumn.Name = "finishstationDataGridViewTextBoxColumn";
+            // 
+            // tripBindingSource3
+            // 
+            this.tripBindingSource3.DataSource = typeof(Railway.Models.Trip);
+            // 
+            // viewticketsBindingSource
+            // 
+            this.viewticketsBindingSource.DataSource = typeof(Railway.Logic.View_tickets);
+            // 
             // idpassanger
             // 
             this.idpassanger.DataPropertyName = "id_passanger";
@@ -1007,20 +966,6 @@
             this.passportpassanger.DataPropertyName = "passport";
             this.passportpassanger.HeaderText = "Номер пасспорта";
             this.passportpassanger.Name = "passportpassanger";
-            // 
-            // editPassanger
-            // 
-            this.editPassanger.HeaderText = "edit";
-            this.editPassanger.Name = "editPassanger";
-            this.editPassanger.Text = "edit";
-            this.editPassanger.UseColumnTextForButtonValue = true;
-            // 
-            // deletePassanger
-            // 
-            this.deletePassanger.HeaderText = "delete";
-            this.deletePassanger.Name = "deletePassanger";
-            this.deletePassanger.Text = "delete";
-            this.deletePassanger.UseColumnTextForButtonValue = true;
             // 
             // pASSANGERBindingSource
             // 
@@ -1086,6 +1031,59 @@
             // 
             this.viewrouteBindingSource.DataSource = typeof(Railway.Logic.View_route);
             // 
+            // ticketBindingSource4
+            // 
+            this.ticketBindingSource4.DataSource = typeof(Railway.Models.Ticket);
+            // 
+            // idticketDataGridViewTextBoxColumn
+            // 
+            this.idticketDataGridViewTextBoxColumn.DataPropertyName = "id_ticket";
+            this.idticketDataGridViewTextBoxColumn.HeaderText = "Id билета";
+            this.idticketDataGridViewTextBoxColumn.Name = "idticketDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "ФИО";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // numbertrainDataGridViewTextBoxColumn2
+            // 
+            this.numbertrainDataGridViewTextBoxColumn2.DataPropertyName = "number_train";
+            this.numbertrainDataGridViewTextBoxColumn2.HeaderText = "Номер поезда";
+            this.numbertrainDataGridViewTextBoxColumn2.Name = "numbertrainDataGridViewTextBoxColumn2";
+            // 
+            // startDataGridViewTextBoxColumn
+            // 
+            this.startDataGridViewTextBoxColumn.DataPropertyName = "start";
+            this.startDataGridViewTextBoxColumn.HeaderText = "Начальная станция";
+            this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
+            // 
+            // finishDataGridViewTextBoxColumn
+            // 
+            this.finishDataGridViewTextBoxColumn.DataPropertyName = "finish";
+            this.finishDataGridViewTextBoxColumn.HeaderText = "Конечная станция";
+            this.finishDataGridViewTextBoxColumn.Name = "finishDataGridViewTextBoxColumn";
+            // 
+            // idcarriageDataGridViewTextBoxColumn1
+            // 
+            this.idcarriageDataGridViewTextBoxColumn1.DataPropertyName = "id_carriage";
+            this.idcarriageDataGridViewTextBoxColumn1.HeaderText = "Номер вагона";
+            this.idcarriageDataGridViewTextBoxColumn1.Name = "idcarriageDataGridViewTextBoxColumn1";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Цена";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // deleteTicket
+            // 
+            this.deleteTicket.HeaderText = "Удалить";
+            this.deleteTicket.Name = "deleteTicket";
+            this.deleteTicket.Text = "delete";
+            this.deleteTicket.UseColumnTextForButtonValue = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1098,28 +1096,28 @@
             this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgTrain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trainBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCarriage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carriageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgComposition)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.compositionBindingSource2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgRoutes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewrouteBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStations)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTATIONBindingSource)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgTrip)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tripBindingSource3)).EndInit();
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewticketsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgPassanger)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carriageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compositionBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewrouteBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTATIONBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tripBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewticketsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pASSANGERBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewtripBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource3)).EndInit();
@@ -1136,6 +1134,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tICKETBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tICKETBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewrouteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1229,15 +1228,6 @@
         private System.Windows.Forms.BindingSource viewtripBindingSource;
         private System.Windows.Forms.BindingSource viewticketsBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn namestationDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idticket;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idpassangerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numbertrainDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idcarriageDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namestationDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expr1DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn deleteTicket;
         private System.Windows.Forms.ComboBox cbNumberTrain;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -1252,6 +1242,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finishstationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditTrip;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteTrip;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idticketDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numbertrainDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finishDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcarriageDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteTicket;
+        private System.Windows.Forms.BindingSource ticketBindingSource4;
     }
 }
 

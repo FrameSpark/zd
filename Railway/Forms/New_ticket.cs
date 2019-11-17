@@ -25,7 +25,7 @@ namespace Railway
 
             cbNumber.DisplayMember = "number_train";
             cbNumber.ValueMember = "id_train";
-            cbNumber.DataSource = db.db.TRAINs.ToList();
+            cbNumber.DataSource = db.GetTrainsWithTrip();
 
             
             
@@ -43,6 +43,11 @@ namespace Railway
             cbTrip.DataSource = db.getTripByTrain(Convert.ToInt32(cbNumber.SelectedValue));
 
             label6.Text = "Свободных мест" + Convert.ToInt32(db.getFreeTicket(Convert.ToInt32(cbNumber.SelectedValue)));
+        }
+
+        private void CbNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

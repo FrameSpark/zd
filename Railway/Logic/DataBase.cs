@@ -107,6 +107,46 @@ namespace Railway
             return train;
         }
 
+        public List<Train> GetTrainsWithoutTrip()
+        {
+            List<Train> train = new List<Train>();
+            List<TRAIN> db_trains = db.TRAINs.ToList();
+            List<TRAIN_TYPE> db_type = db.TRAIN_TYPE.ToList();
+            foreach (TRAIN temp in db_trains)
+            {
+                if (getTripByTrain(temp.id_train).Count == 0)
+                {
+                    List<TRAIN_TYPE> type = db_type.Where(t => t.id_train == temp.id_train).ToList();
+                    Train tempTrain = new Train();
+                    tempTrain.id = temp.id_train;
+                    tempTrain.numberTrain = temp.number_train;
+                    tempTrain.typeTrain = type.Last().type_train;
+                    train.Add(tempTrain);
+                }
+            }
+            return train;
+        }
+
+        public List<TRAIN> GetTrainsWithTrip()
+        {
+            List<TRAIN> train = new List<TRAIN>();
+            List<TRAIN> db_trains = db.TRAINs.ToList();
+
+            foreach (TRAIN temp in db_trains)
+            {
+                if (getTripByTrain(temp.id_train).Count != 0)
+                {
+                    
+                    TRAIN tempTrain = new TRAIN();
+                    tempTrain.id_train = temp.id_train;
+                    tempTrain.number_train = temp.number_train;
+                    
+                    train.Add(tempTrain);
+                }
+            }
+            return train;
+        }
+
         public List<Train> GetTrainsNumber()
         {
             List<Train> train = new List<Train>();
@@ -371,7 +411,7 @@ namespace Railway
                 {
                     temp.status = "В пути";
                 }
-                if (temp.time_start < DateTime.Now)
+                if (temp.time_start > DateTime.Now)
                 {
                     temp.status = "Не начат";
                 }
@@ -531,8 +571,9 @@ namespace Railway
             foreach(TICKET temp in list)
             {
                 Ticket t = new Ticket();
-                //t.finish =getStationById(getRouteById(getTripById(temp.id_trip).id_route).id_finish_station).name_station;
-                //t.start = getStationById(getRouteById(getTripById(temp.id_trip).id_route).id_start_station).name_station;
+                List<String> st = getStationsByTrip(temp.id_trip);
+                t.start = st.First<String>();
+                t.finish = st.Last<String>();
                 t.id_carriage = temp.id_carriage;
                 t.id_passanger = temp.id_passanger;
                 t.id_ticket = temp.id_ticket;
@@ -604,7 +645,7 @@ namespace Railway
             {
                 trip.status = "В пути";
             }
-            if (trip.time_start < DateTime.Now)
+            if (trip.time_start > DateTime.Now)
             {
                 trip.status = "Не начат";
             }
@@ -666,7 +707,7 @@ namespace Railway
             {
                 trip.status = "В пути";
             }
-            if (trip.time_start < DateTime.Now)
+            if (trip.time_start > DateTime.Now)
             {
                 trip.status = "Не начат";
             }

@@ -24,7 +24,7 @@ namespace Railway
             dgRoutes.DataSource = vc.View_route.ToList();
             dgTrip.DataSource = db.getTrip();
             dgPassanger.DataSource = db.GetPASSANGERs();
-            dgTickets.DataSource = vc.View_tickets.ToList();
+            dgTickets.DataSource = db.getTickets();
             
         } 
         DataBase db = new DataBase();
@@ -62,7 +62,7 @@ namespace Railway
             dgRoutes.DataSource = vc.View_route.ToList();
             dgTrip.DataSource = vc.View_trip.ToList();
             dgPassanger.DataSource = db.GetPASSANGERs();
-            dgTickets.DataSource = vc.View_tickets.ToList();
+            dgTickets.DataSource = db.getTickets();
 
         }
 
@@ -618,7 +618,8 @@ namespace Railway
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            dgTickets.DataSource = vc.View_tickets.ToList();
+            dgTickets.DataSource = db.getTickets();
+                //db.getTickets();
         }
 
         private void Button8_Click(object sender, EventArgs e)
@@ -638,7 +639,7 @@ namespace Railway
                         {
                             MessageBox.Show("Ошибка вставки");
                         };
-                        dgTickets.DataSource = vc.View_tickets.ToList();
+                        dgTickets.DataSource = db.getTickets();
 
                     }
                 }
@@ -656,7 +657,7 @@ namespace Railway
                 int id = Convert.ToInt32(dgTickets.CurrentRow.Cells["idticket"].Value);
 
 
-                if (e.ColumnIndex == 8)
+                if (e.ColumnIndex == 7)
                 {
                     string message = "Вы действительно хотите удалить билет ";
                     string caption = "Подтверждение выбора";
@@ -673,7 +674,7 @@ namespace Railway
                             MessageBox.Show("Не удалось удалить");
                         }
                     }
-                    dgTickets.DataSource = vc.View_tickets.ToList();
+                    dgTickets.DataSource = db.getTickets();
                 }
             }
             catch (FormatException)
