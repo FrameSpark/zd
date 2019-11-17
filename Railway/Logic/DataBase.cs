@@ -1,4 +1,5 @@
 ﻿using Railway.Forms;
+using Railway.GuestModels;
 using Railway.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,76 @@ namespace Railway
             db = new Context();
         }
 
+        public List<TrainsGuest> searchTrain(String need_type, String station)
+        {
+            //id train, Номер поезда, start, finish, type, time
+            List<TrainsGuest> response = new List<TrainsGuest>();
+            List<Train> trains = GetTrains();
+            List<Train> edit = new List<Train>();
+            if (trains != null)
+            {
+                //Первый фильтр по типу поезда
+                
+                    foreach (Train temp in trains)
+                    {
+                        
+                        if (temp.typeTrain == need_type || need_type == "Все")
+                            edit.Add(temp);
+                    }
+                
+
+                //Фильтр по станциям
+                if(edit.Count != 0) {
+                    foreach (Train temp in edit)
+                    {
+                        if (getTripByTrain(temp.id).Count >0)
+                        {
+                            if (getTripByTrain(temp.id).First<TRIP>().status == "Не начат")
+                            {
+                                List<TripRoutes> tr = GetTripRoutesbyTrip(getTripByTrain(temp.id).FirstOrDefault<TRIP>().id_trip);
+                                foreach (TripRoutes r in tr)
+                                {
+                                    if (getStationById(getRouteById(r.IdRoute).id_start_station).name_station == station ||
+                                        getStationById(getRouteById(r.IdRoute).id_finish_station).name_station == station)
+                                    {
+                                        TrainsGuest goodTrain = new TrainsGuest();
+                                        goodTrain.id_train = temp.id;
+                                        goodTrain.number_train = temp.numberTrain;
+                                        List<String> st = getStationsByTrip(getTripByTrain(temp.id).First<TRIP>().id_trip);
+                                        goodTrain.start = st.First<String>();
+                                        goodTrain.finish = st.Last<String>();
+                                        goodTrain.type = temp.typeTrain;
+                                        goodTrain.time = getTimeForTrip(getTripByTrain(temp.id).First<TRIP>().id_trip) / 60;
+                                        response.Add(goodTrain);
+                                        break;
+                                    }
+
+
+
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+            return response;
+           
+
+
+        }
+
+        public int getTimeForTrip(int trip)
+        {
+            List<TripRoutes> tr = GetTripRoutesbyTrip(trip);
+            int time = 0;
+            foreach(TripRoutes t in tr)
+            {
+                time += getRouteById(t.IdRoute).route_time;
+                
+            }
+            return time;
+        }
         public List<TripRoutes> GetTripRoutes()
         {
             return db.TripRoutes.ToList();
@@ -481,6 +552,18 @@ namespace Railway
             return type;
         }
 
+        public List<String> getStations()
+        {
+            List<String> type = new List<String>();
+          
+            foreach (STATION types in db.STATIONs.ToList())
+            {
+                type.Add(types.name_station);
+            }
+            type = type.Distinct().ToList();
+            return type;
+        }
+
         public Carriage newCarriage(int numberSeats, String type)
         {
             CARRIAGE cARRIAGE = new CARRIAGE();
@@ -587,7 +670,32 @@ namespace Railway
             return ticket;
         }
 
-        
+        public List<Ticket> getTicketsByPassangerGuest(int id)
+        {
+            List<TICKET> list = db.TICKETs.ToList();
+            List<Ticket> ticket = new List<Ticket>();
+            foreach (TICKET temp in list)
+            {
+                if (temp.id_passanger == id)
+                {
+                    Ticket t = new Ticket();
+                    List<String> st = getStationsByTrip(temp.id_trip);
+                    t.start = st.First<String>();
+                    t.finish = st.Last<String>();
+                    t.id_carriage = temp.id_carriage;
+                    t.id_passanger = temp.id_passanger;
+                    t.id_ticket = temp.id_ticket;
+                    t.id_train = temp.id_train;
+                    t.id_trip = temp.id_trip;
+                    t.name = getPassangerByid(temp.id_passanger).name;
+                    t.number_train = getTrainById(temp.id_train).number_train;
+                    t.price = temp.price;
+                    ticket.Add(t);
+                }
+            }
+            return ticket;
+        }
+
 
         public Boolean updatePassanger(int id, string name, string passport)
         {

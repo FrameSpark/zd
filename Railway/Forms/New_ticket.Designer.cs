@@ -113,6 +113,7 @@
             this.cbCarriage.Name = "cbCarriage";
             this.cbCarriage.Size = new System.Drawing.Size(121, 21);
             this.cbCarriage.TabIndex = 7;
+            this.cbCarriage.SelectedIndexChanged += new System.EventHandler(this.CbCarriage_SelectedIndexChanged);
             // 
             // cbTrip
             // 

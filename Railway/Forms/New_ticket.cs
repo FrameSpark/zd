@@ -49,5 +49,10 @@ namespace Railway
         {
 
         }
+
+        private void CbCarriage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

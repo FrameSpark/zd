@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Buy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Buy.Designer.cs">
+      <DependentUpon>Buy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Guest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,7 @@
     <Compile Include="Forms\Sign.Designer.cs">
       <DependentUpon>Sign.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuestModels\TrainsGuest.cs" />
     <Compile Include="Logic\ContextForGuest.cs" />
     <Compile Include="Logic\DataBase.cs" />
     <Compile Include="Logic\ViewContext.cs" />
@@ -147,6 +154,9 @@
     <Compile Include="Forms\New_train.Designer.cs">
       <DependentUpon>New_train.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Buy.resx">
+      <DependentUpon>Buy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +201,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PASSANGER.datasource" />
+    <None Include="Properties\DataSources\Railway.GuestModels.TrainsGuest.datasource" />
     <None Include="Properties\DataSources\Railway.Logic.View_route.datasource" />
     <None Include="Properties\DataSources\Railway.Logic.View_tickets.datasource" />
     <None Include="Properties\DataSources\Railway.Logic.View_trip.datasource" />
