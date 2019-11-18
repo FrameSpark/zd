@@ -41,6 +41,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbStation = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -122,6 +124,7 @@
             this.cbTrip.Name = "cbTrip";
             this.cbTrip.Size = new System.Drawing.Size(121, 21);
             this.cbTrip.TabIndex = 8;
+            this.cbTrip.SelectionChangeCommitted += new System.EventHandler(this.CbTrip_SelectionChangeCommitted);
             // 
             // tbPrice
             // 
@@ -133,17 +136,18 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(60, 176);
+            this.button1.Location = new System.Drawing.Point(59, 200);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
             this.button1.Text = "Создать";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(192, 176);
+            this.button2.Location = new System.Drawing.Point(149, 200);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 11;
@@ -153,17 +157,36 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 149);
+            this.label6.Location = new System.Drawing.Point(12, 172);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Свободные места";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 150);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Станция";
+            // 
+            // cbStation
+            // 
+            this.cbStation.FormattingEnabled = true;
+            this.cbStation.Location = new System.Drawing.Point(192, 145);
+            this.cbStation.Name = "cbStation";
+            this.cbStation.Size = new System.Drawing.Size(121, 21);
+            this.cbStation.TabIndex = 14;
+            // 
             // New_ticket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 220);
+            this.ClientSize = new System.Drawing.Size(344, 235);
+            this.Controls.Add(this.cbStation);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -200,5 +223,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.ComboBox cbStation;
     }
 }

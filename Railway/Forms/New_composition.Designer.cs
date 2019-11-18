@@ -75,7 +75,7 @@
             // bCreateConposition
             // 
             this.bCreateConposition.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bCreateConposition.Location = new System.Drawing.Point(44, 78);
+            this.bCreateConposition.Location = new System.Drawing.Point(47, 93);
             this.bCreateConposition.Name = "bCreateConposition";
             this.bCreateConposition.Size = new System.Drawing.Size(75, 23);
             this.bCreateConposition.TabIndex = 4;
@@ -86,7 +86,7 @@
             // bCancel
             // 
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancel.Location = new System.Drawing.Point(142, 78);
+            this.bCancel.Location = new System.Drawing.Point(140, 93);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
             this.bCancel.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 130);
+            this.ClientSize = new System.Drawing.Size(298, 168);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bCreateConposition);
             this.Controls.Add(this.cbCarriage);

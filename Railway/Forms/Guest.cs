@@ -19,7 +19,8 @@ namespace Railway.Forms
         {
             InitializeComponent();
             this.passanger = passanger;
-            
+            dgTicket.DataSource = db.getTicketsByPassangerId(passanger.id_passanger);
+
         }
         DataBase db = new DataBase();
         private void Guest_Load(object sender, EventArgs e)
@@ -36,7 +37,6 @@ namespace Railway.Forms
             cbStation.DataSource = db.getStations();
 
         }
-
         private void Guest_Deactivate(object sender, EventArgs e)
         {
            // Environment.Exit(0);
@@ -73,11 +73,11 @@ namespace Railway.Forms
                         string s = frm.priceBuy.Text;
                         int price ;
                         int.TryParse(string.Join("", s.Where(c => char.IsDigit(c))), out price);
-                        if (db.newTicket(passanger.id_passanger,id, Convert.ToInt32(frm.cbCarriage.SelectedValue), price , db.getTripByTrain(id).First<TRIP>().id_trip) == null)
+                        if (db.newTicket(passanger.id_passanger,id, Convert.ToInt32(frm.cbCarriage.SelectedValue), price , db.getTripByTrain(id).First<TRIP>().id_trip, (String)cbStation.SelectedItem) == null)
                         {
                             MessageBox.Show("Ошибка");
                         }
-                        dgTicket.DataSource = db.getTicketsByPassangerGuest(passanger.id_passanger);
+                       dgTicket.DataSource = db.getTicketsByPassangerId(passanger.id_passanger);
                        
                     }
                 }
@@ -87,13 +87,13 @@ namespace Railway.Forms
         private void Button2_Click(object sender, EventArgs e)
         {
             
-            dgTicket.DataSource = db.getTicketsByPassangerGuest(passanger.id_passanger);
+            dgTicket.DataSource = db.getTicketsByPassangerId(passanger.id_passanger);
         }
 
         private void DgTicket_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int id = Convert.ToInt32(dgTicket.CurrentRow.Cells["idticket"].Value);
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 12)
             {
                 string message = "Вы действительно хотите сдать билет ";
                 string caption = "Подтверждение выбора";
@@ -110,8 +110,13 @@ namespace Railway.Forms
                         MessageBox.Show("Не удалось удалить");
                     }
                 }
-                dgTicket.DataSource = db.getTicketByPassanger(passanger.id_passanger);
+               dgTicket.DataSource = db.getTicketsByPassangerId(passanger.id_passanger);
             }
+        }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

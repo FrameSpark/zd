@@ -634,8 +634,9 @@ namespace Railway
                                          Convert.ToInt32(frm.cbNumber.SelectedValue),
                                          Convert.ToInt32(frm.cbCarriage.SelectedValue),
                                          Convert.ToInt32(frm.tbPrice.Text),
-                                         Convert.ToInt32(frm.cbTrip.SelectedValue)
-                                            ) == null)
+                                         Convert.ToInt32(frm.cbTrip.SelectedValue),
+                                        Convert.ToString(frm.cbStation.SelectedValue)
+                                            ) == null) 
                         {
                             MessageBox.Show("Ошибка вставки");
                         };
@@ -657,7 +658,7 @@ namespace Railway
                 int id = Convert.ToInt32(dgTickets.CurrentRow.Cells["idticket"].Value);
 
 
-                if (e.ColumnIndex == 7)
+                if (e.ColumnIndex == 12)
                 {
                     string message = "Вы действительно хотите удалить билет ";
                     string caption = "Подтверждение выбора";

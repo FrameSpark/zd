@@ -24,9 +24,11 @@ namespace Railway
 
         public int id_carriage { get; set; }
 
-        
+        public DateTime time { get; set; }
 
         public int price { get; set; }
+
+        public int id_station { get; set; }
 
         public int id_trip { get; set; }
         //  public virtual CARRIAGE CARRIAGE { get; set; }

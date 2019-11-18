@@ -633,7 +633,7 @@ namespace Railway
             return ret;
         }
 
-        public TICKET newTicket(int passanger, int train, int carriage, int price, int trip)
+        public TICKET newTicket(int passanger, int train, int carriage, int price, int trip, String station)
         {
             TICKET ticket = new TICKET();
             ticket.id_passanger = passanger;
@@ -641,11 +641,15 @@ namespace Railway
             ticket.id_carriage = carriage;
             ticket.price = price;
             ticket.id_trip = trip;
-
+            int id = getStationByName(station).id_station;
+            ticket.time = getTripById(trip).time_start.AddMinutes(getRouteByStation(id).FirstOrDefault<ROUTE>().route_time);
+            ticket.id_station = id;
             db.TICKETs.Add(ticket);
             db.SaveChanges();
             return ticket;
         }
+
+      
 
         public List<Ticket> getTickets()
         {
@@ -654,23 +658,25 @@ namespace Railway
             foreach(TICKET temp in list)
             {
                 Ticket t = new Ticket();
-                List<String> st = getStationsByTrip(temp.id_trip);
+                List<String> st = getStationsByTrip(getTripByTrain(temp.id_train).First<TRIP>().id_trip);
                 t.start = st.First<String>();
                 t.finish = st.Last<String>();
                 t.id_carriage = temp.id_carriage;
                 t.id_passanger = temp.id_passanger;
                 t.id_ticket = temp.id_ticket;
                 t.id_train = temp.id_train;
-                t.id_trip = temp.id_trip;
+                t.id_trip = getTripByTrain(temp.id_train).First<TRIP>().id_trip;
                 t.name = getPassangerByid(temp.id_passanger).name;
                 t.number_train = getTrainById(temp.id_train).number_train;
+                t.time = temp.time;
+                t.station = getStationById(temp.id_station).name_station;
                 t.price = temp.price;
                 ticket.Add(t);
             }
             return ticket;
         }
 
-        public List<Ticket> getTicketsByPassangerGuest(int id)
+        public List<Ticket> getTicketsByPassangerId(int id)
         {
             List<TICKET> list = db.TICKETs.ToList();
             List<Ticket> ticket = new List<Ticket>();
@@ -679,16 +685,18 @@ namespace Railway
                 if (temp.id_passanger == id)
                 {
                     Ticket t = new Ticket();
-                    List<String> st = getStationsByTrip(temp.id_trip);
+                    List<String> st = getStationsByTrip(getTripByTrain(temp.id_train).First<TRIP>().id_trip);
                     t.start = st.First<String>();
                     t.finish = st.Last<String>();
                     t.id_carriage = temp.id_carriage;
                     t.id_passanger = temp.id_passanger;
                     t.id_ticket = temp.id_ticket;
                     t.id_train = temp.id_train;
-                    t.id_trip = temp.id_trip;
+                    t.id_trip = getTripByTrain(temp.id_train).First<TRIP>().id_trip;
                     t.name = getPassangerByid(temp.id_passanger).name;
                     t.number_train = getTrainById(temp.id_train).number_train;
+                    t.time = temp.time;
+                    t.station = getStationById(temp.id_station).name_station;
                     t.price = temp.price;
                     ticket.Add(t);
                 }
@@ -696,7 +704,18 @@ namespace Railway
             return ticket;
         }
 
-
+        public List<String> getStationsByTrain(int id)
+        {
+            List<TripRoutes> tr = GetTripRoutesbyTrip(getTripByTrain(id).LastOrDefault<TRIP>().id_trip);
+            List<String> t = new List<String>();
+            foreach(TripRoutes temp in tr)
+            {
+                t.Add(getStationById(getRouteById(temp.IdRoute).id_start_station).name_station);
+                t.Add(getStationById(getRouteById(temp.IdRoute).id_finish_station).name_station);
+            }
+            t = t.Distinct().ToList();
+            return t;
+        }
         public Boolean updatePassanger(int id, string name, string passport)
         {
             PASSANGER pas = getPassangerByid(id);

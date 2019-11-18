@@ -16,8 +16,12 @@ namespace Railway.Models
 
         public string number_train { get; set; }
 
+        public DateTime time { get; set; }
+
         public string start { get; set; }
         public string finish { get; set; }
+
+        public string station { get; set; }
 
         public int id_train { get; set; }
 

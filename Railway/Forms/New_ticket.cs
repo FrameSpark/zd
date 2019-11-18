@@ -42,6 +42,10 @@ namespace Railway
             cbTrip.ValueMember = "id_trip";
             cbTrip.DataSource = db.getTripByTrain(Convert.ToInt32(cbNumber.SelectedValue));
 
+            cbStation.ValueMember = "name_station";
+            cbStation.DisplayMember = "name_station";
+            cbStation.DataSource = db.getStationsByTrain(Convert.ToInt32(cbNumber.SelectedValue));
+            
             label6.Text = "Свободных мест" + Convert.ToInt32(db.getFreeTicket(Convert.ToInt32(cbNumber.SelectedValue)));
         }
 
@@ -51,6 +55,16 @@ namespace Railway
         }
 
         private void CbCarriage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbTrip_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
         {
 
         }
