@@ -9,6 +9,7 @@ namespace Railway
     public partial class TRAIN_COMPOSITION
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_composition { get; set; }
 
         public int id_train { get; set; }

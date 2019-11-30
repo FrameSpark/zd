@@ -15,7 +15,7 @@ namespace Railway
            // TRIPs = new HashSet<TRIP>();
         }
 
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_ticket { get; set; }
 
         public int id_passanger { get; set; }
@@ -24,18 +24,18 @@ namespace Railway
 
         public int id_carriage { get; set; }
 
-        public DateTime time { get; set; }
+        public DateTime timeP { get; set; }
 
         public int price { get; set; }
 
         public int id_station { get; set; }
 
         public int id_trip { get; set; }
-        //  public virtual CARRIAGE CARRIAGE { get; set; }
+          public virtual CARRIAGE CARRIAGE { get; set; }
 
-        // public virtual PASSANGER PASSANGER { get; set; }
+         public virtual PASSANGER PASSANGER { get; set; }
 
-        // [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //  public virtual ICollection<TRIP> TRIPs { get; set; }
+       /*  [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+          public virtual ICollection<TRIP> TRIPs { get; set; }*/
     }
 }

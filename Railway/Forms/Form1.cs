@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -90,7 +91,7 @@ namespace Railway
                     {
                         if (db.deleteTrain(id))
                         {
-                            MessageBox.Show(numberTrain + " удален");
+                           // MessageBox.Show(numberTrain + " удален");
                         }
                         else
                         {
@@ -106,7 +107,16 @@ namespace Railway
                     {
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            if (!db.UpdateTrain(id, frm.tNumberTrain.Text, frm.tTypeTrain.Text))
+                            string types;
+                            if (Convert.ToString(frm.comboBox1.Text) != "")
+                            {
+                                types = Convert.ToString(frm.comboBox1.Text);
+                            }
+                            else
+                            {
+                                types = Convert.ToString(frm.comboBox1.SelectedItem);
+                            }
+                            if (!db.UpdateTrain(id, frm.tNumberTrain.Text, types))
                             {
                                 MessageBox.Show("Ошибка изменения");
                             };
@@ -128,10 +138,26 @@ namespace Railway
             {
                 using (New_train frm = new New_train())
                 {
-                
+                    
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if (db.newTrain(frm.tNumberTrain.Text, frm.tTypeTrain.Text) == null)
+                        string types;
+                        if (Convert.ToString(frm.comboBox1.Text) != "")
+                        {
+                            types = Convert.ToString(frm.comboBox1.Text);
+                            if(!Regex.IsMatch(types, @"^[А-Яа-я]{1}[а-я]{2,15}$"))
+                            {
+                                throw new Exception();
+                            }
+                        }
+                        else
+                        {
+                            types = Convert.ToString(frm.comboBox1.SelectedItem);
+                        }
+                       
+
+
+                        if (db.newTrain(frm.tNumberTrain.Text, types) == null)
                         {
                             MessageBox.Show("Ошибка вставки");
                         };
@@ -153,9 +179,10 @@ namespace Railway
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
             try
             {
-                int id = Convert.ToInt32(dgCarriage.CurrentRow.Cells["idcomposition"].Value);
+                int id = Convert.ToInt32(dgComposition.CurrentRow.Cells["idc"].Value);
                 if (e.ColumnIndex == 4)
                 {
                     string message = "Вы действительно хотите удалить связку ";
@@ -195,7 +222,20 @@ namespace Railway
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if (db.newCarriage(Convert.ToInt32(frm.tbNumberSeats.Text), frm.tbTypeCarriage.Text) == null)
+                        string types;
+                        if (Convert.ToString(frm.comboBox1.Text) != "")
+                        {
+                            types = Convert.ToString(frm.comboBox1.Text);
+                           
+                        }
+                        else
+                        {
+                            types = Convert.ToString(frm.comboBox1.SelectedItem);
+                        }
+                        int number = Convert.ToInt32(frm.tbNumberSeats.Text);
+                        if (!Regex.IsMatch(Convert.ToString(number), "^[0-9]{1,2}$"))
+                            throw new Exception();
+                        if (db.newCarriage(number, types) == null)
                         {
                             MessageBox.Show("Ошибка вставки");
                         };
@@ -245,7 +285,19 @@ namespace Railway
                     {
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            if (!db.UpdateCarriage(id, Convert.ToInt32(frm.tbNumberSeats.Text), frm.tbTypeCarriage.Text))
+                            string types;
+                            if (Convert.ToString(frm.comboBox1.Text) != "")
+                            {
+                                types = Convert.ToString(frm.comboBox1.Text);
+                            }
+                            else
+                            {
+                                types = Convert.ToString(frm.comboBox1.SelectedItem);
+                            }
+                            int number = Convert.ToInt32(frm.tbNumberSeats.Text);
+                            if (!Regex.IsMatch(Convert.ToString(number), "^[0-9]{1,2}$"))
+                                throw new Exception();
+                            if (!db.UpdateCarriage(id, number, types))
                             {
                                 MessageBox.Show("Ошибка изменения");
                             };
@@ -317,6 +369,7 @@ namespace Railway
                         if (db.deleteStation(id))
                         {
                             MessageBox.Show("Станция удалена");
+                            db.checkAllRoute();
                         }
                         else
                         {
@@ -340,6 +393,7 @@ namespace Railway
                             };
 
                             dgStations.DataSource = db.GetStations();
+                            db.checkAllRoute();
                         }
                     }
                 }
@@ -425,7 +479,8 @@ namespace Railway
                     {
                         if (db.deleteRoute(id))
                         {
-                            MessageBox.Show("Станция удалена");
+                            MessageBox.Show("Маршрут удален");
+                            db.checkAllRoute();
                         }
                         else
                         {
@@ -438,7 +493,7 @@ namespace Railway
                 if (e.ColumnIndex == 4)
                 {
 
-                    using (New_route frm = new New_route())
+                    using (New_route frm = new New_route(station1,station2,min))
                     {
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
@@ -446,6 +501,7 @@ namespace Railway
                             {
                                 MessageBox.Show("Ошибка вставки");
                             };
+                            db.checkAllRoute();
                             dgRoutes.DataSource = vc.View_route.ToList();
 
                         }
@@ -467,7 +523,7 @@ namespace Railway
         {
             try
             {
-                using (New_trip frm = new New_trip())
+                using (New_trip frm = new New_trip(false))
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
@@ -491,7 +547,8 @@ namespace Railway
             try
             {
                 int idTrip = Convert.ToInt32(dgTrip.CurrentRow.Cells["idtrip"].Value);
-
+                string number = Convert.ToString(dgTrip.CurrentRow.Cells["train"].Value);
+               
                 if (e.ColumnIndex == 8)
                 {
                     string message = "Вы действительно хотите удалить рейс ";
@@ -516,11 +573,12 @@ namespace Railway
                 {
 
 
-                    using (New_trip frm = new New_trip())
+                    using (New_trip frm = new New_trip(false,false,number))
                     {
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            if (!db.updateTrip(idTrip, Convert.ToString(frm.cbNumber.SelectedValue), frm.dtStart.Value, frm.dtFinish.Value, frm.listBox1.SelectedItems))
+                            
+                            if (!db.updateTrip(idTrip, (String)frm.cbNumber.SelectedValue, frm.dtStart.Value, frm.dtFinish.Value, frm.listBox1.SelectedItems))
                             {
                                 MessageBox.Show("Ошибка изменения");
                             };

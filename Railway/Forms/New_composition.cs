@@ -18,6 +18,12 @@ namespace Railway
             InitializeComponent();
         }
 
+        public New_composition(bool f)
+        {
+            InitializeComponent();
+            cbTrain.Visible = false;
+            label1.Visible = false;
+        }
         private void New_composition_Load(object sender, EventArgs e)
         {
             cbTrain.DisplayMember = "numberTrain";
@@ -38,12 +44,19 @@ namespace Railway
 
         private void CbCarriage_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void BCreateConposition_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CbCarriage_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(cbCarriage.SelectedValue);
+            label3.Text = db.getCarriageTypeById(id).type_carriage;
+            label4.Text = "Количество мест " + db.getCarriageById(id).number_of_seats;
         }
     }
 }

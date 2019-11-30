@@ -16,13 +16,14 @@ namespace Railway
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_station { get; set; }
 
         [Required]
         [StringLength(255)]
         public string name_station { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<ROUTE> ROUTEs { get; set; }
+       /* [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ROUTE> ROUTEs { get; set; }*/
     }
 }

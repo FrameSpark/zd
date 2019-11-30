@@ -31,9 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tNumberTrain = new System.Windows.Forms.TextBox();
-            this.tTypeTrain = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -61,17 +61,10 @@
             this.tNumberTrain.Size = new System.Drawing.Size(100, 20);
             this.tNumberTrain.TabIndex = 2;
             // 
-            // tTypeTrain
-            // 
-            this.tTypeTrain.Location = new System.Drawing.Point(99, 36);
-            this.tTypeTrain.Name = "tTypeTrain";
-            this.tTypeTrain.Size = new System.Drawing.Size(100, 20);
-            this.tTypeTrain.TabIndex = 3;
-            // 
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(31, 85);
+            this.button1.Location = new System.Drawing.Point(31, 74);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -82,21 +75,30 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(124, 85);
+            this.button2.Location = new System.Drawing.Point(124, 74);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(99, 36);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.TabIndex = 6;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+            // 
             // New_train
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 139);
+            this.ClientSize = new System.Drawing.Size(226, 115);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.tTypeTrain);
             this.Controls.Add(this.tNumberTrain);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -116,6 +118,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         public System.Windows.Forms.TextBox tNumberTrain;
-        public System.Windows.Forms.TextBox tTypeTrain;
+        public System.Windows.Forms.ComboBox comboBox1;
     }
 }

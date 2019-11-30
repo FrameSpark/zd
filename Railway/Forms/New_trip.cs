@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Railway.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,19 +17,64 @@ namespace Railway
         {
             InitializeComponent();
         }
+        string train;
+        public New_trip(bool f)
+        {
+            InitializeComponent();
+            cbNumber.Visible = f;
+            dtFinish.Visible = f;
+            cbNumber.DisplayMember = "numberTrain";
+            cbNumber.ValueMember = "numberTrain";
+
+            cbNumber.DataSource = db.GetTrainsWithoutTrip(train);
+        }
+        public New_trip(bool f , bool f1, string train)
+        {
+            InitializeComponent();
+            cbNumber.Visible = true;
+            dtFinish.Visible = f;
+            this.train = train;
+            cbNumber.DisplayMember = "numberTrain";
+            cbNumber.ValueMember = "numberTrain";
+
+            cbNumber.DataSource = db.GetTrainsWithoutTrip(train);
+        }
         DataBase db = new DataBase();
        
         private void New_trip_Load(object sender, EventArgs e)
         {
-            dtStart.MinDate = DateTime.Now;
-            dtFinish.MinDate = DateTime.Now;
+            TRIP trip = db.getTripByTrain(db.getIdTrainByNumber(train)).FirstOrDefault<TRIP>();
+            cbNumber.DisplayMember = "numberTrain";
+            cbNumber.ValueMember = "numberTrain";
+
+            cbNumber.DataSource = db.GetTrainsWithoutTrip(train);
+            if(train!=null)
+            cbNumber.Text =  db.getTrainById(trip.id_train).number_train;
+            
+
             listBox1.DataSource = db.getRoute();
             listBox1.DisplayMember = "route";
             listBox1.ValueMember = "id_route";
+            if (train != null)
+            {
+                foreach(Route temp in db.getRoutebyTrip(trip.id_trip))
+                {
+                    int index = listBox1.FindString(temp.route);
+                    listBox1.SetSelected(index, true);
+                }
+               
+                
+            }
+                
+           
+            dtStart.MinDate = DateTime.Now;
+            if (train != null)
+                dtStart.Value = trip.time_start;
+            dtFinish.MinDate = DateTime.Now;
+          
 
-            cbNumber.DisplayMember = "numberTrain";
-            cbNumber.ValueMember = "numberTrain";
-            cbNumber.DataSource = db.GetTrainsWithoutTrip();
+            
+            
 
             //cbRoute.DisplayMember = "id_route";
             //cbRoute.ValueMember = "id_route";
@@ -72,6 +118,16 @@ namespace Railway
         }
 
         private void ListBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
         {
 
         }

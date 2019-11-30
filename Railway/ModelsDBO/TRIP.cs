@@ -12,6 +12,7 @@ namespace Railway
     public partial class TRIP
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_trip { get; set; }
 
         public int id_train { get; set; }

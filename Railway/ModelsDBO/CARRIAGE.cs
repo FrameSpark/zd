@@ -17,6 +17,7 @@ namespace Railway
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_carriage { get; set; }
 
         public int number_of_seats { get; set; }

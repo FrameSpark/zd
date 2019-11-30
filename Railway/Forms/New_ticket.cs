@@ -44,7 +44,9 @@ namespace Railway
 
             cbStation.ValueMember = "name_station";
             cbStation.DisplayMember = "name_station";
-            cbStation.DataSource = db.getStationsByTrain(Convert.ToInt32(cbNumber.SelectedValue));
+            List<String> station = db.getStationsByTrain(Convert.ToInt32(cbNumber.SelectedValue));
+            station.Remove(station.First<string>());
+            cbStation.DataSource = station;
             
             label6.Text = "Свободных мест" + Convert.ToInt32(db.getFreeTicket(Convert.ToInt32(cbNumber.SelectedValue)));
         }

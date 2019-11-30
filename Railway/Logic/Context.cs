@@ -26,7 +26,9 @@ namespace Railway
         public virtual DbSet<TRIP> TRIPs { get; set; }
         public virtual DbSet<TripRoutes> TripRoutes { get; set; }
 
-        /*
+        //public virtual DbSet<TEMP> Temp { get; set; }
+
+      /*  
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             
@@ -52,19 +54,14 @@ namespace Railway
                 .Property(e => e.passport)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PASSANGER>()
-                .Property(e => e.is_admin)
-                .IsFixedLength();
+            
 
             modelBuilder.Entity<PASSANGER>()
                 .HasMany(e => e.TICKETs)
                 .WithRequired(e => e.PASSANGER)
                 .WillCascadeOnDelete(false);
             
-            modelBuilder.Entity<ROUTE>()
-                .HasMany(e => e.TRIPs)
-                .WithRequired(e => e.ROUTE)
-                .WillCascadeOnDelete(false);
+           
                 
             modelBuilder.Entity<STATION>()
                 .Property(e => e.name_station)
@@ -77,15 +74,7 @@ namespace Railway
                 .HasForeignKey(e => e.id_start_station)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<TICKET>()
-                .Property(e => e.place)
-                .IsUnicode(false);
-
             
-            modelBuilder.Entity<TICKET>()
-                .HasMany(e => e.TRIPs)
-               .WithRequired(e => e.TICKET)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TRAIN>()
                 .Property(e => e.number_train)
@@ -96,11 +85,7 @@ namespace Railway
                 .WithRequired(e => e.TRAIN)
                 .WillCascadeOnDelete(false);
             
-            modelBuilder.Entity<TRAIN>()
-                .HasMany(e => e.TRIPs)
-                .WithRequired(e => e.TRAIN)
-                .WillCascadeOnDelete(false);
-                
+           
             modelBuilder.Entity<TRAIN_TYPE>()
                 .Property(e => e.type_train)
                 .IsUnicode(false);
@@ -109,7 +94,7 @@ namespace Railway
                 .Property(e => e.status)
                 .IsUnicode(false);
             
-        }
-    */
+        }*/
+    
     }
 }

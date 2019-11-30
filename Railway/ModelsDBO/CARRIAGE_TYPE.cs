@@ -9,6 +9,7 @@ namespace Railway
     public partial class CARRIAGE_TYPE
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_carriage { get; set; }
 
         [Required]

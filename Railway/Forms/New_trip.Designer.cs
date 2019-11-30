@@ -87,6 +87,7 @@
             this.cbNumber.Name = "cbNumber";
             this.cbNumber.Size = new System.Drawing.Size(200, 21);
             this.cbNumber.TabIndex = 4;
+            this.cbNumber.SelectedIndexChanged += new System.EventHandler(this.CbNumber_SelectedIndexChanged);
             // 
             // dtStart
             // 
@@ -113,6 +114,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Создать";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 

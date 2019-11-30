@@ -64,7 +64,7 @@ namespace Railway.Forms
         {
             string numberTrain = Convert.ToString(dgTrain.CurrentRow.Cells["number"].Value);
             int id = db.getIdTrainByNumber(numberTrain);
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 8)
             {
                 using (Buy frm = new Buy(id))
                 {
@@ -101,13 +101,28 @@ namespace Railway.Forms
                     MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    if (db.deleteTicket(id))
+                    DateTime time = DateTime.Now;
+                    foreach(Ticket temp in db.getTicketsByPassangerId(passanger.id_passanger))
                     {
-                        MessageBox.Show("Билет удален");
+                        if(temp.id_ticket == id)
+                        {
+                            time = temp.time;
+                        }
+                    }
+                    if (time < DateTime.Now)
+                    {
+                        if (db.deleteTicket(id))
+                        {
+                            MessageBox.Show("Билет удален");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Не удалось удалить");
+                        MessageBox.Show("Поезд уже в пути");
                     }
                 }
                dgTicket.DataSource = db.getTicketsByPassangerId(passanger.id_passanger);

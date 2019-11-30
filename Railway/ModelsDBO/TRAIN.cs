@@ -17,6 +17,7 @@ namespace Railway
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_train { get; set; }
 
         [Required]

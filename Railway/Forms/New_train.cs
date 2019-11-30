@@ -12,26 +12,44 @@ namespace Railway
 {
     public partial class New_train : Form
     {
+        DataBase db = new DataBase();
         public New_train()
         {
             InitializeComponent();
-           
+            List<String> type = db.getTypesTrain();
+            type.Remove("Все");
+            comboBox1.ValueMember = "string";
+            comboBox1.DisplayMember = "string";
+            comboBox1.DataSource = type;
         }
 
         public New_train(string numberTrain, string type_train)
         {
             InitializeComponent();
+            List<String> type = db.getTypesTrain();
+            type.Remove("Все");
             tNumberTrain.Text = numberTrain;
-            tTypeTrain.Text = type_train;
+            
+            
+            comboBox1.ValueMember = "string";
+            comboBox1.DisplayMember = "string";
+            comboBox1.DataSource = type;
+            
+            
             
         }
 
         private void New_train_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -16,6 +16,7 @@ namespace Railway
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_route { get; set; }
 
         public int id_start_station { get; set; }
@@ -24,9 +25,9 @@ namespace Railway
 
         public int route_time { get; set; }
 
-        //public virtual STATION STATION { get; set; }
+       // public virtual STATION STATION { get; set; }
 
-//        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-       // public virtual ICollection<TRIP> TRIPs { get; set; }
+   /*[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TRIP> TRIPs { get; set; }*/
     }
 }

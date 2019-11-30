@@ -17,6 +17,7 @@ namespace Railway
         public int IdTrip { get; set; }
         public int IdRoute { get; set; }
         [Key]
-        public int id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int idTR { get; set; }
     }
 }

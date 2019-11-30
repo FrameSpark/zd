@@ -34,6 +34,8 @@
             this.cbCarriage = new System.Windows.Forms.ComboBox();
             this.bCreateConposition = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -71,11 +73,12 @@
             this.cbCarriage.Size = new System.Drawing.Size(121, 21);
             this.cbCarriage.TabIndex = 3;
             this.cbCarriage.SelectedIndexChanged += new System.EventHandler(this.CbCarriage_SelectedIndexChanged);
+            this.cbCarriage.SelectionChangeCommitted += new System.EventHandler(this.CbCarriage_SelectionChangeCommitted);
             // 
             // bCreateConposition
             // 
             this.bCreateConposition.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bCreateConposition.Location = new System.Drawing.Point(47, 93);
+            this.bCreateConposition.Location = new System.Drawing.Point(29, 113);
             this.bCreateConposition.Name = "bCreateConposition";
             this.bCreateConposition.Size = new System.Drawing.Size(75, 23);
             this.bCreateConposition.TabIndex = 4;
@@ -86,18 +89,38 @@
             // bCancel
             // 
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancel.Location = new System.Drawing.Point(140, 93);
+            this.bCancel.Location = new System.Drawing.Point(125, 113);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
             this.bCancel.TabIndex = 5;
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(26, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(146, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Здесь появится тип вагона";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(177, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Здесь появится количество мест";
+            // 
             // New_composition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(298, 168);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bCreateConposition);
             this.Controls.Add(this.cbCarriage);
@@ -120,5 +143,7 @@
         private System.Windows.Forms.Button bCreateConposition;
         private System.Windows.Forms.Button bCancel;
         public System.Windows.Forms.ComboBox cbCarriage;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label4;
     }
 }

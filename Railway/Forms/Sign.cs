@@ -42,7 +42,7 @@ namespace Railway.Forms
                     fr.ShowDialog();
                     this.Close();
                 }
-                else
+                if(p.is_admin == 0)
                 {
                     
                     Guest frm = new Guest(p);
@@ -50,6 +50,16 @@ namespace Railway.Forms
                     //this.Close();
                     this.Visible = false;
                 }
+                if(p.is_admin == 3)
+                {
+                    TrainBOSS frm = new TrainBOSS(p);
+                    frm.Show();
+                    this.Visible = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Такого пользователя не существует");
             }
         }
 

@@ -10,6 +10,7 @@ namespace Railway
     public partial class TRAIN_TYPE
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_train { get; set; }
 
         [Required]

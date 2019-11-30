@@ -16,6 +16,7 @@ namespace Railway
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_passanger { get; set; }
 
         [Required]
@@ -29,7 +30,7 @@ namespace Railway
         [Required]
         public int is_admin { get; set; }
 
-      //  [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<TICKET> TICKETs { get; set; }
+        /*[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TICKET> TICKETs { get; set; }*/
     }
 }

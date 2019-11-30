@@ -38,23 +38,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cbStation = new System.Windows.Forms.ComboBox();
             this.dgTrain = new System.Windows.Forms.DataGridView();
-            this.Купить = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.dgTicket = new System.Windows.Forms.DataGridView();
+            this.Сдать = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trainsGuestBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.ticketBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.trainsGuestBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.trainsGuestBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.trainsGuestBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.ticketBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.trainsGuestBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.idticket = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idpassangerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,19 +57,36 @@
             this.idcarriageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idtripDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Сдать = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ticketBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.trainsGuestBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.trainsGuestBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.ticketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.trainsGuestBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.trainsGuestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.trainsGuestBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.idtrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timestartDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timefiinishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Купить = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTrain)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicket)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -170,24 +177,21 @@
             this.dgTrain.AutoGenerateColumns = false;
             this.dgTrain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTrain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idtrain,
+            this.number,
             this.startDataGridViewTextBoxColumn,
             this.finishDataGridViewTextBoxColumn,
             this.typeDataGridViewTextBoxColumn,
+            this.timestartDataGridViewTextBoxColumn,
+            this.timefiinishDataGridViewTextBoxColumn,
             this.timeDataGridViewTextBoxColumn,
-            this.number,
             this.Купить});
-            this.dgTrain.DataSource = this.trainsGuestBindingSource3;
+            this.dgTrain.DataSource = this.trainsGuestBindingSource5;
             this.dgTrain.Location = new System.Drawing.Point(6, 132);
             this.dgTrain.Name = "dgTrain";
             this.dgTrain.Size = new System.Drawing.Size(682, 164);
             this.dgTrain.TabIndex = 0;
             this.dgTrain.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgTrain_CellContentClick);
-            // 
-            // Купить
-            // 
-            this.Купить.HeaderText = "Купить";
-            this.Купить.Name = "Купить";
-            this.Купить.Text = "Buy";
             // 
             // tabPage2
             // 
@@ -236,6 +240,11 @@
             this.dgTicket.TabIndex = 0;
             this.dgTicket.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgTicket_CellContentClick);
             // 
+            // Сдать
+            // 
+            this.Сдать.HeaderText = "Сдать билет";
+            this.Сдать.Name = "Сдать";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -254,59 +263,9 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Пасспорт:";
             // 
-            // startDataGridViewTextBoxColumn
+            // trainsGuestBindingSource5
             // 
-            this.startDataGridViewTextBoxColumn.DataPropertyName = "start";
-            this.startDataGridViewTextBoxColumn.HeaderText = "Начальная станция";
-            this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
-            // 
-            // finishDataGridViewTextBoxColumn
-            // 
-            this.finishDataGridViewTextBoxColumn.DataPropertyName = "finish";
-            this.finishDataGridViewTextBoxColumn.HeaderText = "Конечная станция";
-            this.finishDataGridViewTextBoxColumn.Name = "finishDataGridViewTextBoxColumn";
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Тип поезда";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            // 
-            // timeDataGridViewTextBoxColumn
-            // 
-            this.timeDataGridViewTextBoxColumn.DataPropertyName = "time";
-            this.timeDataGridViewTextBoxColumn.HeaderText = "Время в пути";
-            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
-            // 
-            // number
-            // 
-            this.number.DataPropertyName = "number_train";
-            this.number.HeaderText = "Номер поезда";
-            this.number.Name = "number";
-            // 
-            // trainsGuestBindingSource3
-            // 
-            this.trainsGuestBindingSource3.DataSource = typeof(Railway.GuestModels.TrainsGuest);
-            // 
-            // ticketBindingSource
-            // 
-            this.ticketBindingSource.DataSource = typeof(Railway.Models.Ticket);
-            // 
-            // trainsGuestBindingSource2
-            // 
-            this.trainsGuestBindingSource2.DataSource = typeof(Railway.GuestModels.TrainsGuest);
-            // 
-            // trainsGuestBindingSource
-            // 
-            this.trainsGuestBindingSource.DataSource = typeof(Railway.GuestModels.TrainsGuest);
-            // 
-            // trainsGuestBindingSource1
-            // 
-            this.trainsGuestBindingSource1.DataSource = typeof(Railway.GuestModels.TrainsGuest);
-            // 
-            // ticketBindingSource1
-            // 
-            this.ticketBindingSource1.DataSource = typeof(Railway.Models.Ticket);
+            this.trainsGuestBindingSource5.DataSource = typeof(Railway.GuestModels.TrainsGuest);
             // 
             // idticket
             // 
@@ -386,10 +345,89 @@
             this.idtripDataGridViewTextBoxColumn.Name = "idtripDataGridViewTextBoxColumn";
             this.idtripDataGridViewTextBoxColumn.Visible = false;
             // 
-            // Сдать
+            // ticketBindingSource1
             // 
-            this.Сдать.HeaderText = "Сдать билет";
-            this.Сдать.Name = "Сдать";
+            this.ticketBindingSource1.DataSource = typeof(Railway.Models.Ticket);
+            // 
+            // trainsGuestBindingSource4
+            // 
+            this.trainsGuestBindingSource4.DataSource = typeof(Railway.GuestModels.TrainsGuest);
+            // 
+            // trainsGuestBindingSource3
+            // 
+            this.trainsGuestBindingSource3.DataSource = typeof(Railway.GuestModels.TrainsGuest);
+            // 
+            // ticketBindingSource
+            // 
+            this.ticketBindingSource.DataSource = typeof(Railway.Models.Ticket);
+            // 
+            // trainsGuestBindingSource2
+            // 
+            this.trainsGuestBindingSource2.DataSource = typeof(Railway.GuestModels.TrainsGuest);
+            // 
+            // trainsGuestBindingSource
+            // 
+            this.trainsGuestBindingSource.DataSource = typeof(Railway.GuestModels.TrainsGuest);
+            // 
+            // trainsGuestBindingSource1
+            // 
+            this.trainsGuestBindingSource1.DataSource = typeof(Railway.GuestModels.TrainsGuest);
+            // 
+            // idtrain
+            // 
+            this.idtrain.DataPropertyName = "id_train";
+            this.idtrain.HeaderText = "id_train";
+            this.idtrain.Name = "idtrain";
+            this.idtrain.Visible = false;
+            // 
+            // number
+            // 
+            this.number.DataPropertyName = "number_train";
+            this.number.HeaderText = "Номер поезда";
+            this.number.Name = "number";
+            // 
+            // startDataGridViewTextBoxColumn
+            // 
+            this.startDataGridViewTextBoxColumn.DataPropertyName = "start";
+            this.startDataGridViewTextBoxColumn.HeaderText = "Начальная станция";
+            this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
+            // 
+            // finishDataGridViewTextBoxColumn
+            // 
+            this.finishDataGridViewTextBoxColumn.DataPropertyName = "finish";
+            this.finishDataGridViewTextBoxColumn.HeaderText = "Конечная станция";
+            this.finishDataGridViewTextBoxColumn.Name = "finishDataGridViewTextBoxColumn";
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Тип поезда";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            // 
+            // timestartDataGridViewTextBoxColumn
+            // 
+            this.timestartDataGridViewTextBoxColumn.DataPropertyName = "time_start";
+            this.timestartDataGridViewTextBoxColumn.HeaderText = "Время начала движения";
+            this.timestartDataGridViewTextBoxColumn.Name = "timestartDataGridViewTextBoxColumn";
+            // 
+            // timefiinishDataGridViewTextBoxColumn
+            // 
+            this.timefiinishDataGridViewTextBoxColumn.DataPropertyName = "time_fiinish";
+            this.timefiinishDataGridViewTextBoxColumn.HeaderText = "Время окончания движения";
+            this.timefiinishDataGridViewTextBoxColumn.Name = "timefiinishDataGridViewTextBoxColumn";
+            // 
+            // timeDataGridViewTextBoxColumn
+            // 
+            this.timeDataGridViewTextBoxColumn.DataPropertyName = "time";
+            this.timeDataGridViewTextBoxColumn.HeaderText = "Время в пути(ч)";
+            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
+            // 
+            // Купить
+            // 
+            this.Купить.HeaderText = "Купить";
+            this.Купить.Name = "Купить";
+            this.Купить.Text = "Buy";
+            this.Купить.ToolTipText = "Buy";
             // 
             // Guest
             // 
@@ -410,12 +448,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgTrain)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgTicket)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainsGuestBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,12 +479,6 @@
         private System.Windows.Forms.BindingSource trainsGuestBindingSource2;
         private System.Windows.Forms.BindingSource trainsGuestBindingSource1;
         private System.Windows.Forms.BindingSource trainsGuestBindingSource3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finishDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn number;
-        private System.Windows.Forms.DataGridViewButtonColumn Купить;
         private System.Windows.Forms.DataGridView dgTicket;
         private System.Windows.Forms.BindingSource ticketBindingSource;
         private System.Windows.Forms.Button button2;
@@ -462,5 +496,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idtripDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Сдать;
         private System.Windows.Forms.BindingSource ticketBindingSource1;
+        private System.Windows.Forms.BindingSource trainsGuestBindingSource4;
+        private System.Windows.Forms.BindingSource trainsGuestBindingSource5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idtrain;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finishDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timestartDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timefiinishDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn Купить;
     }
 }

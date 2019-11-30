@@ -14,7 +14,8 @@ namespace Railway.GuestModels
         public string finish { get; set; }
         public string type { get; set; }
 
-       
+        public DateTime time_start { get; set; }
+        public DateTime time_fiinish { get; set; }       
         public double time { get; set; }
     }
 }
