@@ -34,6 +34,8 @@
             this.bCreate = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -48,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 43);
+            this.label2.Location = new System.Drawing.Point(13, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 1;
@@ -64,7 +66,7 @@
             // bCreate
             // 
             this.bCreate.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bCreate.Location = new System.Drawing.Point(32, 79);
+            this.bCreate.Location = new System.Drawing.Point(52, 127);
             this.bCreate.Name = "bCreate";
             this.bCreate.Size = new System.Drawing.Size(75, 23);
             this.bCreate.TabIndex = 4;
@@ -75,7 +77,7 @@
             // bCancel
             // 
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancel.Location = new System.Drawing.Point(130, 79);
+            this.bCancel.Location = new System.Drawing.Point(133, 127);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
             this.bCancel.TabIndex = 5;
@@ -85,16 +87,36 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(130, 40);
+            this.comboBox1.Location = new System.Drawing.Point(130, 65);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 21);
             this.comboBox1.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(171, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "От 1 до 80";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(55, 89);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(181, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "С большой буквы, до 10 символов";
             // 
             // New_carriage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(252, 121);
+            this.ClientSize = new System.Drawing.Size(310, 162);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bCreate);
@@ -117,5 +139,7 @@
         private System.Windows.Forms.Button bCancel;
         public System.Windows.Forms.TextBox tbNumberSeats;
         public System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

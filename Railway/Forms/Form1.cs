@@ -145,10 +145,7 @@ namespace Railway
                         if (Convert.ToString(frm.comboBox1.Text) != "")
                         {
                             types = Convert.ToString(frm.comboBox1.Text);
-                            if(!Regex.IsMatch(types, @"^[А-Яа-я]{1}[а-я]{2,15}$"))
-                            {
-                                throw new Exception();
-                            }
+                            
                         }
                         else
                         {
@@ -233,8 +230,7 @@ namespace Railway
                             types = Convert.ToString(frm.comboBox1.SelectedItem);
                         }
                         int number = Convert.ToInt32(frm.tbNumberSeats.Text);
-                        if (!Regex.IsMatch(Convert.ToString(number), "^[0-9]{1,2}$"))
-                            throw new Exception();
+                        
                         if (db.newCarriage(number, types) == null)
                         {
                             MessageBox.Show("Ошибка вставки");
@@ -295,8 +291,7 @@ namespace Railway
                                 types = Convert.ToString(frm.comboBox1.SelectedItem);
                             }
                             int number = Convert.ToInt32(frm.tbNumberSeats.Text);
-                            if (!Regex.IsMatch(Convert.ToString(number), "^[0-9]{1,2}$"))
-                                throw new Exception();
+                            
                             if (!db.UpdateCarriage(id, number, types))
                             {
                                 MessageBox.Show("Ошибка изменения");
@@ -320,7 +315,29 @@ namespace Railway
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if (db.newComposition(Convert.ToString(frm.cbTrain.SelectedValue), Convert.ToInt32(frm.cbCarriage.SelectedValue)) == null)
+                        string train;
+                        if (Convert.ToString(frm.cbTrain.Text) != "")
+                        {
+                            train = Convert.ToString(frm.cbTrain.Text);
+
+                        }
+                        else
+                        {
+                            train = Convert.ToString(frm.cbTrain.SelectedValue);
+                        }
+
+                        int car;
+                        if (Convert.ToString(frm.cbCarriage.Text) != "")
+                        {
+                            car = Convert.ToInt32(frm.cbCarriage.Text);
+
+                        }
+                        else
+                        {
+                            car = Convert.ToInt32(frm.cbCarriage.SelectedValue);
+                        }
+
+                        if (db.newComposition(train, car) == null)
                         {
                             MessageBox.Show("Ошибка вставки");
                         };
@@ -414,7 +431,7 @@ namespace Railway
                     {
                         if (db.newStation(frm.tbNameStation.Text) == null)
                         {
-                            MessageBox.Show("Ошибка вставки");
+                            MessageBox.Show("Ошибка ввода или станция уже существует");
                         };
                         dgStations.DataSource = db.GetStations();
 
@@ -423,7 +440,7 @@ namespace Railway
             }
             catch (FormatException)
             {
-                MessageBox.Show("Ошибка ввода");
+                MessageBox.Show("Ошибка ввода или станция уже существует");
             }
         }
 
@@ -446,7 +463,30 @@ namespace Railway
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if (db.newRoute(Convert.ToString(frm.cbStation1.SelectedValue), Convert.ToString(frm.cbStation2.SelectedValue), Convert.ToInt32(frm.tbTime.Text)) == null)
+                        string st1;
+                        if (Convert.ToString(frm.cbStation1.Text) != "")
+                        {
+                            st1 = Convert.ToString(frm.cbStation1.Text);
+
+                        }
+                        else
+                        {
+                            st1 = Convert.ToString(frm.cbStation1.SelectedValue);
+                        }
+
+                        string st2;
+                        if (Convert.ToString(frm.cbStation2.Text) != "")
+                        {
+                            st2 = Convert.ToString(frm.cbStation2.Text);
+
+                        }
+                        else
+                        {
+                            st2 = Convert.ToString(frm.cbStation2.SelectedValue);
+                        }
+
+
+                        if (db.newRoute(st1, st2, Convert.ToInt32(frm.tbTime.Text)) == null)
                         {
                             MessageBox.Show("Ошибка вставки. Возможно данный маршрут уже существует");
                         };
@@ -497,7 +537,29 @@ namespace Railway
                     {
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            if (!db.UpdateRoute(id, Convert.ToString(frm.cbStation1.SelectedValue), Convert.ToString(frm.cbStation2.SelectedValue), Convert.ToInt32(frm.tbTime.Text)))
+                            string st1;
+                            if (Convert.ToString(frm.cbStation1.Text) != "")
+                            {
+                                st1 = Convert.ToString(frm.cbStation1.Text);
+
+                            }
+                            else
+                            {
+                                st1 = Convert.ToString(frm.cbStation1.SelectedValue);
+                            }
+
+                            string st2;
+                            if (Convert.ToString(frm.cbStation2.Text) != "")
+                            {
+                                st2 = Convert.ToString(frm.cbStation2.Text);
+
+                            }
+                            else
+                            {
+                                st2 = Convert.ToString(frm.cbStation2.SelectedValue);
+                            }
+
+                            if (!db.UpdateRoute(id, st1,st2, Convert.ToInt32(frm.tbTime.Text)))
                             {
                                 MessageBox.Show("Ошибка вставки");
                             };

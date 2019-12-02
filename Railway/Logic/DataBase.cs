@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.Entity;
-
+using System.Text.RegularExpressions;
 
 namespace Railway
 {
@@ -527,7 +527,7 @@ namespace Railway
                 r.name_start_station =getStationById(temp.id_start_station).name_station;
                 r.name_finish_station = getStationById(temp.id_finish_station).name_station;
                 r.route_time = temp.route_time;
-                r.route = r.name_start_station + " - " + r.name_finish_station;
+                r.route = r.name_start_station + " - " + r.name_finish_station + " (" + r.route_time + ")";
                 route.Add(r);
             }
             return route;
@@ -660,6 +660,16 @@ namespace Railway
 
         public Carriage newCarriage(int numberSeats, String type)
         {
+            if(0>=numberSeats || numberSeats > 80)
+            {
+                return null;
+            }
+
+            type = type.Trim();
+            if(!Regex.IsMatch(type, @"^[А-Я]{1}[а-я]{1,9}$"))
+            {
+                return null;
+            }
             CARRIAGE cARRIAGE = new CARRIAGE();
             cARRIAGE.number_of_seats = numberSeats;
             db.CARRIAGEs.Add(cARRIAGE);
@@ -691,6 +701,18 @@ namespace Railway
 
         public Composition newComposition(String numberTrain, int car)
         {
+            try
+            {
+                if (getIdTrainByNumber(numberTrain) == null || getCarriageById(car) == null)
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
             TRAIN_COMPOSITION tRAIN_COMPOSITION = new TRAIN_COMPOSITION();
             Composition composition = new Composition();
             composition.number_train = numberTrain;
@@ -1288,6 +1310,29 @@ namespace Railway
         }
         public ROUTE newRoute(String station1, string station2, int min)
         {
+            station1 = station1.Trim();
+            station2 = station2.Trim();
+            station1 = Regex.Replace(station1, @"\s+", " ");
+            station2 = Regex.Replace(station2, @"\s+", " ");
+
+            try
+            {
+                if (getStationByName(station1) == null || getStationByName(station2) == null)
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+            if(min <= 0 || min > 14400) //10 дней
+            {
+                return null;
+            }
+
+
             if (checkExistRoute(station1, station2))
             {
 
@@ -1314,6 +1359,24 @@ namespace Railway
 
         public STATION newStation(String name)
         {
+            name = name.Trim();
+            name = Regex.Replace(name, @"\s+", " ");
+            try
+            {
+                if (getStationByName(name) != null)
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+            if(!Regex.IsMatch(name, @"^[А-Я]{1}[а-я]{2,4}([-а-я]{0,1})?([-А-Яа-я]{0,1})?([а-я]{0,2})?([-а-я]{0,1})?([А-Яа-я]{0,1})?([а-я]{0,7})?( [а-я]{0,17})?$"))
+            {
+                return null;
+            }
             STATION sTATION = new STATION();
             sTATION.name_station = name;
             db.STATIONs.Add(sTATION);
@@ -1325,6 +1388,16 @@ namespace Railway
 
         public Train newTrain(String number, String type)
         {
+            number = number.Trim();
+            type = type.Trim();
+            if(!Regex.IsMatch(number, @"^[0-9]{1,6}$"))
+            {
+                return null;
+            }
+            if(!Regex.IsMatch(type, @"^[А-Я]{1}[а-я]{2,11}$"))
+            {
+                return null;
+            }
             TRAIN train = db.TRAINs.Where(p => p.number_train == number).FirstOrDefault();
             if (train != null)
                 return null;
@@ -1349,6 +1422,16 @@ namespace Railway
 
         public Boolean UpdateTrain(int id, string numberTrain, string typeTrain)
         {
+            numberTrain = numberTrain.Trim();
+            typeTrain = typeTrain.Trim();
+            if (!Regex.IsMatch(numberTrain, @"^[0-9]{1,6}$"))
+            {
+                return false;
+            }
+            if (!Regex.IsMatch(typeTrain, @"^[А-Я]{1}[а-я]{2,11}$"))
+            {
+                return false;
+             }
             TRAIN train = getTrainById(id);
             TRAIN_TYPE tt = getTrainTypeById(id);
             if(train != null)
@@ -1378,6 +1461,27 @@ namespace Railway
 
         public Boolean UpdateRoute(int id, string station1, string station2, int min)
         {
+            station1 = station1.Trim();
+            station2 = station2.Trim();
+            station1 = Regex.Replace(station1, @"\s+", " ");
+            station2 = Regex.Replace(station2, @"\s+", " ");
+            try
+            {
+                if (getStationByName(station1) == null || getStationByName(station2) == null)
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            if (min <= 0 || min > 14400) //10 дней
+            {
+                return false;
+            }
+
             if (checkExistRoute(station1, station2))
             {
                 ROUTE route = getRouteById(id);
@@ -1401,6 +1505,17 @@ namespace Railway
 
         public Boolean UpdateCarriage(int id, int numberOfSeats, string type)
         {
+            if (0 >= numberOfSeats || numberOfSeats > 80)
+            {
+                return false;
+            }
+
+            type = type.Trim();
+            if (!Regex.IsMatch(type, @"^[А-Я]{1}[а-я]{1,9}$"))
+            {
+                return false;
+            }
+
             CARRIAGE car = getCarriageById(id);
             CARRIAGE_TYPE ct = getCarriageTypeById(id);
             if(car != null)
@@ -1415,6 +1530,26 @@ namespace Railway
 
         public Boolean UpdateStation(int id, string name)
         {
+
+            name = name.Trim();
+            name = Regex.Replace(name, @"\s+", " ");
+            try
+            {
+                if (getStationByName(name) != null)
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            if (!Regex.IsMatch(name, @"^[А-Я]{1}[а-я]{2,4}([-а-я]{0,1})?([-А-Яа-я]{0,1})?([а-я]{0,2})?([-а-я]{0,1})?([А-Яа-я]{0,1})?([а-я]{0,7})?( [а-я]{0,17})?$"))
+            {
+                return false;
+            }
+
             STATION s = getStationById(id);
           
             if (s != null)
@@ -1485,12 +1620,20 @@ namespace Railway
                 db.STATIONs.Remove(sTATION);
                 db.SaveChanges();
                 db = new Context();
-                List<ROUTE> route = getRouteByStation(id);
-                foreach (ROUTE temp in route)
+                List<Route> route = getRoute();
+                try
                 {
-                    deleteRoute(temp.id_route);
-                    //db.ROUTEs.Remove(temp);
+                    foreach (Route r in route)
+                    {
+                        foreach (Route r2 in route)
+                        {
+                            if (r.id_route != r2.id_route && r.name_start_station == r2.name_start_station && r.name_finish_station == r2.name_finish_station && r.route_time == r2.route_time)
+                                deleteRoute(r2.id_route);
+                        }
+                    }
                 }
+                catch
+                { }
 
                 checkAllRoute();
                 updateTimeFinish();

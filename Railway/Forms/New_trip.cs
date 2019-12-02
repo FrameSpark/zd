@@ -57,6 +57,7 @@ namespace Railway
             listBox1.ValueMember = "id_route";
             if (train != null)
             {
+                listBox1.ClearSelected();
                 foreach(Route temp in db.getRoutebyTrip(trip.id_trip))
                 {
                     int index = listBox1.FindString(temp.route);
