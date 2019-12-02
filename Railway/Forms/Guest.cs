@@ -73,7 +73,7 @@ namespace Railway.Forms
                         string s = frm.priceBuy.Text;
                         int price ;
                         int.TryParse(string.Join("", s.Where(c => char.IsDigit(c))), out price);
-                        if (db.newTicket(passanger.id_passanger,id, Convert.ToInt32(frm.cbCarriage.SelectedValue), price , db.getTripByTrain(id).First<TRIP>().id_trip, (String)cbStation.SelectedItem) == null)
+                        if (db.newTicket(passanger.id_passanger,id, Convert.ToInt32(frm.cbCarriage.Text), price , db.getTripByTrain(id).First<TRIP>().id_trip, (String)cbStation.SelectedItem) == null)
                         {
                             MessageBox.Show("Ошибка");
                         }

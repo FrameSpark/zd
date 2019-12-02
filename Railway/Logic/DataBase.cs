@@ -195,6 +195,17 @@ namespace Railway
             return db.PASSANGERs.ToList();
         }
 
+        public List<PASSANGER> GetPASSANGERsOnly()
+        {
+            List<PASSANGER> list = GetPASSANGERs();
+            List<PASSANGER> response = new List<PASSANGER>();
+            foreach(PASSANGER p in list)
+            {
+                if (p.is_admin == 0)
+                    response.Add(p);
+            }
+            return response;
+        }
 
         public List<Composition> GetComposition()
         {
@@ -729,6 +740,22 @@ namespace Railway
         public PASSANGER newPassanger(string name, string passport)
         {
             db.Configuration.ValidateOnSaveEnabled = false;
+            name = name.Trim();
+            name = Regex.Replace(name, @"\s+", " ");
+            passport = passport.Trim();
+            passport = Regex.Replace(passport, @"\s+", " ");
+            if (!Regex.IsMatch(name, @"^[А-Я]{1}[а-я]{1,17} [А-Я]{1}[а-я]{1,13} [А-Я]{1}[а-я]{1,11}$"))
+            {
+                return null;
+            }
+            if(getPassangerByNamePass(name, passport).Count != 0)
+            {
+                return null;
+            }
+            if(!Regex.IsMatch(passport, @"^[0-9]{10}$"))
+            {
+                return null;
+            }
             PASSANGER pas = new PASSANGER();
             pas.name = name;
             pas.passport = passport;
@@ -753,8 +780,39 @@ namespace Railway
 
         public TICKET newTicket(int passanger, int train, int carriage, int price, int trip, String station)
         {
+            if(train < 0 || getTrainById(train) == null)
+            {
+                return null;
+            }
+
+            if(carriage <0 || getCarriageById(carriage) == null)
+            {
+                return null;
+            }
+
+            if(price < 0 || price > 20000)
+            {
+                return null;
+            }
+
+            if(trip < 0 || getTripById(trip) == null)
+            {
+                return null;
+            }
+            station = station.Trim();
+            station = Regex.Replace(station, @"\s+", " ");
+            if(getStationByName(station) == null || station == null)
+            {
+                return null;
+            }
+
             db = new Context();
             TICKET ticket = new TICKET();
+            if(getFreeTicket(train) == 0)
+            {
+                MessageBox.Show("Мест на поезд нет");
+                return null;
+            }
             ticket.id_passanger = passanger;
             ticket.id_train = train;
             ticket.id_carriage = carriage;
@@ -884,6 +942,26 @@ namespace Railway
         public Boolean updatePassanger(int id, string name, string passport)
         {
             PASSANGER pas = getPassangerByid(id);
+            
+            if(pas.is_admin == 0)
+            {
+                name = name.Trim();
+                name = Regex.Replace(name, @"\s+", " ");
+                passport = passport.Trim();
+                passport = Regex.Replace(passport, @"\s+", " ");
+                if (!Regex.IsMatch(name, @"^[А-Я]{1}[а-я]{1,17} [А-Я]{1}[а-я]{1,13} [А-Я]{1}[а-я]{1,11}$"))
+                {
+                    return false;
+                }
+                if (getPassangerByNamePass(name, passport).Count != 0)
+                {
+                    return false;
+                }
+                if (!Regex.IsMatch(passport, @"^[0-9]{10}$"))
+                {
+                    return false;
+                }
+            }
             pas.name = name;
             pas.passport = passport;
             db.SaveChanges();
@@ -1195,11 +1273,20 @@ namespace Railway
 
         public TRIP newTrip(String numberTrain, DateTime time1, DateTime time2, ListBox.SelectedObjectCollection selectedItems)
         {
+            if(time1.AddMinutes(10) < DateTime.Now)
+            {
+                return null;
+            }
             db = new Context();
             if (selectedItems.Count == 0)
                 return null;
             TRIP trip = new TRIP();
             trip.id_train = getIdTrainByNumber(numberTrain);
+            if(getCompositionByTrain(trip.id_train).Count == 0)
+            {
+                MessageBox.Show("У поезда нет вагонов!");
+                return null;
+            }
             trip.time_start = time1;
             trip.time_finish = time2;
             if (!checkGoodroutes(selectedItems))
@@ -1253,6 +1340,26 @@ namespace Railway
 
         public Boolean updateTrip(int id, String numberTrain, DateTime time1, DateTime time2, ListBox.SelectedObjectCollection selectedItems)
         {
+
+            numberTrain = numberTrain.Trim();
+         
+            if (!Regex.IsMatch(numberTrain, @"^[0-9]{1,6}$"))
+            {
+                return false;
+            }
+
+            if (getIdTrainByNumber(numberTrain) == 0 || getIdTrainByNumber(numberTrain) == null)
+            {
+                return false;
+            }
+
+            if (time1.AddMinutes(10) < DateTime.Now)
+            {
+                return false;
+            }
+            if (selectedItems.Count == 0)
+                return false;
+
             TRIP trip = getTripById(id);
             if (trip != null) {
                 deleteTripRoutesByTrip(trip.id_trip);
@@ -1276,6 +1383,11 @@ namespace Railway
 
                 }
                 trip.id_train = getIdTrainByNumber(numberTrain);
+                if (getCompositionByTrain(trip.id_train).Count == 0)
+                {
+                    MessageBox.Show("У поезда нет вагонов!");
+                    return false;
+                }
                 trip.time_start = time1;
                 trip.time_finish = time1.AddMinutes(c);
                 if (trip.time_start < DateTime.Now && DateTime.Now < trip.time_finish)

@@ -73,7 +73,18 @@ namespace Railway.Forms
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        if (db.newComposition(Convert.ToString(numberTrain), Convert.ToInt32(frm.cbCarriage.SelectedValue)) == null)
+                        int car;
+                        if (Convert.ToString(frm.cbCarriage.Text) != "")
+                        {
+                            car = Convert.ToInt32(frm.cbCarriage.Text);
+
+                        }
+                        else
+                        {
+                            car = Convert.ToInt32(frm.cbCarriage.SelectedValue);
+                        }
+
+                        if (db.newComposition(Convert.ToString(numberTrain), car) == null)
                         {
                             MessageBox.Show("Ошибка вставки");
                         };

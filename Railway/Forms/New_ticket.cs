@@ -21,7 +21,7 @@ namespace Railway
         {
             cbPassanger.DisplayMember = "name";
             cbPassanger.ValueMember = "id_passanger";
-            cbPassanger.DataSource = db.GetPASSANGERs();
+            cbPassanger.DataSource = db.GetPASSANGERsOnly();
 
             cbNumber.DisplayMember = "number_train";
             cbNumber.ValueMember = "id_train";

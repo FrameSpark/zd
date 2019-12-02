@@ -19,9 +19,13 @@ namespace Railway.Forms
         DataBase db = new DataBase();
         private void BRegister_Click(object sender, EventArgs e)
         {
+
             if(db.getPassangerByNamePass(tbLogin.Text, tbPassport.Text) != null)
             {
-                db.newPassanger(tbLogin.Text, tbPassport.Text);
+
+                if (db.newPassanger(tbLogin.Text, tbPassport.Text) == null)
+                    MessageBox.Show("Ошибка ввода");
+                else
                 MessageBox.Show("Пользователь зарегистрирован");
             }
             else

@@ -639,8 +639,17 @@ namespace Railway
                     {
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            
-                            if (!db.updateTrip(idTrip, (String)frm.cbNumber.SelectedValue, frm.dtStart.Value, frm.dtFinish.Value, frm.listBox1.SelectedItems))
+                            string st1;
+                            if (Convert.ToString(frm.cbNumber.Text) != "")
+                            {
+                                st1 = Convert.ToString(frm.cbNumber.Text);
+
+                            }
+                            else
+                            {
+                                st1 = Convert.ToString(frm.cbNumber.SelectedValue);
+                            }
+                            if (!db.updateTrip(idTrip,st1, frm.dtStart.Value, frm.dtFinish.Value, frm.listBox1.SelectedItems))
                             {
                                 MessageBox.Show("Ошибка изменения");
                             };
@@ -750,12 +759,15 @@ namespace Railway
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
+                       
+
+
                         if (db.newTicket(Convert.ToInt32(frm.cbPassanger.SelectedValue),
-                                         Convert.ToInt32(frm.cbNumber.SelectedValue),
-                                         Convert.ToInt32(frm.cbCarriage.SelectedValue),
+                                         Convert.ToInt32(frm.cbNumber.Text),
+                                         Convert.ToInt32(frm.cbCarriage.Text),
                                          Convert.ToInt32(frm.tbPrice.Text),
-                                         Convert.ToInt32(frm.cbTrip.SelectedValue),
-                                        Convert.ToString(frm.cbStation.SelectedValue)
+                                         Convert.ToInt32(frm.cbTrip.Text),
+                                        Convert.ToString(frm.cbStation.Text)
                                             ) == null) 
                         {
                             MessageBox.Show("Ошибка вставки");

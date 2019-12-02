@@ -48,6 +48,7 @@
             // 
             // cbCarriage
             // 
+            this.cbCarriage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCarriage.FormattingEnabled = true;
             this.cbCarriage.Location = new System.Drawing.Point(55, 6);
             this.cbCarriage.Name = "cbCarriage";
@@ -55,6 +56,7 @@
             this.cbCarriage.TabIndex = 1;
             this.cbCarriage.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             this.cbCarriage.SelectionChangeCommitted += new System.EventHandler(this.CbCarriage_SelectionChangeCommitted);
+            this.cbCarriage.TextUpdate += new System.EventHandler(this.CbCarriage_TextUpdate);
             // 
             // label2
             // 
