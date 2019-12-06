@@ -74,6 +74,7 @@
             this.cbCarriage.TabIndex = 3;
             this.cbCarriage.SelectedIndexChanged += new System.EventHandler(this.CbCarriage_SelectedIndexChanged);
             this.cbCarriage.SelectionChangeCommitted += new System.EventHandler(this.CbCarriage_SelectionChangeCommitted);
+            this.cbCarriage.TextUpdate += new System.EventHandler(this.CbCarriage_TextUpdate);
             // 
             // bCreateConposition
             // 

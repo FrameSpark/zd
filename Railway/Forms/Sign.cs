@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,11 +20,14 @@ namespace Railway.Forms
         DataBase db = new DataBase();
         private void BRegister_Click(object sender, EventArgs e)
         {
-
-            if(db.getPassangerByNamePass(tbLogin.Text, tbPassport.Text) != null)
+            string login = tbLogin.Text.Trim();
+            login = Regex.Replace(login, @"\s+", " ");
+            string password = tbPassport.Text.Trim();
+            password = Regex.Replace(password, @"\s+", " ");
+            if (db.getPassangerByNamePass(login, password) != null)
             {
 
-                if (db.newPassanger(tbLogin.Text, tbPassport.Text) == null)
+                if (db.newPassanger(login, password) == null)
                     MessageBox.Show("Ошибка ввода");
                 else
                 MessageBox.Show("Пользователь зарегистрирован");
@@ -36,7 +40,11 @@ namespace Railway.Forms
 
         private void BLogin_Click(object sender, EventArgs e)
         {
-            PASSANGER p = db.getPassangerByNamePass(tbLogin.Text, tbPassport.Text).LastOrDefault();
+            string login = tbLogin.Text.Trim();
+            login = Regex.Replace(login, @"\s+", " ");
+            string password = tbPassport.Text.Trim();
+            password = Regex.Replace(password, @"\s+", " ");
+            PASSANGER p = db.getPassangerByNamePass(login,password).LastOrDefault();
             if (p != null)
             {
                 if (p.is_admin == 1)

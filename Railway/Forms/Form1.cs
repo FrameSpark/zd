@@ -26,7 +26,28 @@ namespace Railway
             dgTrip.DataSource = db.getTrip();
             dgPassanger.DataSource = db.GetPASSANGERs();
             dgTickets.DataSource = db.getTickets();
-            
+
+
+            cbNumberTrain.DataSource = db.GetTrainsNumberWithCarriage();
+            cbNumberTrain.DisplayMember = "numberTrain";
+            cbNumberTrain.ValueMember = "numberTrain";
+
+            cbTypeTrain.DisplayMember = "type_train";
+            cbTypeTrain.ValueMember = "type_train";
+            cbTypeTrain.DataSource = db.getTypesTrain();
+
+            cbTypeCarriage.DataSource = db.getTypesCarriage();
+          //  cbTypeCarriage.ValueMember = "type_carriage";
+            cbTypeCarriage.DisplayMember = "type_carriage";
+
+          //  dgComposition.DataSource = db.GetComposition();
+           // dgCarriage.DataSource = db.GetCarriages();
+           // dgTrain.DataSource = db.GetTrains();
+           // dgStations.DataSource = db.GetStations();
+           // dgRoutes.DataSource = vc.View_route.ToList();
+           // dgTrip.DataSource = vc.View_trip.ToList();
+           // dgPassanger.DataSource = db.GetPASSANGERs();
+           // dgTickets.DataSource = db.getTickets();
         } 
         DataBase db = new DataBase();
         ViewContext vc = new ViewContext();
@@ -44,7 +65,17 @@ namespace Railway
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cbNumberTrain.DataSource = db.GetTrainsNumber();
+            List<string> p = new List<string>();
+            p.Add("Все");
+            p.Add("Пассажиры");
+            p.Add("Админ");
+            p.Add("Начальники поезда");
+
+            cbUsers.DataSource = p;
+            cbUsers.DisplayMember = "role";
+            cbUsers.ValueMember = "role";
+
+            cbNumberTrain.DataSource = db.GetTrainsNumberWithCarriage();
             cbNumberTrain.DisplayMember = "numberTrain";
             cbNumberTrain.ValueMember = "numberTrain";
 
@@ -853,6 +884,25 @@ namespace Railway
         private void TabPage3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CbNumberTrain_TextUpdate(object sender, EventArgs e)
+        {
+
+            try
+            {
+                dgComposition.DataSource = db.getCompositionByTrain(cbNumberTrain.Text);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void CbUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgPassanger.DataSource = db.GetPASSANGERs(Convert.ToString(cbUsers.SelectedValue));
+            
         }
     }
     }

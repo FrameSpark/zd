@@ -36,6 +36,7 @@
             this.tbTime = new System.Windows.Forms.TextBox();
             this.bCreate = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -108,11 +109,21 @@
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(52, 107);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(250, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Не меньше 30 минут и не более 14400 (10 дней)";
+            // 
             // New_route
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(314, 176);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bCreate);
             this.Controls.Add(this.tbTime);
@@ -139,5 +150,6 @@
         public System.Windows.Forms.TextBox tbTime;
         private System.Windows.Forms.Button bCreate;
         private System.Windows.Forms.Button bCancel;
+        private System.Windows.Forms.Label label4;
     }
 }

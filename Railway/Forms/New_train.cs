@@ -34,6 +34,7 @@ namespace Railway
             comboBox1.ValueMember = "string";
             comboBox1.DisplayMember = "string";
             comboBox1.DataSource = type;
+            comboBox1.SelectedItem = type_train;
             
             
             

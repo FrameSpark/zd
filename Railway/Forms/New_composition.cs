@@ -55,8 +55,29 @@ namespace Railway
         private void CbCarriage_SelectionChangeCommitted(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(cbCarriage.SelectedValue);
-            label3.Text = db.getCarriageTypeById(id).type_carriage;
-            label4.Text = "Количество мест " + db.getCarriageById(id).number_of_seats;
+            try
+            {
+                label3.Text = db.getCarriageTypeById(id).type_carriage;
+                label4.Text = "Количество мест " + db.getCarriageById(id).number_of_seats;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void CbCarriage_TextUpdate(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(cbCarriage.SelectedValue);
+                label3.Text = db.getCarriageTypeById(id).type_carriage;
+                label4.Text = "Количество мест " + db.getCarriageById(id).number_of_seats;
+            }
+            catch
+            {
+
+            }
         }
     }
 }

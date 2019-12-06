@@ -109,7 +109,8 @@ namespace Railway.Forms
                             time = temp.time;
                         }
                     }
-                    if (time < DateTime.Now)
+                    String status = db.getTripById(db.getTicketById(id).id_trip).status;
+                    if (time > DateTime.Now || status == "Не начат")
                     {
                         if (db.deleteTicket(id))
                         {
