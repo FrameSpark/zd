@@ -37,6 +37,7 @@
             this.bCreate = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -71,7 +72,7 @@
             this.cbStation1.FormattingEnabled = true;
             this.cbStation1.Location = new System.Drawing.Point(172, 12);
             this.cbStation1.Name = "cbStation1";
-            this.cbStation1.Size = new System.Drawing.Size(121, 21);
+            this.cbStation1.Size = new System.Drawing.Size(188, 21);
             this.cbStation1.TabIndex = 3;
             // 
             // cbStation2
@@ -79,14 +80,14 @@
             this.cbStation2.FormattingEnabled = true;
             this.cbStation2.Location = new System.Drawing.Point(172, 48);
             this.cbStation2.Name = "cbStation2";
-            this.cbStation2.Size = new System.Drawing.Size(121, 21);
+            this.cbStation2.Size = new System.Drawing.Size(188, 21);
             this.cbStation2.TabIndex = 4;
             // 
             // tbTime
             // 
             this.tbTime.Location = new System.Drawing.Point(172, 84);
             this.tbTime.Name = "tbTime";
-            this.tbTime.Size = new System.Drawing.Size(121, 20);
+            this.tbTime.Size = new System.Drawing.Size(188, 20);
             this.tbTime.TabIndex = 5;
             // 
             // bCreate
@@ -118,11 +119,21 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Не меньше 30 минут и не более 14400 (10 дней)";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 179);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(348, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Допускается наличие одинаковых маршрутов с разным временем";
+            // 
             // New_route
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 176);
+            this.ClientSize = new System.Drawing.Size(371, 228);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bCreate);
@@ -151,5 +162,6 @@
         private System.Windows.Forms.Button bCreate;
         private System.Windows.Forms.Button bCancel;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -16,7 +16,7 @@ namespace Railway
 {
     class DataBase
     {
-       public Context db;
+        public Context db;
         public DataBase()
         {
             db = new Context();
@@ -31,20 +31,20 @@ namespace Railway
             if (trains != null)
             {
                 //Первый фильтр по типу поезда
-                
-                    foreach (Train temp in trains)
-                    {
-                        
-                        if (temp.typeTrain == need_type || need_type == "Все")
-                            edit.Add(temp);
-                    }
-                
+
+                foreach (Train temp in trains)
+                {
+
+                    if (temp.typeTrain == need_type || need_type == "Все")
+                        edit.Add(temp);
+                }
+
 
                 //Фильтр по станциям
-                if(edit.Count != 0) {
+                if (edit.Count != 0) {
                     foreach (Train temp in edit)
                     {
-                        if (getTripByTrain(temp.id).Count >0)
+                        if (getTripByTrain(temp.id).Count > 0)
                         {
                             if (getTripByTrain(temp.id).First<TRIP>().status == "Не начат")
                             {
@@ -75,10 +75,10 @@ namespace Railway
                         }
                     }
                 }
-                
+
             }
             return response;
-           
+
 
 
         }
@@ -87,10 +87,10 @@ namespace Railway
         {
             List<TripRoutes> tr = GetTripRoutesbyTrip(trip);
             int time = 0;
-            foreach(TripRoutes t in tr)
+            foreach (TripRoutes t in tr)
             {
                 time += getRouteById(t.IdRoute).route_time;
-                
+
             }
             return time;
         }
@@ -113,11 +113,11 @@ namespace Railway
 
         public List<String> getStationsByTrip(int id)
         {
-            
+
             List<String> response = new List<String>();
             deleteRetryTripRoutes();
             List<Route> routes = getRoutebyTrip(id);
-            Route start=null, finish=null;
+            Route start = null, finish = null;
             foreach (Route temp in routes)
             {
                 bool flag = false;
@@ -179,7 +179,7 @@ namespace Railway
             List<Carriage> carriages = new List<Carriage>();
             List<CARRIAGE> CARRIAGEs = db.CARRIAGEs.ToList();
             List<CARRIAGE_TYPE> CARRIAGE_TYPEs = db.CARRIAGE_TYPE.ToList();
-            foreach(CARRIAGE temp in CARRIAGEs)
+            foreach (CARRIAGE temp in CARRIAGEs)
             {
                 CARRIAGE_TYPE type = CARRIAGE_TYPEs.Where(t => t.id_carriage == temp.id_carriage).ToList().FirstOrDefault();
                 Carriage tempCarriage = new Carriage();
@@ -198,8 +198,8 @@ namespace Railway
 
         public List<PASSANGER> GetPASSANGERs(String role)
         {
-           
-            int r=4;
+
+            int r = 4;
             if (role == "Все")
                 r = 4;
             if (role == "Админ")
@@ -209,9 +209,9 @@ namespace Railway
             if (role == "Начальники поезда")
                 r = 3;
             List<PASSANGER> pas = new List<PASSANGER>();
-            foreach(PASSANGER p in db.PASSANGERs.ToList())
+            foreach (PASSANGER p in db.PASSANGERs.ToList())
             {
-                if(r==4)
+                if (r == 4)
                 {
                     pas.Add(p);
                 }
@@ -229,7 +229,7 @@ namespace Railway
         {
             List<PASSANGER> list = GetPASSANGERs();
             List<PASSANGER> response = new List<PASSANGER>();
-            foreach(PASSANGER p in list)
+            foreach (PASSANGER p in list)
             {
                 if (p.is_admin == 0)
                     response.Add(p);
@@ -242,7 +242,7 @@ namespace Railway
             List<Composition> compositions = new List<Composition>();
 
             List<TRAIN_COMPOSITION> tc = db.TRAIN_COMPOSITION.ToList();
-            
+
             foreach (TRAIN_COMPOSITION temp in tc)
             {
                 Composition composition = new Composition();
@@ -310,11 +310,11 @@ namespace Railway
             {
                 if (getTripByTrain(temp.id_train).Count != 0)
                 {
-                    
+
                     TRAIN tempTrain = new TRAIN();
                     tempTrain.id_train = temp.id_train;
                     tempTrain.number_train = temp.number_train;
-                    
+
                     train.Add(tempTrain);
                 }
             }
@@ -324,7 +324,7 @@ namespace Railway
         public List<Train> GetTrainsNumberWithCarriage()
         {
             List<Train> train = new List<Train>();
-            
+
             List<TRAIN> db_trains = db.TRAINs.ToList();
             List<TRAIN_TYPE> db_type = db.TRAIN_TYPE.ToList();
             Train tr = new Train();
@@ -337,8 +337,8 @@ namespace Railway
                 tempTrain.id = temp.id_train;
                 tempTrain.numberTrain = temp.number_train;
                 tempTrain.typeTrain = type.Last().type_train;
-                if(getCompositionByTrain(tempTrain.id).Count > 0)
-                 train.Add(tempTrain);
+                if (getCompositionByTrain(tempTrain.id).Count > 0)
+                    train.Add(tempTrain);
             }
             return train;
         }
@@ -399,7 +399,7 @@ namespace Railway
 
         public TRAIN getTrainById(int id)
         {
-           
+
             List<TRAIN> db_trains = db.TRAINs.ToList();
             foreach (TRAIN temp in db_trains)
             {
@@ -427,7 +427,7 @@ namespace Railway
 
         public TRAIN_TYPE getTrainTypeById(int id)
         {
-           
+
             List<TRAIN_TYPE> db_type = db.TRAIN_TYPE.ToList();
             foreach (TRAIN_TYPE temp in db_type)
             {
@@ -492,14 +492,14 @@ namespace Railway
             {
                 foreach (TRAIN_COMPOSITION temp in tc)
                 {
-                  
-                        Composition composition = new Composition();
-                        composition.id_carriage = temp.id_carriage;
-                        composition.id_composition = temp.id_composition;
-                        composition.number_train = getTrainById(temp.id_train).number_train;
-                        composition.type_carriage = getCarriageTypeById(temp.id_carriage).type_carriage;
-                        compositions.Add(composition);
-                    
+
+                    Composition composition = new Composition();
+                    composition.id_carriage = temp.id_carriage;
+                    composition.id_composition = temp.id_composition;
+                    composition.number_train = getTrainById(temp.id_train).number_train;
+                    composition.type_carriage = getCarriageTypeById(temp.id_carriage).type_carriage;
+                    compositions.Add(composition);
+
                 }
             }
             return compositions;
@@ -538,11 +538,11 @@ namespace Railway
             int seat = 0;
             List<TRAIN_COMPOSITION> tc = getCompositionByTrain(train);
             List<TICKET> pas = db.TICKETs.ToList();
-            foreach(TRAIN_COMPOSITION temp in tc)
+            foreach (TRAIN_COMPOSITION temp in tc)
             {
                 seat += getCarriageById(temp.id_carriage).number_of_seats;
             }
-            foreach(TICKET temp in pas)
+            foreach (TICKET temp in pas)
             {
                 if (temp.id_train == train)
                     seat -= 1;
@@ -552,7 +552,7 @@ namespace Railway
 
         public List<TRIP> getTripByTrain(int id)
         {
-            
+
             List<TRIP> db_type = db.TRIPs.ToList();
             List<TRIP> t = new List<TRIP>();
             foreach (TRIP temp in db_type)
@@ -583,11 +583,11 @@ namespace Railway
         {
             List<ROUTE> db_type = db.ROUTEs.ToList();
             List<Route> route = new List<Route>();
-            foreach(ROUTE temp in db_type)
+            foreach (ROUTE temp in db_type)
             {
                 Route r = new Route();
                 r.id_route = temp.id_route;
-                r.name_start_station =getStationById(temp.id_start_station).name_station;
+                r.name_start_station = getStationById(temp.id_start_station).name_station;
                 r.name_finish_station = getStationById(temp.id_finish_station).name_station;
                 r.route_time = temp.route_time;
                 r.route = r.name_start_station + " - " + r.name_finish_station + " (" + r.route_time + ")";
@@ -602,17 +602,17 @@ namespace Railway
             List<TripRoutes> tr2 = GetTripRoutes();
             try
             {
-                for(int i=0; i<tr.Count; i++)
+                for (int i = 0; i < tr.Count; i++)
                 {
-                    for(int j = i + 1; j < tr.Count; j++)
+                    for (int j = i + 1; j < tr.Count; j++)
                     {
-                        if(tr[i].idTR != tr[j].idTR && tr[i].IdRoute == tr[j].IdRoute && tr[i].IdTrip == tr[j].IdTrip)
+                        if (tr[i].idTR != tr[j].idTR && tr[i].IdRoute == tr[j].IdRoute && tr[i].IdTrip == tr[j].IdTrip)
                         {
                             deleteTripRoutes(tr[j].idTR);
                         }
                     }
                 }
-            
+
             }
             catch
             {
@@ -625,9 +625,9 @@ namespace Railway
             List<Route> route = new List<Route>();
             deleteRetryTripRoutes();
             List<TripRoutes> tr = GetTripRoutes();
-            foreach(TripRoutes t in tr)
+            foreach (TripRoutes t in tr)
             {
-                if(t.IdTrip == id_trip)
+                if (t.IdTrip == id_trip)
                 {
                     ROUTE temp = getRouteById(t.IdRoute);
                     Route r = new Route();
@@ -646,14 +646,14 @@ namespace Railway
                     }
                 }
             }
-           
+
             return route;
         }
 
 
         public List<Trip> getTrip()
         {
-            
+
             List<TRIP> list = db.TRIPs.ToList();
             foreach (TRIP temp in list)
             {
@@ -743,7 +743,7 @@ namespace Railway
         public List<String> getStations()
         {
             List<String> type = new List<String>();
-          
+
             foreach (STATION types in db.STATIONs.ToList())
             {
                 type.Add(types.name_station);
@@ -754,7 +754,7 @@ namespace Railway
 
         public Carriage newCarriage(int numberSeats, String type)
         {
-            if(0>=numberSeats || numberSeats > 80)
+            if (0 >= numberSeats || numberSeats > 80)
             {
                 return null;
             }
@@ -800,7 +800,7 @@ namespace Railway
             numberTrain = Regex.Replace(numberTrain, @"\s+", "");
             try
             {
-                if (getIdTrainByNumber(numberTrain) == null || getCarriageById(car) == null)
+                if (getIdTrainByNumber(numberTrain) == 0 || getCarriageById(car) == null)
                 {
                     return null;
                 }
@@ -815,7 +815,7 @@ namespace Railway
             composition.number_train = numberTrain;
             composition.id_carriage = car;
             tRAIN_COMPOSITION.id_carriage = car;
-            tRAIN_COMPOSITION.id_train= getIdTrainByNumber(numberTrain);
+            tRAIN_COMPOSITION.id_train = getIdTrainByNumber(numberTrain);
 
             db.TRAIN_COMPOSITION.Add(tRAIN_COMPOSITION);
             db.SaveChanges();
@@ -834,20 +834,20 @@ namespace Railway
             {
                 return null;
             }
-            if(getPassangerByNamePass(name, passport).Count != 0)
+            if (getPassangerByNamePass(name, passport).Count != 0)
             {
                 return null;
             }
-           
-            foreach(PASSANGER p in GetPASSANGERs())
+
+            foreach (PASSANGER p in GetPASSANGERs())
             {
-                if(p.passport == passport)
+                if (p.passport == passport)
                 {
                     MessageBox.Show("Номер пасспорта уже существует");
                     return null;
                 }
             }
-            if(!Regex.IsMatch(passport, @"^[0-9]{10}$"))
+            if (!Regex.IsMatch(passport, @"^[0-9]{10}$"))
             {
                 return null;
             }
@@ -865,7 +865,7 @@ namespace Railway
         {
             List<TICKET> list = db.TICKETs.ToList();
             List<TICKET> ret = new List<TICKET>();
-            foreach(TICKET temp in list)
+            foreach (TICKET temp in list)
             {
                 if (temp.id_passanger == id)
                     ret.Add(temp);
@@ -875,74 +875,82 @@ namespace Railway
 
         public TICKET newTicket(int passanger, int train, int carriage, int price, int trip, String station)
         {
-            if(train < 0 || getIdTrainByNumber(Convert.ToString(train)) == 0)
+            if (train < 0 || getIdTrainByNumber(Convert.ToString(train)) == 0)
+            {
+                if(getTrainById(train) == null)
+                 return null;
+            }
+
+            if (carriage < 0 || getCarriageById(carriage) == null)
             {
                 return null;
             }
 
-            if(carriage <0 || getCarriageById(carriage) == null)
+            if (price < 0 || price > 20000)
             {
                 return null;
             }
 
-            if(price < 0 || price > 20000)
-            {
-                return null;
-            }
-
-            if(trip < 0 || getTripById(trip) == null)
+            if (trip < 0 || getTripById(trip) == null)
             {
                 return null;
             }
             station = station.Trim();
             station = Regex.Replace(station, @"\s+", " ");
-            if(getStationByName(station) == null || station == null)
+            if (getStationByName(station) == null || station == null)
             {
                 return null;
             }
 
             db = new Context();
             TICKET ticket = new TICKET();
-          
-            if(getFreeTicket(getIdTrainByNumber(Convert.ToString(train))) == 0)
+
+            if (getFreeTicket(getIdTrainByNumber(Convert.ToString(train))) == 0)
             {
-                MessageBox.Show("Мест на поезд нет");
-                return null;
+                if (getFreeTicket(train) == 0)
+                {
+                    MessageBox.Show("Мест на поезд нет");
+                    return null;
+                }
             }
             ticket.id_passanger = passanger;
             ticket.id_train = getIdTrainByNumber(Convert.ToString(train));
+            if(ticket.id_train == 0)
+            {
+                ticket.id_train = train;
+            }
             ticket.id_carriage = carriage;
             ticket.price = price;
             ticket.id_trip = trip;
             int id = getStationByName(station).id_station;
-            ticket.timeP = getTripById(trip).time_start.AddMinutes(getTimeToStation(trip,station));
+            ticket.timeP = getTripById(trip).time_start.AddMinutes(getTimeToStation(trip, station));
             ticket.id_station = id;
             bool saveFailed = false;
             db.TICKETs.Add(ticket);
             STATION st = new STATION();
-                saveFailed = false;
+            saveFailed = false;
             try
             {
-                 db.SaveChanges();
+                db.SaveChanges();
                 db = new Context();
             }
             catch (Exception e)
             {
 
             }
-           
-           
+
+
             return ticket;
         }
 
-      
+
 
         public List<Ticket> getTickets()
         {
-            
+
             List<TICKET> list = db.TICKETs.ToList();
             List<Ticket> ticket = new List<Ticket>();
-            foreach(TICKET temp in list)
+            foreach (TICKET temp in list)
             {
                 Ticket t = new Ticket();
                 bool error = false;
@@ -955,13 +963,13 @@ namespace Railway
                 catch (Exception)
                 {
                     error = true;
-                    
+
                     MessageBox.Show("В рейсе удалена станция, на которую был билет. Билет удален");
                     db.TICKETs.Remove(temp);
                     db.SaveChanges();
                     return null;
                 }
-               
+
                 t.id_carriage = temp.id_carriage;
                 t.id_passanger = temp.id_passanger;
                 t.id_ticket = temp.id_ticket;
@@ -970,12 +978,12 @@ namespace Railway
                 t.name = getPassangerByid(temp.id_passanger).name;
                 t.number_train = getTrainById(temp.id_train).number_train;
                 t.time = temp.timeP;
-                
+
                 try
                 {
                     t.station = getStationById(temp.id_station).name_station;
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     error = true;
                     MessageBox.Show("В рейсе удалена станция, на которую был билет. Билет удален");
@@ -983,7 +991,7 @@ namespace Railway
                     db.SaveChanges();
                 }
                 t.price = temp.price;
-                if(!error)
+                if (!error)
                     ticket.Add(t);
                 error = false;
             }
@@ -999,9 +1007,13 @@ namespace Railway
                 if (temp.id_passanger == id)
                 {
                     Ticket t = new Ticket();
-                    List<String> st = getStationsByTrip(getTripByTrain(temp.id_train).First<TRIP>().id_trip);
-                    t.start = st.First<String>();
-                    t.finish = st.Last<String>();
+                    try
+                    {
+                        List<String> st = getStationsByTrip(getTripByTrain(temp.id_train).First<TRIP>().id_trip);
+                        t.start = st.First<String>();
+                        t.finish = st.Last<String>();
+                    }
+                    catch { }
                     t.id_carriage = temp.id_carriage;
                     t.id_passanger = temp.id_passanger;
                     t.id_ticket = temp.id_ticket;
@@ -1022,16 +1034,16 @@ namespace Railway
         {
             List<TripRoutes> tr = GetTripRoutesbyTrip(getTripByTrain(id).LastOrDefault<TRIP>().id_trip);
             List<String> t = new List<String>();
-            foreach(TripRoutes temp in tr)
+            foreach (TripRoutes temp in tr)
             {
                 try
                 {
                     t.Add(getStationById(getRouteById(temp.IdRoute).id_start_station).name_station);
                     t.Add(getStationById(getRouteById(temp.IdRoute).id_finish_station).name_station);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                   
+
                 }
             }
             t = t.Distinct().ToList();
@@ -1040,8 +1052,8 @@ namespace Railway
         public Boolean updatePassanger(int id, string name, string passport)
         {
             PASSANGER pas = getPassangerByid(id);
-            
-            if(pas.is_admin == 0)
+
+            if (pas.is_admin == 0)
             {
                 name = name.Trim();
                 name = Regex.Replace(name, @"\s+", " ");
@@ -1078,7 +1090,7 @@ namespace Railway
         public PASSANGER getPassangerByid(int id)
         {
             List<PASSANGER> list = db.PASSANGERs.ToList();
-            foreach(PASSANGER temp in list)
+            foreach (PASSANGER temp in list)
             {
                 if (temp.id_passanger == id)
                     return temp;
@@ -1101,9 +1113,9 @@ namespace Railway
         public void checkAllRoute()
         {
             List<Trip> trips = getTrip();
-            foreach(Trip tr in trips)
+            foreach (Trip tr in trips)
             {
-                if(!checkGoodroutesByTrip(tr.id_trip))
+                if (!checkGoodroutesByTrip(tr.id_trip))
                 {
                     MessageBox.Show("При внесении изменений, маршрут рейса был несовместим.");
                     deleteTrip(tr.id_trip);
@@ -1194,9 +1206,9 @@ namespace Railway
 
         public bool checkGoodroutes(ListBox.SelectedObjectCollection selectedItems)
         {
-            Route start=null, finish=null;
+            Route start = null, finish = null;
             List<Route> routes = new List<Route>();
-            
+
             foreach (Object checkObj in selectedItems)
             {
                 routes.Add((Route)checkObj);
@@ -1250,11 +1262,11 @@ namespace Railway
             List<Route> goodRoute = new List<Route>();
             goodRoute.Add(start);
             routes.Remove(start);
-            while(routes.Count != 0)
+            while (routes.Count != 0)
             {
                 Route temp = goodRoute.Last<Route>();
                 bool flag = false;
-                foreach(Route t in routes)
+                foreach (Route t in routes)
                 {
                     if (temp.name_finish_station == t.name_start_station)
                     {
@@ -1263,27 +1275,27 @@ namespace Railway
                         flag = true;
 
                     }
-                    if(flag)
+                    if (flag)
                     {
                         break;
                     }
                 }
-                if(!flag)
+                if (!flag)
                 {
                     return false;
                 }
             }
-            if (goodRoute.Count == 0 )
+            if (goodRoute.Count == 0)
                 return false;
             return true;
         }
 
 
-        public int getTimeToStation(int idTrip,String station)
+        public int getTimeToStation(int idTrip, String station)
         {
             Route start = null, finish = null;
             List<Route> routes = getRoutebyTrip(idTrip);
-            
+
 
             foreach (Route temp in routes)
             {
@@ -1325,7 +1337,7 @@ namespace Railway
                 }
             }
 
-           
+
 
             List<Route> goodRoute = new List<Route>();
             goodRoute.Add(start);
@@ -1350,13 +1362,13 @@ namespace Railway
                 }
                 if (!flag)
                 {
-                    
+
                 }
             }
 
             int time = 0;
-            bool flag1=false;
-            foreach(Route temp in goodRoute)
+            bool flag1 = false;
+            foreach (Route temp in goodRoute)
             {
 
                 if (flag1)
@@ -1367,7 +1379,7 @@ namespace Railway
                 if (temp.name_start_station != station && temp.name_finish_station != station)
                 {
                     time += temp.route_time;
-                    
+
                 }
                 else
                 {
@@ -1379,8 +1391,13 @@ namespace Railway
 
         public TRIP newTrip(String numberTrain, DateTime time1, DateTime time2, ListBox.SelectedObjectCollection selectedItems)
         {
-            if(time1.AddMinutes(10) < DateTime.Now)
+            if (time1.AddMinutes(10) < DateTime.Now)
             {
+                return null;
+            }
+            if (time1 > DateTime.Now.AddDays(366))
+            {
+                MessageBox.Show("Дата начала дальше чем через год!");
                 return null;
             }
             db = new Context();
@@ -1388,7 +1405,7 @@ namespace Railway
                 return null;
             TRIP trip = new TRIP();
             trip.id_train = getIdTrainByNumber(numberTrain);
-            if(getCompositionByTrain(trip.id_train).Count == 0)
+            if (getCompositionByTrain(trip.id_train).Count == 0)
             {
                 MessageBox.Show("У поезда нет вагонов!");
                 return null;
@@ -1397,13 +1414,13 @@ namespace Railway
             trip.time_finish = time2;
             if (!checkGoodroutes(selectedItems))
                 return null;
-            int c=0;
+            int c = 0;
             foreach (Object temp in selectedItems)
             {
-               
+
                 Route r = (Route)temp;
                 c += r.route_time;
-                
+
             }
             trip.time_finish = time1.AddMinutes(c);
             if (trip.time_start < DateTime.Now && DateTime.Now < trip.time_finish)
@@ -1419,8 +1436,8 @@ namespace Railway
                 trip.status = "Окончен";
             }
 
-            
-           
+
+
             db.TRIPs.Add(trip);
             db.SaveChanges();
             db = new Context();
@@ -1433,7 +1450,7 @@ namespace Railway
                 tr.IdTrip = id;
                 addTripRoutes(tr);
             }
-       
+
 
             return trip;
         }
@@ -1448,7 +1465,7 @@ namespace Railway
         {
 
             numberTrain = numberTrain.Trim();
-         
+
             if (!Regex.IsMatch(numberTrain, @"^[0-9]{1,6}$"))
             {
                 return false;
@@ -1463,10 +1480,20 @@ namespace Railway
             {
                 return false;
             }
+            if (time1 > DateTime.Now.AddDays(366))
+            {
+                MessageBox.Show("Дата начала дальше чем через год!");
+                return false;
+            }
             if (selectedItems.Count == 0)
                 return false;
 
             TRIP trip = getTripById(id);
+            if (trip.status == "В пути" || trip.status == "Окончен")
+            {
+                MessageBox.Show("Поезд в пути или рейс уже окончен!");
+                return false;
+            }
             if (trip != null) {
                 deleteTripRoutesByTrip(trip.id_trip);
                 foreach (Object temp in selectedItems)
@@ -1566,7 +1593,7 @@ namespace Railway
             }
 
 
-            if (checkExistRoute(station1, station2))
+            if (checkExistRoute(station1, station2, min))
             {
 
                 if (!station1.Equals(station2))
@@ -1661,6 +1688,10 @@ namespace Railway
             numberTrain = Regex.Replace(numberTrain, @"\s+", "");
             typeTrain = typeTrain.Trim();
             typeTrain = Regex.Replace(typeTrain, @"\s+", "");
+            if(getIdTrainByNumber(numberTrain) != 0)
+            {
+                return false;
+            }
             if (!Regex.IsMatch(numberTrain, @"^[0-9]{1,6}$"))
             {
                 return false;
@@ -1682,11 +1713,11 @@ namespace Railway
             return false;
         }
 
-        public Boolean checkExistRoute(string station1, string station2)
+        public Boolean checkExistRoute(string station1, string station2, int min)
         {
             List<Route> list = getRoute();
             foreach(Route temp in list){
-                if((temp.name_start_station==station1 && temp.name_finish_station==station2) /*||
+                if((temp.name_start_station==station1 && temp.name_finish_station==station2 && temp.route_time == min) /*||
                     (temp.name_start_station == station2 && temp.name_finish_station == station1)*/)
                 {
                     return false;
@@ -1719,7 +1750,7 @@ namespace Railway
                 return false;
             }
 
-            if (checkExistRoute(station1, station2))
+            if (checkExistRoute(station1, station2, min))
             {
                 ROUTE route = getRouteById(id);
                 if (station1 != station2)
@@ -1862,15 +1893,19 @@ namespace Railway
                 List<Route> route2 = getRoute();
                 try
                 {
+                    
+                   
                     foreach (Route r in route)
                     {
-                        foreach (Route r2 in route)
+                        route2.Remove(r);
+                        foreach (Route r2 in route2)
                         {
                             if (r.id_route != r2.id_route && r.name_start_station == r2.name_start_station && r.name_finish_station == r2.name_finish_station && r.route_time == r2.route_time)
                             {
                                 deleteRoute(r2.id_route);
                                 route.Remove(r2);
-                               // route.Remove(r2);
+                                route2.Remove(r2);
+                             
                             }   
                         }
                     }
